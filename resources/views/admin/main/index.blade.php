@@ -1,6 +1,32 @@
 @extends('admin.layout.master')
 
+@section('head')
+
+    <title>merselin Dashboard</title>
+
+@endsection
+
+
 @section('main-content')
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
@@ -172,7 +198,8 @@
                                 <ul class="contacts-list">
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user1-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user1-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -187,7 +214,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user7-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user7-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -202,7 +230,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user3-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user3-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -217,7 +246,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user5-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user5-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -232,7 +262,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user6-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user6-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -247,7 +278,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{asset('admin/img/user8-128x128.jpg')}}">
+                                            <img class="contacts-list-img"
+                                                 src="{{asset('admin/img/user8-128x128.jpg')}}">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -293,4 +325,9 @@
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
+@endsection
+
+@section('script')
+
+
 @endsection

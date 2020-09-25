@@ -119,29 +119,23 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-object-group"></i>
                         <p>
-                            Charts
+                            categories
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
+                            <a href="{{route('categories.index')}}" class="nav-link">
+                                <i class="far fa-list-alt nav-icon"></i>
+                                <p>categories list</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                            <a href="{{route('categories.create')}}" class="nav-link">
+                                <i class="far fa-edit nav-icon"></i>
+                                <p>add new category</p>
                             </a>
                         </li>
                     </ul>
