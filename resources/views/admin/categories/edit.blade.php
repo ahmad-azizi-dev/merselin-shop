@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('head')
-    <title>add new category</title>
+    <title>update category</title>
 @endsection
 
 

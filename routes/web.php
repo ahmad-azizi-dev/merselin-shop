@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AttributeGroupController;
 use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
@@ -22,4 +23,5 @@ Route::get('/', function () {
 Route::prefix('administrator')->middleware(['web'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
+    Route::resource('attributes-group', AttributeGroupController::class);
 });
