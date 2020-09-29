@@ -93,7 +93,9 @@ class AttributeGroupController extends Controller
 
         Session::flash('attribute', 'The "' . $attributeGroup->title . '" attribute updated successfully');
         Session::flash('toastr', 'info');
-        return redirect(route('attributes-group.index'));
+
+        $url = $request->only('redirects_to'); //redirect to the correct url
+        return redirect()->to($url['redirects_to']);
 
     }
 

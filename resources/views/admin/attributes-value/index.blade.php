@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('head')
-    <title>attributes list</title>
+    <title>attributes value list</title>
     <link rel="stylesheet" href="{{asset('admin/css/toastr.css')}}">
 
     <!-- DataTables -->
@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">attributes list</h1>
+                    <h1 class="m-0 text-dark">attributes value list</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -31,8 +31,8 @@
         <div class="card-header">
             <span class="card-title"><i class="fa fa-list"></i></span>
             <div class="text-right">
-                <a href="{{route('attributes-group.create')}}" class="btn ntn-app text-primary">
-                    add new attribute
+                <a href="{{route('attributes-value.create')}}" class="btn ntn-app text-primary">
+                    add new attribute value
                     <i class="fa fa-edit"></i>
                 </a>
 
@@ -44,8 +44,8 @@
                 <thead>
                 <tr class="bg-gradient-info">
                     <th style="min-width: 50px !important;">id</th>
-                    <th style="min-width: 200px !important;">title</th>
-                    <th style="min-width: 100px !important;">type</th>
+                    <th style="min-width: 150px !important;">attribute group title</th>
+                    <th style="min-width: 200px !important;">attribute value</th>
                     <th style="min-width: 150px !important;">operations</th>
                     <th style="min-width: 150px !important;">created date (Teh)</th>
                     <th style="min-width: 150px !important;">updated date (Teh)</th>
@@ -54,15 +54,18 @@
                 </thead>
                 <tbody>
 
-                @foreach($attributesGroup as $attribute)
+                @foreach($attributesValue as $attribute)
                     <tr>
                         <td>{{$attribute->id}}</td>
+                        <td>
+                            <a data-toggle="tooltip" title="edit this attribute"
+                               href="{{route('attributes-group.edit', $attribute->attributeGroup->id)}}">{{$attribute->attributeGroup->title}}</a>
+                        </td>
                         <td>{{$attribute->title}}</td>
-                        <td>{{$attribute->type}}</td>
                         <td>
 
-                            <a class="btn btn-sm  bg-gradient-warning m-2"
-                               href="{{route('attributes-group.edit', $attribute->id)}}">edit</a>
+                            <a data-toggle="tooltip" title="edit this value" class="btn btn-sm  bg-gradient-warning m-2"
+                               href="{{route('attributes-value.edit', $attribute->id)}}">edit</a>
                             <div style="display: inline-block !important;" class="row">
 
                                 <button type="button" class="btn btn-sm btn-danger m-2" data-toggle="modal"
@@ -70,9 +73,7 @@
                                     delete
                                 </button>
 
-
                             </div>
-
 
                             <!-- The delete Modal -->
                             <div class="modal fade" id="delete{{$attribute->id}}">
@@ -89,7 +90,7 @@
                                         <div class="modal-body">
                                             are you sure that want to delete the <b
                                                 class="text-info">{{$attribute->title}} </b>
-                                            attribute!!
+                                            attribute value!!
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
@@ -98,7 +99,7 @@
                                                     data-dismiss="modal">cancel
                                             </button>
 
-                                            {!! Form::open(['method' => 'DELETE', 'route' => ['attributes-group.destroy', $attribute->id] ]) !!}
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['attributes-value.destroy', $attribute->id] ]) !!}
                                             {!! Form::submit('delete', ['class'=>'btn bg-gradient-danger m-2']) !!}
                                             {!! Form::close() !!}
 
@@ -130,7 +131,6 @@
 
     <script src="{{asset('admin/js/toastr.min.js')}}"></script>
 
-
     <!-- DataTables -->
 
     <script src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
@@ -144,7 +144,15 @@
                 "autoWidth": false,
             });
         });
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
+
+    @if(Session::has('attributeValue'))
+        @include('admin.partials.notification',['notification'=>Session('attributeValue'),'toastr'=>Session('toastr')])
+    @endif
 
     @if(Session::has('attribute'))
         @include('admin.partials.notification',['notification'=>Session('attribute'),'toastr'=>Session('toastr')])

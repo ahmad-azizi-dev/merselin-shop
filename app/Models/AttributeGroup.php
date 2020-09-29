@@ -8,5 +8,9 @@ class AttributeGroup extends Model
 {
     protected $table = "attributesgroup";
 
+    public function attributesValue()
+    {
+        return $this->hasMany(AttributeValue::class, 'attributeGroup_id');
+    }
 
 }

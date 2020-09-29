@@ -39,7 +39,7 @@ class AttributeRequest extends FormRequest
         return [
 
             'title.required' => 'please enter a title',
-            'type.required'  => 'please enter a attribute type',
+            'type.required'  => 'please select an attribute type',
             'title.unique'   => 'This title has been chosen please enter another attribute title',
         ];
     }
