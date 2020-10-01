@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Backend\AttributeGroupController;
 use App\Http\Controllers\Backend\AttributeValueController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\MediaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 
@@ -26,4 +28,7 @@ Route::prefix('administrator')->middleware(['web'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('attributes-group', AttributeGroupController::class);
     Route::resource('attributes-value', AttributeValueController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('medias', MediaController::class);
+    Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
 });
