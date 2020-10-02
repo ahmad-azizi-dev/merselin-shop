@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
+use App\Http\Controllers\Backend\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,13 @@ Route::get('/', function () {
 Route::prefix('administrator')->middleware(['web'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
+    Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');
+    Route::post('/categories/{id}/settings', [CategoryController::class, 'saveSetting'])->name('categories.saveSetting');
+
     Route::resource('attributes-group', AttributeGroupController::class);
     Route::resource('attributes-value', AttributeValueController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('medias', MediaController::class);
     Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
+    Route::resource('products', ProductController::class);
 });

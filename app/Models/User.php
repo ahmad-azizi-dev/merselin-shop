@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Media::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

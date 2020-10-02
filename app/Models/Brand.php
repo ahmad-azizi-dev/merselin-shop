@@ -11,4 +11,9 @@ class Brand extends Model
         return $this->belongsTo(Media::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

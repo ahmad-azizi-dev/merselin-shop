@@ -201,6 +201,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <p>
+                            Products
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('products.index')}}" class="nav-link">
+                                <i class="far fa-list-alt nav-icon"></i>
+                                <p>products list</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('products.create')}}" class="nav-link">
+                                <i class="far fa-edit nav-icon"></i>
+                                <p>add new product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">

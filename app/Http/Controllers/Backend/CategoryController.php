@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Models\AttributeGroup;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -165,4 +166,26 @@ class CategoryController extends Controller
         }
 
     }
+
+    public function indexSetting($id)
+    {
+        $category = Category::findOrFail($id);
+        $attributeGroups = AttributeGroup::all();
+        return view('admin.categories.index-setting', compact(['category', 'attributeGroups']));
+    }
+
+    public function saveSetting(Request $request, $id)
+    {
+
+        $category = Category::findOrFail($id);
+        $category->attributeGroups()->sync($request->attributeGroups);
+        $category->save();
+
+        Session::flash('category', 'attributes for The "' . $category->name . '" category updated successfully');
+        Session::flash('toastr', 'warning');
+
+        $url = $request->only('redirects_to'); //return to the correct page number
+        return redirect()->to($url['redirects_to']);
+    }
+
 }

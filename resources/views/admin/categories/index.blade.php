@@ -44,7 +44,7 @@
                     <tr>
                         <th style="min-width: 100px !important;">id</th>
                         <th>name</th>
-                        <th>operations</th>
+                        <th style="min-width: 250px !important;">operations</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,6 +54,9 @@
                             <td>{{$category->id}}</td>
                             <td>&#128309; {{$category->name}}</td>
                             <td style="min-width: 230px !important;">
+
+                                <a class="btn btn-sm  bg-gradient-warning m-2"
+                                   href="{{route('categories.indexSetting', $category->id)}}">Setting</a>
 
                                 <button type="button" class="btn btn-sm  bg-gradient-info m-2" data-toggle="modal"
                                         data-target="#details{{$category->id}}">
@@ -110,6 +113,16 @@
                                                     <tr>
                                                         <th>parent ID</th>
                                                         <td>{{$category->parent_id}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>attributes</th>
+                                                        <td>
+                                                            <ul>
+                                                                @foreach($category->attributeGroups as $attributeGroup)
+                                                                    <li>  {{$attributeGroup->title}}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th>created date (Tehran)</th>
