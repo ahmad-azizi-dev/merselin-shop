@@ -65,8 +65,9 @@
                     </div>
 
                     <div class="form-group">
-
-                        {!! Form::label('media_id', 'photo ID: '.$brand->media->id) !!}
+                        @if($brand->media)
+                            {!! Form::label('media_id', 'photo ID: '.$brand->media->id) !!}
+                        @endif
                         {!! Form::text('media_id',null, ['class' => 'form-control col-sm-3 mb-3','id'=>'brand-photo']) !!}
                         <div id="photo" class="dropzone"></div>
 

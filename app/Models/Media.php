@@ -20,4 +20,9 @@ class Media extends Model
         return $this->uploads . $photo;
     }
 
+    public function medias()
+    {
+        return $this->belongsToMany(Media::class);
+    }
+
 }

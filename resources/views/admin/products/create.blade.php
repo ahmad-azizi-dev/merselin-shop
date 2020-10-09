@@ -2,6 +2,11 @@
 
 @section('head')
     <title>add new product</title>
+
+    <link rel="stylesheet" href="{{asset('admin/css/dropzone.min.css')}}">
+
+    @livewireStyles
+
 @endsection
 
 
@@ -47,10 +52,10 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            {!! Form::label('slug', 'slug (optional)') !!}
-                            {!! Form::text('slug',null, ['class' => 'form-control','placeholder' => 'choose automatically by meta title if leave empty']) !!}
+                            {!! Form::label('status', 'status') !!}
+                            {!! Form::select('status', ['0' => 'Unpublished &#10060;', '1' => 'published &#9989;'], null, ['placeholder' => 'Select a status...','class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -64,12 +69,19 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {!! Form::label('description', 'description') !!}
-                            {!! Form::textarea('description',null, ['class' => 'form-control','placeholder' => 'Enter a meta description ...','rows' => '3']) !!}
+                            {!! Form::label('slug', 'slug (optional)') !!}
+                            {!! Form::textarea('slug',null, ['class' => 'form-control','placeholder' => 'choose automatically by meta title if leave empty','rows' => '3']) !!}
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {!! Form::label('description', 'description') !!}
+                            {!! Form::textarea('description',null, ['id' => 'textareaDescription','class' => 'form-control','placeholder' => 'Enter a meta description ...','rows' => '3']) !!}
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -103,34 +115,9 @@
 
                 </div>
 
-                <div class="row">
+                @livewire('admin.products.create-products', ['categories' => $categories])
 
-                    <div class="col-sm-6">
-                        <!-- select -->
-                        <div class="form-group">
 
-                            {!! Form::label('category_parent', 'categories') !!}
-
-                            <select name="category" class="form-control">
-                                <option class="text-danger" value="">select categories for this product ...</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">&#128309; {{$category->name}}</option>
-                                    @if(count($category->childrenRecursive) > 0)
-                                        @include('admin.partials.category', ['categories'=>$category->childrenRecursive, 'level'=>1])
-                                    @endif
-                                @endforeach
-                            </select>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            {!! Form::label('status', 'status') !!}
-                            {!! Form::select('status', ['0' => 'Unpublished &#10060;', '1' => 'published &#9989;'], null, ['placeholder' => 'Select a status...','class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- select -->
@@ -140,6 +127,11 @@
 
                             {!! Form::select('brand_id', $brands , null, ['class' => 'form-control','placeholder' => 'Pick a brand ...']) !!}
 
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">photos</label>
+                            <input type="hidden" name="photo_id[]" id="product-photo">
+                            <div id="photo" class="dropzone"></div>
                         </div>
                     </div>
                 </div>
@@ -158,5 +150,39 @@
         <!-- /.card -->
         <!-- general form elements disabled -->
     </div>
+
+@endsection
+
+@section('script')
+
+    @livewireScripts
+
+    <script type="text/javascript" src="{{asset('/admin/js/dropzone.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/admin/ckeditor/ckeditor.js')}}"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        var photosGallery = []
+        var drop = new Dropzone('#photo', {
+            addRemoveLinks: true,
+            url: "{{ route('medias.upload') }}",
+            sending: function (file, xhr, formData) {
+                formData.append("_token", "{{csrf_token()}}")
+            },
+            success: function (file, response) {
+                photosGallery.push(response.photo_id),
+                    document.getElementById('product-photo').value = photosGallery
+            }
+        });
+
+        CKEDITOR.replace('textareaDescription', {
+            customConfig: 'config.js',
+            toolbar: 'simple',
+            language: 'fa',
+            removePlugins: 'cloudservices, easyimage'
+        })
+
+    </script>
+
 
 @endsection

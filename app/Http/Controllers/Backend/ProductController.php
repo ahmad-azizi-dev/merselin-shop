@@ -18,8 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', [
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -29,11 +30,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::with('childrenRecursive')
-            ->where('parent_id', '0')->get();
-        $brands = Brand::Pluck('title', 'id');
-
-        return view('admin.products.create', compact(['brands', 'categories']));
+        return view('admin.products.create', [
+            'categories' => Category::with('childrenRecursive')->whereParent_id('0')->get(),
+            'brands'     => Brand::Pluck('title', 'id')
+        ]);
     }
 
+    public function store(Request $request)
+    {
+        dd($request);
+
+    }
 }

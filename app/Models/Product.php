@@ -21,5 +21,14 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function attributeValues()
+    {
+        return $this->belongsToMany(AttributeValue::class, 'attributevalue_product', 'product_id', 'attributeValue_id');
+    }
+
+    public function medias()
+    {
+        return $this->belongsToMany(Media::class);
+    }
 
 }
