@@ -60,7 +60,7 @@
                         <td>{{$brand->id}}</td>
                         <td>{{$brand->title}}</td>
                         <td>{{$brand->description}}</td>
-                        <td>@if($brand->media)<img src="{{url('/').$brand->media->path}}" width="50px" height="50px"
+                        <td>@if($brand->media)<img src="{{url('/').'/storage/photos/'.$brand->media->path}}" width="50px" height="50px"
                                                    alt="not found"> @endif </td>
 
                         <td><a class="btn btn-sm  bg-gradient-warning m-2"

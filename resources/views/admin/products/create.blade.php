@@ -3,8 +3,6 @@
 @section('head')
     <title>add new product</title>
 
-    <link rel="stylesheet" href="{{asset('admin/css/dropzone.min.css')}}">
-
     @livewireStyles
 
 @endsection
@@ -48,14 +46,14 @@
                         <!-- text input -->
                         <div class="form-group">
                             {!! Form::label('title', 'title') !!}
-                            {!! Form::text('title',null, ['class' => 'form-control','placeholder' => 'Enter a title ...']) !!}
+                            {!! Form::text('title',null, ['class' => 'form-control'. ($errors->has('title') ? ' is-invalid' : null),'placeholder' => 'Enter a title ...']) !!}
 
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             {!! Form::label('status', 'status') !!}
-                            {!! Form::select('status', ['0' => 'Unpublished &#10060;', '1' => 'published &#9989;'], null, ['placeholder' => 'Select a status...','class' => 'form-control']) !!}
+                            {!! Form::select('status', ['0' => 'Unpublished &#10060;', '1' => 'published &#9989;'], null, ['placeholder' => 'Select a status...','class' => 'form-control'. ($errors->has('status') ? ' is-invalid' : null)]) !!}
                         </div>
                     </div>
                 </div>
@@ -64,13 +62,13 @@
                         <!-- textarea -->
                         <div class="form-group">
                             {!! Form::label('meta_title', 'meta title') !!}
-                            {!! Form::textarea('meta_title',null, ['class' => 'form-control','placeholder' => 'Enter a meta title ...','rows' => '3']) !!}
+                            {!! Form::textarea('meta_title',null, ['class' => 'form-control'. ($errors->has('meta_title') ? ' is-invalid' : null),'placeholder' => 'Enter a meta title ...','rows' => '3']) !!}
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             {!! Form::label('slug', 'slug (optional)') !!}
-                            {!! Form::textarea('slug',null, ['class' => 'form-control','placeholder' => 'choose automatically by meta title if leave empty','rows' => '3']) !!}
+                            {!! Form::textarea('slug',null, ['class' => 'form-control'. ($errors->has('slug') ? ' is-invalid' : null),'placeholder' => 'choose automatically by meta title if leave empty','rows' => '3']) !!}
                         </div>
                     </div>
                 </div>
@@ -78,7 +76,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             {!! Form::label('description', 'description') !!}
-                            {!! Form::textarea('description',null, ['id' => 'textareaDescription','class' => 'form-control','placeholder' => 'Enter a meta description ...','rows' => '3']) !!}
+                            {!! Form::textarea('description',null, ['id' => 'textareaDescription']) !!}
                         </div>
                     </div>
                 </div>
@@ -86,14 +84,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             {!! Form::label('meta_desc', 'meta description') !!}
-                            {!! Form::textarea('meta_desc',null, ['class' => 'form-control','placeholder' => 'Enter a meta description ...','rows' => '3']) !!}
+                            {!! Form::textarea('meta_desc',null, ['class' => 'form-control'. ($errors->has('meta_desc') ? ' is-invalid' : null),'placeholder' => 'Enter a meta description ...','rows' => '3']) !!}
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <!-- textarea -->
                         <div class="form-group">
                             {!! Form::label('meta_keywords', 'meta keywords') !!}
-                            {!! Form::textarea('meta_keywords',null, ['class' => 'form-control','placeholder' => 'Enter a meta keywords ...','rows' => '3']) !!}
+                            {!! Form::textarea('meta_keywords',null, ['class' => 'form-control'. ($errors->has('meta_keywords') ? ' is-invalid' : null),'placeholder' => 'Enter a meta keywords ...','rows' => '3']) !!}
                         </div>
                     </div>
 
@@ -102,7 +100,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             {!! Form::label('price', 'price (T)') !!}
-                            {!! Form::number('price',null, ['class' => 'form-control','placeholder' => 'Enter a meta price ...']) !!}
+                            {!! Form::number('price',null, ['class' => 'form-control'. ($errors->has('price') ? ' is-invalid' : null),'placeholder' => 'Enter a meta price ...']) !!}
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -125,14 +123,17 @@
 
                             {!! Form::label('brand_id', 'brand') !!}
 
-                            {!! Form::select('brand_id', $brands , null, ['class' => 'form-control','placeholder' => 'Pick a brand ...']) !!}
+                            {!! Form::select('brand_id', $brands , null, ['class' => 'form-control'. ($errors->has('brand_id') ? ' is-invalid' : null),'placeholder' => 'Pick a brand ...']) !!}
 
                         </div>
+
+
                         <div class="form-group">
-                            <label for="photo">photos</label>
-                            <input type="hidden" name="photo_id[]" id="product-photo">
-                            <div id="photo" class="dropzone"></div>
+
+                            @livewire('admin.products.product-photos')
+
                         </div>
+
                     </div>
                 </div>
 
@@ -157,23 +158,9 @@
 
     @livewireScripts
 
-    <script type="text/javascript" src="{{asset('/admin/js/dropzone.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/admin/ckeditor/ckeditor.js')}}"></script>
 
     <script>
-        Dropzone.autoDiscover = false;
-        var photosGallery = []
-        var drop = new Dropzone('#photo', {
-            addRemoveLinks: true,
-            url: "{{ route('medias.upload') }}",
-            sending: function (file, xhr, formData) {
-                formData.append("_token", "{{csrf_token()}}")
-            },
-            success: function (file, response) {
-                photosGallery.push(response.photo_id),
-                    document.getElementById('product-photo').value = photosGallery
-            }
-        });
 
         CKEDITOR.replace('textareaDescription', {
             customConfig: 'config.js',

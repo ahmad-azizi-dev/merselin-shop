@@ -51,7 +51,7 @@
 
                     <div class="form-group">
 
-                        @if($brand->media)<img src="{{url('/').$brand->media->path}}" width="150px"
+                        @if($brand->media)<img src="{{url('/').'/storage/photos/'.$brand->media->path}}" width="150px"
                                                alt="not found" class="mx-5 my-3"> @endif
                     </div>
 

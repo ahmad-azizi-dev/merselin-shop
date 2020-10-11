@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $guarded = [];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
@@ -28,7 +30,7 @@ class Product extends Model
 
     public function medias()
     {
-        return $this->belongsToMany(Media::class);
+        return $this->belongsToMany(Media::class, 'madia_product', 'product_id', 'media_id');
     }
 
 }

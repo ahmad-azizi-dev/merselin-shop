@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     protected $table = 'medias';
-
-    protected $uploads = '/storage/photos/';
+    protected $guarded = [];
 
     public function user()
     {

@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('administrator')->middleware(['web'])->group(function () {
+Route::prefix('administrator')->middleware(['web','auth'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
     Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');
