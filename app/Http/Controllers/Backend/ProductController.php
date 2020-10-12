@@ -6,10 +6,8 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -40,11 +38,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-
-        $newProduct = Product::create($request->merge(['user_id' => Auth::id()])
-            ->only('title', 'status', 'meta_title', 'slug', 'description', 'meta_desc',
-                'meta_keywords', 'price', 'discount_price', 'brand_id', 'sku', 'user_id'));
-
+        $newProduct = Product::create($this->getInputs($request));
         $newProduct->categories()->attach($request->category);
         $newProduct->attributeValues()->attach($request->attributeValues);
 
@@ -52,11 +46,62 @@ class ProductController extends Controller
             $newProduct->medias()->attach(explode(',', $request->photosId));
         }
 
-        Session::flash('product', 'The "' . $newProduct->title . '" product created successfully');
-        Session::flash('toastr', 'success');
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with([
+            'product' => 'The "' . $newProduct->title . '" created successfully',
+            'toastr'  => 'success'
+        ]);
 
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('admin.products.edit', [
+            'categories' => Category::with('childrenRecursive')->whereParent_id('0')->get(),
+            'brands'     => Brand::Pluck('title', 'id'),
+            'product'    => Product::with(['attributeValues', 'brand', 'categories', 'medias'])->whereId($id)->first()
+        ]);
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param ProductRequest $request
+     * @param Product $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ProductRequest $request, Product $product)
+    {
+        $product->update($this->getInputs($request));
+        $product->categories()->sync($request->category);
+        $product->attributeValues()->sync($request->attributeValues);
+
+        if ($request->photosId) {
+            $product->medias()->sync(explode(',', $request->photosId));
+        }
+
+        return redirect(route('products.index'))->with([
+            'product' => 'The "' . $product->title . '" updated successfully',
+            'toastr'  => 'info'
+        ]);
+
+    }
+
+    /**
+     * return an array of needed input columns for the query builder .
+     *
+     * @param ProductRequest $request
+     * @return array
+     */
+    private function getInputs($request)
+    {
+        return $request->merge(['user_id' => Auth::id()])
+            ->only('title', 'status', 'meta_title', 'slug', 'description', 'meta_desc',
+                'meta_keywords', 'price', 'discount_price', 'brand_id', 'sku', 'user_id');
+    }
 }

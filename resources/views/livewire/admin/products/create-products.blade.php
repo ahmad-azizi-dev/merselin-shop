@@ -32,17 +32,20 @@
                 @if($attributeGroup->attributesValue->count())
                     <div class="form-group">
 
-                        <label> &#128311; values for <span
+                        <label> &#128311; <span
                                 class="text-danger text-bold">{{$attributeGroup->title}}</span>
-                            (type: <span class="text-primary">{{$attributeGroup->type}}</span>)</label>
+                            (<span class="text-primary">{{$attributeGroup->type}}</span>)</label>
 
                         <select name="attributeValues[]" class="form-control" multiple
                                 size="{{$attributeGroup->attributesValue->count()}}">
                             @foreach($attributeGroup->attributesValue as $attributeValue)
                                 <option value="{{$attributeValue->id}}"
 
-                                        @if(old('attributeValues'))@if(in_array($attributeValue->id,old('attributeValues')))
-                                        selected @endif @endif
+                                        @if(old('attributeValues'))
+                                        @if(in_array($attributeValue->id,old('attributeValues')))selected @endif
+                                        @elseif(count($storedAttributeValues))
+                                        @if(in_array($attributeValue->id, $storedAttributeValues))selected
+                                        class="text-danger" @endif @endif
 
                                 >{{$attributeValue->title}}</option>
                             @endforeach

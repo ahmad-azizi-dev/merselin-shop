@@ -43,9 +43,9 @@ class ProductRequest extends FormRequest
         return [
             'title'         => 'required|min:5|max:255',
             'meta_title'    => 'required|min:5|max:255',
-            'sku'           => 'required|min:5|max:255',
-            //  by ignoring this product form unique rule we can update the product with the same slug
+            //  by ignoring this product form unique rule we can update the product with the same slug or sku
             'slug'          => ['max:255', 'min:3', Rule::unique('products', 'slug')->ignore($this->product)],
+            'sku'           => ['max:255', 'min:3', Rule::unique('products', 'sku')->ignore($this->product)],
             'status'        => 'required|numeric',
             'description'   => 'required',
             'price'         => 'required|numeric',
@@ -63,6 +63,7 @@ class ProductRequest extends FormRequest
             'meta_title.required'    => 'please enter a title',
             'meta_keywords.required' => 'please enter keywords',
             'slug.unique'            => 'This slug has been chosen please enter another one',
+            'sku.unique'             => 'This product SKU has been chosen please enter another one',
             'category.required'      => 'please select a category',
         ];
     }
@@ -70,7 +71,7 @@ class ProductRequest extends FormRequest
 
     protected function generateSKU()
     {
-        $number = mt_rand(10000, 999999);
+        $number = mt_rand(100000, 999999);
         if ($this->checkSKU($number)) {
             return $this->generateSKU();
         }

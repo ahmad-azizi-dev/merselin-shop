@@ -11,14 +11,15 @@ class CreateProducts extends Component
     public $categories = [];
     public $selectedCategories = [];
     public $attributeGroups = [];
+    public $storedAttributeValues = [];
 
     public function mount()
     {
         // filling the form after failed validation
         if (old('category')) {
             $this->selectedCategories = old('category');
-            $this->getAttributeGroups();
         }
+        $this->getAttributeGroups();
     }
 
     public function updatedSelectedCategories()

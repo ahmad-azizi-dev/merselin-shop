@@ -22,9 +22,8 @@ class ProductPhotos extends Component
         //for filling the form after failed validation
         if (old('photosId')) {
             $this->photosId = explode(',', old('photosId'));
-
-            $this->uploadedPhotos = Media::all()->whereIn('id', $this->photosId);
         }
+        $this->uploadedPhotos = Media::all()->whereIn('id', $this->photosId);
     }
 
     public function updatedPhotos()
