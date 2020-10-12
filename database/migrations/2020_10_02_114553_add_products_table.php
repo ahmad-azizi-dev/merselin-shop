@@ -19,8 +19,8 @@ class AddProductsTable extends Migration
             $table->string('sku')->unique();
             $table->string('slug')->unique();
             $table->tinyInteger('status');
-            $table->float('price');
-            $table->float('discount_price')->nullable();
+            $table->float('price', 16, 2);
+            $table->float('discount_price', 16, 2)->nullable();
             $table->text('description');
 
             $table->string('meta_desc')->nullable();
