@@ -36,6 +36,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Store the specified resource in storage.
+     *
+     * @param ProductRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(ProductRequest $request)
     {
         $newProduct = Product::create($this->getInputs($request));
@@ -90,6 +96,30 @@ class ProductController extends Controller
             'toastr'  => 'info'
         ]);
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Product $product
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Product $product)
+    {
+        foreach ($product->medias()->get() as $photo) {   // try to delete the photos if was exist
+
+            if (file_exists(storage_path('app/public/photos/' . $photo->path))) {
+                unlink(storage_path('app/public/photos/' . $photo->path));
+            }
+            $photo->delete();
+        }
+        $product->delete();
+
+        return redirect(route('products.index'))->with([
+            'product' => 'The "' . $product->title . '" deleted successfully',
+            'toastr'  => 'error'
+        ]);
     }
 
     /**

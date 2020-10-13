@@ -7,7 +7,6 @@
 
 @endsection
 
-
 @section('main-content')
 
     <!-- Content Header (Page header) -->
@@ -17,19 +16,14 @@
                 <div class="col-sm-6">
                     <h3 class="m-0 text-dark">add new product</h3>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
 
     @include('admin.partials.form-errors')
 
     <div class="col-md-12">
 
-        <!-- general form elements disabled -->
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title"><i class="fa fa-edit"></i>
@@ -104,7 +98,6 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <!-- textarea -->
                         <div class="form-group">
                             {!! Form::label('discount_price', 'discount price (T)') !!}
                             {!! Form::number('discount_price',null, ['class' => 'form-control','placeholder' => 'Enter a discount_price ...']) !!}
@@ -115,26 +108,20 @@
 
                 @livewire('admin.products.create-products', ['categories' => $categories])
 
-
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- select -->
                         <div class="form-group">
-
                             {!! Form::label('brand_id', 'brand') !!}
-
                             {!! Form::select('brand_id', $brands , null, ['class' => 'form-control'. ($errors->has('brand_id') ? ' is-invalid' : null),'placeholder' => 'Pick a brand ...']) !!}
-
                         </div>
-
-
-                        <div class="form-group">
-
-                            @livewire('admin.products.product-photos')
-
-                        </div>
-
                     </div>
+                </div>
+
+                <div class="form-group">
+
+                    @livewire('admin.products.product-photos')
+
                 </div>
 
                 <div class="form-group">
@@ -146,10 +133,7 @@
                 {!! Form::close() !!}
 
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-        <!-- general form elements disabled -->
     </div>
 
 @endsection

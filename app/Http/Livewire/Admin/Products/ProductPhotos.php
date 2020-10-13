@@ -60,7 +60,9 @@ class ProductPhotos extends Component
             unset($this->photosId[array_search($id, $this->photosId)]);
             $this->photosId = array_values($this->photosId);  //re-index array or starting from zero
 
-            unlink(storage_path('app/public/photos/' . $photo->path));
+            if (file_exists(storage_path('app/public/photos/' . $photo->path))) {
+                unlink(storage_path('app/public/photos/' . $photo->path));
+            }
             $photo->delete();
             $this->emit('refreshUploadedPhotos');
         }

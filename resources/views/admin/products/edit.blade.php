@@ -122,17 +122,12 @@
                             {!! Form::label('brand_id', 'brand') !!}
                             {!! Form::select('brand_id', $brands , null, ['class' => 'form-control'. ($errors->has('brand_id') ? ' is-invalid' : null) ]) !!}
                         </div>
+                    </div>
+                    <div class="col-sm-6">
 
                         <div class="form-group">
                             {!! Form::label('sku', 'product sku') !!}
                             {!! Form::number('sku',null, ['class' => 'form-control '. ($errors->has('sku') ? ' is-invalid' : null) ]) !!}
-                        </div>
-
-                        <div class="form-group">
-
-                            @livewire('admin.products.product-photos',['photosId' =>
-                            $product->medias->pluck('id')->toArray() ])
-
                         </div>
 
                     </div>
@@ -140,7 +135,14 @@
 
                 <div class="form-group">
 
-                    {!! Form::submit('submit',['class' => 'btn btn-lg bg-gradient-info']); !!}
+                    @livewire('admin.products.product-photos',['photosId' =>
+                    $product->medias->pluck('id')->toArray() ])
+
+                </div>
+
+                <div class="form-group">
+
+                    {!! Form::submit('Update',['class' => 'btn btn-lg bg-gradient-info']); !!}
 
                 </div>
 
