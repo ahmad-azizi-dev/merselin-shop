@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttributeValue extends Model
 {
-    protected $table = "attributesValue";
+    protected $table = "attributesvalue";
 
     public function attributeGroup()
     {

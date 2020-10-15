@@ -13,7 +13,7 @@ class AddAttributesValueTable extends Migration
      */
     public function up()
     {
-        Schema::create('attributesValue', function (Blueprint $table) {
+        Schema::create('attributesvalue', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('attributeGroup_id');

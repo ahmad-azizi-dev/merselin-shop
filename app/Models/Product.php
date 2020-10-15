@@ -33,4 +33,8 @@ class Product extends Model
         return $this->belongsToMany(Media::class, 'madia_product', 'product_id', 'media_id');
     }
 
+    public function getDiscountedPricePercentage()
+    {
+        return round((($this->price - $this->discount_price) * 100) / $this->price);
+    }
 }

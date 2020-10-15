@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttributeValueController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\ProductController;
@@ -20,11 +21,14 @@ use App\Http\Controllers\Backend\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['web'])->group(function () {
+    App::setLocale('fa');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
 });
 
-Route::prefix('administrator')->middleware(['web','auth'])->group(function () {
+
+Route::prefix('administrator')->middleware(['web', 'auth'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
     Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');

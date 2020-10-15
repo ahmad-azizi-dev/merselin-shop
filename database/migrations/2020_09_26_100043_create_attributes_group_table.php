@@ -13,7 +13,7 @@ class CreateAttributesGroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('attributesGroup', function (Blueprint $table) {
+        Schema::create('attributesgroup', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('type');
