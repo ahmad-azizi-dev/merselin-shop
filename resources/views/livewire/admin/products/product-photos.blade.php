@@ -50,20 +50,26 @@
 </div>
     <input type="hidden" wire:model="photosId" name="photosId">
 
-    <div class="custom-file col-sm-6 mt-1">
+    <div class="custom-file col-sm-6 mt-1"
+         x-data="{ isUploading: false, progress: 0 }"
+         x-on:livewire-upload-start="isUploading = true"
+         x-on:livewire-upload-finish="isUploading = false"
+         x-on:livewire-upload-error="isUploading = false"
+         x-on:livewire-upload-progress="progress = $event.detail.progress" >
+
         <input type="file" wire:model="photos" multiple class="custom-file-input">
         <label class="custom-file-label">Upload photos (multiple)</label>
+
+         <!-- Progress Bar -->
+        <div x-show="isUploading" class="mt-2">
+            <span class="spinner-border spinner-border-sm text-primary"></span>
+            <br>
+            <progress max="100" x-bind:value="progress" class="h3"></progress>
+        </div>
     </div>
 
     <div class="m-4 ">
         @error('photos.*') <span class="alert alert-warning "> <strong>Warning! </strong>{{ $message }}</span>@enderror
-    </div>
-
-    <div wire:loading wire:target="photos" class="m-2">
-        <button class="btn btn-lg bg-gradient-primary" disabled>
-            <span class="spinner-border spinner-border-sm"></span>
-            Loading..
-        </button>
     </div>
 
 </div>

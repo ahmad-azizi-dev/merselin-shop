@@ -144,6 +144,7 @@
 
     @livewireScripts
 
+    <script src="{{asset('js/alpine.min.js')}}"></script>
     <script src="{{asset('admin/js/select2.full.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/admin/ckeditor/ckeditor.js')}}"></script>
 
