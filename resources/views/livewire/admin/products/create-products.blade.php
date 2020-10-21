@@ -9,7 +9,8 @@
                       class="spinner-border spinner-border-sm text-primary"></span>
             </label>
 
-            <select wire:model="selectedCategories" name="category[]" class="form-control" multiple size="20">
+            <select wire:model="selectedCategories" name="category[]" class="form-control"
+                    style="direction: ltr !important;" multiple size="20">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}">&#128309; {{$category->name}}</option>
                     @if(count($category->childrenRecursive) > 0)
@@ -36,7 +37,7 @@
                                 class="text-danger text-bold">{{$attributeGroup->title}}</span>
                             (<span class="text-primary">{{$attributeGroup->type}}</span>)</label>
 
-                        <select name="attributeValues[]" class="form-control" multiple
+                        <select name="attributeValues[]" class="form-control select2bs4 w-100" multiple="multiple"
                                 size="{{$attributeGroup->attributesValue->count()}}">
                             @foreach($attributeGroup->attributesValue as $attributeValue)
                                 <option value="{{$attributeValue->id}}"

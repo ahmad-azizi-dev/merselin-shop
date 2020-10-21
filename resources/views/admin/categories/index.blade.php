@@ -43,7 +43,7 @@
                     <thead>
                     <tr>
                         <th style="min-width: 100px !important;">id</th>
-                        <th>name</th>
+                        <th style="min-width: 250px !important;">name</th>
                         <th style="min-width: 250px !important;">operations</th>
                     </tr>
                     </thead>

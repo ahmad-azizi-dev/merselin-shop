@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'asset_url'  => 'http://localhost/merselin-shop/public',        //just for test and must be changed
+    'asset_url'  => null,
 
     /*
     |--------------------------------------------------------------------------

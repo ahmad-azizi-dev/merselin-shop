@@ -3,6 +3,8 @@
 @section('head')
     <title>edit the {{$product->title}} product</title>
 
+    <link rel="stylesheet" href="{{asset('admin/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/select2-bootstrap4.min.css')}}">
     @livewireStyles
 
 @endsection
@@ -18,7 +20,6 @@
                         <span class="text-bold text-primary"> {{$product->title}} </span>product
                     </h3>
                 </div>
-
             </div>
         </div>
     </div>
@@ -27,7 +28,6 @@
     @include('admin.partials.form-errors')
 
     <div class="col-md-12">
-
 
         <div class="card card-warning">
             <div class="card-header">
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             {!! Form::label('status', 'status') !!}
                             {!! Form::select('status', ['0' => 'Unpublished &#10060;', '1' => 'published &#9989;'],
-                                null, ['class' => 'form-control'. ($errors->has('status') ? ' is-invalid' : null)]) !!}
+                                null, ['class' => 'select2bs4 w-100'. ($errors->has('status') ? ' is-invalid' : null)]) !!}
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
 
                         <div class="form-group">
                             {!! Form::label('brand_id', 'brand') !!}
-                            {!! Form::select('brand_id', $brands , null, ['class' => 'form-control'. ($errors->has('brand_id') ? ' is-invalid' : null) ]) !!}
+                            {!! Form::select('brand_id', $brands , null, ['class' => 'select2bs4 w-100'. ($errors->has('brand_id') ? ' is-invalid' : null) ]) !!}
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -160,6 +160,7 @@
 
     @livewireScripts
 
+    <script src="{{asset('admin/js/select2.full.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/admin/ckeditor/ckeditor.js')}}"></script>
 
     <script>
@@ -169,6 +170,21 @@
             language: 'fa',
             removePlugins: 'cloudservices, easyimage'
         })
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+        document.addEventListener("DOMContentLoaded", () => {
+            Livewire.hook('message.processed', (message, component) => {
+                //Initialize Select2 Elements
+                $('.select2bs4').select2({
+                    theme: 'bootstrap4'
+                })
+            })
+        });
+
     </script>
 
 @endsection

@@ -8,6 +8,18 @@ class Product extends Model
 {
     protected $guarded = [];
 
+    public function getPriceAttribute($price)
+    {
+        $price = round($price);
+        return "$price";
+    }
+
+    public function getDiscountPriceAttribute($discount_price)
+    {
+        $discount_price = round($discount_price);
+        return "$discount_price";
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
