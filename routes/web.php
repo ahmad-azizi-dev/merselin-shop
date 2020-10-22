@@ -21,15 +21,13 @@ use App\Http\Controllers\Backend\ProductController;
 |
 */
 
-Route::middleware(['web'])->group(function () {
-    App::setLocale('fa');
+Route::middleware(['web', 'Local'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
 });
 
 
-Route::prefix('administrator')->middleware(['web', 'auth'])->group(function () {
-    App::setLocale('en');
+Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
     Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');

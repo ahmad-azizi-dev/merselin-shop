@@ -371,6 +371,23 @@ textarea:invalid {
           justify-content: center;
   overflow: hidden; }
 
+.preloader2 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    top: 0;
+    right: 0;
+    background-color: #f8f8ff;
+    opacity: 0.5;
+    display: none; }
+
+.preloader3 {
+    position: relative;
+    top: 10%;
+    right: 45%;
+    opacity: 0.8; }
+
 /* Animation CSS */
 @-webkit-keyframes spin {
   0% {

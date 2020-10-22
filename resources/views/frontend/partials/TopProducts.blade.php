@@ -25,7 +25,13 @@
                             <div class="product-rating"><i class="lni lni-star-filled"></i><i
                                     class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i
                                     class="lni lni-star-half"></i><i class="lni lni-star-empty"></i></div>
-                            <a class="btn btn-primary btn-sm add2cart-notify" href="#"><i class="lni lni-plus"></i></a>
+                            @if(!in_array($product->id, $cartProducts))
+                                <a wire:click="addToCart({{ $product->id }})" style="width: 25px; height: 25px;"
+                                   class="btn btn-success"><i class="lni lni-cart"></i></a>
+                            @else
+                                <a wire:click="removeFromCart({{ $product->id }})" style="width: 25px; height: 25px;"
+                                   class="btn btn-danger"><i class="lni lni-cart-full"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>

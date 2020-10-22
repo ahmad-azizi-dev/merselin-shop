@@ -21,14 +21,23 @@
                                 <p class="sale-price">
                                     @if($product->discount_price)
                                         {{$product->discount_price}}@lang('mainFrontend.Currency')
-                                        <span style="font-size: inherit">{{$product->price}} @lang('mainFrontend.Currency') </span>
+                                        <span
+                                            style="font-size: inherit">{{$product->price}} @lang('mainFrontend.Currency') </span>
                                     @else
                                         {{$product->price}} @lang('mainFrontend.Currency')
                                     @endif
                                 </p>
                                 <div class="product-rating"><i class="lni lni-star-filled"></i>4.88 (39)</div>
-                                <a class="btn btn-success btn-sm add2cart-notify" href="#"><i
-                                        class="mr-1 lni lni-cart"></i>@lang('mainFrontend.BuyNow')</a>
+
+                                @if(!in_array($product->id, $cartProducts))
+                                    <a wire:click="addToCart({{ $product->id }})" class="btn btn-success btn-sm ">
+                                        <i class="mr-1 lni lni-cart"></i>@lang('mainFrontend.BuyNow')</a>
+                                @else
+                                    <a wire:click="removeFromCart({{ $product->id }})" class="btn btn-danger btn-sm ">
+                                        <i class="mr-1 lni lni-cart-full"></i>@lang('mainFrontend.Delete')</a>
+                                @endif
+
+
                             </div>
                         </div>
                     </div>

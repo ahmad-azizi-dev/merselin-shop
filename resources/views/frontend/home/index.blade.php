@@ -4,6 +4,7 @@
     <meta name="description" content="---">
     <!-- Title-->
     <title>@lang('mainFrontend.title')</title>
+    @livewireStyles
 @endsection
 
 
@@ -21,19 +22,12 @@
     @include('frontend.partials.ProductCategories')
 
     <!-- Flash Sale Slide-->
-    @include('frontend.partials.FlashSaleSlide')
+        @include('frontend.partials.FlashSaleSlide')
 
-    <!-- Top Products-->
-    @include('frontend.partials.TopProducts')
+        @livewire('frontend.home', ['TopProducts' => $TopProducts ])
 
-    <!-- Cool Facts Area-->
-    @include('frontend.partials.CoolFactsArea')
-
-    <!-- Weekly Best Sellers-->
-    @include('frontend.partials.WeeklyBestSellers')
-
-    <!-- Discount Coupon Card-->
-    @include('frontend.partials.DiscountCouponCard')
+        <!-- Discount Coupon Card-->
+        @include('frontend.partials.DiscountCouponCard')
 
     <!-- Night Mode View Card-->
         @include('frontend.partials.NightModeViewCard')
@@ -49,6 +43,7 @@
 @section('script')
 
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    @livewireScripts
 
     @include('frontend.partials.AddToCartNotify')
 @endsection

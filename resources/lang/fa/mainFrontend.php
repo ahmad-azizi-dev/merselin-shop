@@ -14,7 +14,8 @@ return [
 
     'lang'            => 'fa',
     'title'           => 'فروشگاه اینترنتی مرسلین',
-    'AddToCartNotify' => 'با موفقیت به سبد خرید اضافه شد',
+    'AddToCartNotify' => 'به سبد خرید اضافه شد',
+    'RemoveFromCart'  => 'از سبد خرید حذف شد',
     'Preloader'       => 'بارگذاری...',
     'SearchForm'      => 'جستجو در فروشگاه...',
     'Navbar-login'    => 'ورود',
@@ -34,5 +35,6 @@ return [
     'TopProducts'       => 'محصولات برتر',
     'WeeklyBestSellers' => 'پرفروش ترین های هفته',
     'BuyNow'            => 'خرید',
+    'Delete'            => 'حذف',
 
 ];
