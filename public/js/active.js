@@ -127,14 +127,6 @@
         });
     }
 
-    // :: Counter Up
-    if ($.fn.counterUp) {
-        $('.counter').counterUp({
-            delay: 150,
-            time: 3000
-        });
-    }
-
     // :: Prevent Default 'a' Click
     $('a[href="#"]').on('click', function ($) {
         $.preventDefault();

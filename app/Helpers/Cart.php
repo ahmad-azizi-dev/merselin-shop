@@ -22,9 +22,15 @@ class Cart
     public function remove(int $productId)
     {
         $cart = $this->get();
-        //find key and delete an element from products array
-        unset($cart['products'][array_search($productId, $cart['products']) ]);
-        $this->set($cart);
+        while (in_array($productId, $cart['products'])) {
+            $cart = $this->deleteIdFromProductsCart($cart, $productId);
+        }
+        $this->indexArrayAndSet($cart);
+    }
+
+    public function removeSingle(int $productId)
+    {
+        $this->indexArrayAndSet($this->deleteIdFromProductsCart($this->get(), $productId));
     }
 
     public function clear()
@@ -47,5 +53,19 @@ class Cart
     private function set($cart)
     {
         request()->session()->put('cart', $cart);
+    }
+
+    //find key and delete an element from products array
+    private function deleteIdFromProductsCart($cart, $productId)
+    {
+        unset($cart['products'][array_search($productId, $cart['products'])]);
+        return $cart;
+    }
+
+    //re-index array and set
+    private function indexArrayAndSet($cart)
+    {
+        $cart['products'] = array_values($cart['products']);
+        $this->set($cart);
     }
 }

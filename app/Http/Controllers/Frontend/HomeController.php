@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -15,6 +16,7 @@ class HomeController extends Controller
             'categories'        => Category::whereParent_id('0')->get(),
             'FlashSaleProducts' => Product::with(['medias'])->whereNotNull('discount_price')->get(),
             'TopProducts'       => Product::with(['medias'])->get(),
+            'cartProducts'      => Cart::get()['products'],
         ]);
     }
 }

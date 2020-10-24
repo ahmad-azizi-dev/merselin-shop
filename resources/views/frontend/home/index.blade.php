@@ -24,7 +24,8 @@
     <!-- Flash Sale Slide-->
         @include('frontend.partials.FlashSaleSlide')
 
-        @livewire('frontend.home', ['TopProducts' => $TopProducts ])
+        @livewire('frontend.home', ['TopProducts' => $TopProducts,
+        'cartProducts' => $cartProducts ])
 
         <!-- Discount Coupon Card-->
         @include('frontend.partials.DiscountCouponCard')

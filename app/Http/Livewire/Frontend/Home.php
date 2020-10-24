@@ -11,10 +11,6 @@ class Home extends Component
     public $TopProducts = [];
     public $cartProducts = [];
 
-    public function mount()
-    {
-        $this->cartProducts = Cart::get()['products'];
-    }
 
     public function addToCart(int $productId)
     {
@@ -33,7 +29,7 @@ class Home extends Component
 
     private function cartTotal()
     {
-        return count(Cart::get()['products']);
+        return count(array_unique(Cart::get()['products']));
     }
 
     public function render()

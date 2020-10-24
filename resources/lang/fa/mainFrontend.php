@@ -36,5 +36,11 @@ return [
     'WeeklyBestSellers' => 'پرفروش ترین های هفته',
     'BuyNow'            => 'خرید',
     'Delete'            => 'حذف',
+    'EmptyCart'         => 'سبد خرید شما خالی است!',
+    'Coupon'            => 'تخفیف دارید؟',
+    'EnterCoupon'       => 'کد تخفیف خود را اینجا وارد کنید.',
+    'SampleCoupon'      => 'مانند ef7ds5u...',
+    'Check'             => 'بررسی',
+    'Next'              => 'ادامه فرایند خرید',
 
 ];

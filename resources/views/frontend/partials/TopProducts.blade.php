@@ -14,23 +14,28 @@
 
                             <a class="product-thumbnail d-block" href="#"> <img class="mb-2" src="
                     {{ url('/').'/storage/photos/'. $product->medias->whereIn('original_name',['1.jpg','1.png'])->pluck('path')->get(0) }}
-                                    " alt=""></a>
-
+                                    " alt="">
+                            </a>
                             <a class="product-title d-block" href="#">{{$product->title}}</a>
-
                             <p class="sale-price"><span
-                                    class="@if(!$product->discount_price)text-decoration-none @endif "> {{$product->price}} </span>
-                                {{$product->discount_price}} @lang('mainFrontend.Currency') </p>
-
-                            <div class="product-rating"><i class="lni lni-star-filled"></i><i
-                                    class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i
-                                    class="lni lni-star-half"></i><i class="lni lni-star-empty"></i></div>
+                                    class="@if(!$product->discount_price)text-decoration-none @endif "> {{number_format($product->price)}} </span>
+                                {{$product->discount_price?number_format($product->discount_price):''}} @lang('mainFrontend.Currency')
+                            </p>
+                            <div class="product-rating">
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-filled"></i>
+                                <i class="lni lni-star-half"></i>
+                                <i class="lni lni-star-empty"></i>
+                            </div>
                             @if(!in_array($product->id, $cartProducts))
                                 <a wire:click="addToCart({{ $product->id }})" style="width: 25px; height: 25px;"
-                                   class="btn btn-success"><i class="lni lni-cart"></i></a>
+                                   class="btn badge-success text-white"><i class="lni lni-cart"></i>
+                                </a>
                             @else
                                 <a wire:click="removeFromCart({{ $product->id }})" style="width: 25px; height: 25px;"
-                                   class="btn btn-danger"><i class="lni lni-cart-full"></i></a>
+                                   class="btn badge-danger text-white"><i class="lni lni-cart-full"></i>
+                                </a>
                             @endif
                         </div>
                     </div>
