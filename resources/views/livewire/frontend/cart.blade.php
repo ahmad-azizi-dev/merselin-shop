@@ -1,11 +1,6 @@
 <div>
-    <!-- loading-->
-    <div wire:loading class="preloader2">
-        <div class="preloader3">
-            <div class="spinner-grow text-secondary"></div>
-            <div class="text-primary">@lang('mainFrontend.Preloader')</div>
-        </div>
-    </div>
+
+    <x-loading></x-loading>
 
     @if($cartProducts)
         <div class="container">
@@ -15,46 +10,11 @@
                     <div class="table-responsive card-body">
                         <table class="table mb-0">
                             <tbody>
-                            @foreach($eagerProducts as $product)
-                                <tr>
-                                    <th style="width: 70px">
-                                        <a wire:click="removeFromCart({{ $product->id }})"
-                                           class="btn badge-danger text-white btn-sm p-1">
-                                            <i class=" lni lni-cart-full"></i>
-                                            @lang('mainFrontend.Delete')
-                                        </a>
-                                    </th>
-                                    <td><img src="
-                  {{ url('/').'/storage/photos/'. $product->medias->whereIn('original_name',['1.jpg','1.png'])->pluck('path')->get(0) }}
-                                            " alt="{{$product->title}}">
-                                    </td>
-                                    <td><a href="#"> {{$product->title}}
-                                            <span class="text-success">
-                                                @if($product->discount_price)
-                                                    <span class="text-decoration-line-through text-danger">{{$product->price}}
-                                                        @lang('mainFrontend.Currency')
-                                                    </span>
-                                                    <i style="font-size: 11pt;" class="text-dark font-normal"> {{$productCountValues[$product->id]}} ×</i>
-                                                    {{number_format($product->discount_price)}} @lang('mainFrontend.Currency')
-                                                @else
-                                                    <i style="font-size: 11pt;" class="text-dark font-normal"> {{$productCountValues[$product->id]}} ×</i>
-                                                    {{number_format($product->price)}} @lang('mainFrontend.Currency')
-                                                @endif
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td style="width: 65px;">
-                                        <a wire:click="removeFromCart({{ $product->id .", 'single'"}})"
-                                           class="btn badge-danger text-white btn-sm m-1">
-                                            <i class="lni lni-minus"></i>
-                                        </a>
-                                        <a wire:click="addToCart({{ $product->id }})"
-                                           class="btn badge-success text-white btn-sm m-1">
-                                            <i class="lni lni-plus"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+
+                            <x-products-cart :eagerProducts=$eagerProducts
+                                             :productCountValues=$productCountValues>
+                            </x-products-cart>
+
                             </tbody>
                         </table>
                     </div>

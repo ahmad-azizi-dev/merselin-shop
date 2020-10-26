@@ -1,16 +1,14 @@
-@extends('frontend.layout.main')
+<x-frontend-layout>
 
-@section('head')
-    <meta name="description" content="---">
-    <!-- Title-->
-    <title>@lang('mainFrontend.title')</title>
-    @livewireStyles
-@endsection
+    @push('head')
+        <meta name="description" content="---">
+        <!-- Title-->
+        <title>@lang('mainFrontend.title')</title>
+        @livewireStyles
+    @endpush
 
 
-@section('content')
-
-    <!-- Header Area-->
+<!-- Header Area-->
     @include('frontend.partials.HeaderArea')
 
     <div class="page-content-wrapper">
@@ -38,16 +36,13 @@
     <!-- Footer Nav-->
     @include('frontend.partials.footerNav')
 
-@endsection
 
+    @push('script')
+        <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+        @livewireScripts
 
-@section('script')
+        @include('frontend.partials.AddToCartNotify')
+    @endpush
 
-    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-    @livewireScripts
-
-    @include('frontend.partials.AddToCartNotify')
-@endsection
-
-
+</x-frontend-layout>
 

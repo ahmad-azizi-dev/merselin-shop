@@ -1,12 +1,8 @@
 <script>
     //  Add To Cart Notify
     Livewire.on('productAdded', totalCart => {
-        if ($.fn.counterUp) {
-            $('.counter').counterUp({
-                delay: 100,
-                time: 1000
-            });
-        }
+        @include('frontend.partials.counterUp')
+
         $("#Cart").text('(' + totalCart + ')');
         $("#lniCart").removeClass("lni-cart").addClass("lni-cart-full");
         $("body").append("<div class='add2cart-notification animated fadeIn'> @lang('mainFrontend.AddToCartNotify') </div>");
@@ -14,12 +10,8 @@
     })
     //  Remove From Cart Notify
     Livewire.on('productRemoved', totalCart => {
-        if ($.fn.counterUp) {
-            $('.counter').counterUp({
-                delay: 100,
-                time: 1000
-            });
-        }
+        @include('frontend.partials.counterUp')
+
         if (totalCart) {
             $("#Cart").text('(' + totalCart + ')');
             $("#lniCart").removeClass("lni-cart").addClass("lni-cart-full");

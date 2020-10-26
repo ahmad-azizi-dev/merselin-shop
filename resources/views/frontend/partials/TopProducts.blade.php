@@ -12,9 +12,8 @@
                         <div class="card-body"><span class="badge badge-warning">HOT</span>
                             <a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a>
 
-                            <a class="product-thumbnail d-block" href="#"> <img class="mb-2" src="
-                    {{ url('/').'/storage/photos/'. $product->medias->whereIn('original_name',['1.jpg','1.png'])->pluck('path')->get(0) }}
-                                    " alt="">
+                            <a class="product-thumbnail d-block mb-2" href="#">
+                                <x-product-img :product=$product></x-product-img>
                             </a>
                             <a class="product-title d-block" href="#">{{$product->title}}</a>
                             <p class="sale-price"><span

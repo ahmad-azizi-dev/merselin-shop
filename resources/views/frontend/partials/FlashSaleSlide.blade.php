@@ -13,9 +13,7 @@
                 <div class="card flash-sale-card">
                     <div class="card-body">
                         <a href="#">
-                            <img src="
-                {{ url('/').'/storage/photos/'. $product->medias->whereIn('original_name',['1.jpg','1.png'])->pluck('path')->get(0) }}
-                                " alt="">
+                            <x-product-img :product=$product></x-product-img>
 
                             <span class="product-title">{{$product->title}}</span>
                             <p class="sale-price"> {{number_format($product->discount_price)}}

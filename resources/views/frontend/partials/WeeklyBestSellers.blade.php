@@ -14,9 +14,8 @@
                             <div class="product-thumbnail-side">
                                 <span class="badge badge-warning">HOT</span>
                                 <a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a>
-                                <a class="product-thumbnail d-block" href="#"><img src="
-                   {{ url('/').'/storage/photos/'. $product->medias->whereIn('original_name',['1.jpg','1.png'])->pluck('path')->get(0) }}
-                                        " alt="">
+                                <a class="product-thumbnail d-block" href="#">
+                                    <x-product-img :product=$product></x-product-img>
                                 </a>
                             </div>
                             <div class="product-description">
