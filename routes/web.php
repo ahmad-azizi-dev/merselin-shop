@@ -41,8 +41,10 @@ Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(func
     Route::resource('medias', MediaController::class);
     Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
     Route::resource('products', ProductController::class);
-});
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+});
