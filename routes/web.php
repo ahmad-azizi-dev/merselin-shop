@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\ProductController;
@@ -25,6 +26,8 @@ use App\Http\Controllers\Backend\ProductController;
 Route::middleware(['web', 'Local'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('cart', [CartController::class, 'index'])->name('cart');
+    Route::get('login', [AuthController::class, 'login'])->name('frontendLogin');
+    Route::post('login', [AuthController::class, 'postLoginNumber'])->name('postLoginNumber');
 
 });
 

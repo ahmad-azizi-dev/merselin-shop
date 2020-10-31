@@ -21,7 +21,7 @@
         </div>
         <!-- Navbar -->
         <div class="d-flex flex-wrap">
-            <a href="{{route('login')}}">
+            <a href="{{route('frontendLogin')}}">
                 <i class="lni lni-user "></i> @lang('mainFrontend.Navbar-login')
             </a>
         </div>

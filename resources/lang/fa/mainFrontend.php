@@ -43,4 +43,14 @@ return [
     'Check'             => 'بررسی',
     'Next'              => 'ادامه فرایند خرید',
 
+    'CountryCodes'           => '+98',
+    'PhoneNumberPlaceholder' => '912*******',
+    'RegisterOrLogin'        => 'ورود یا ثبت نام',
+    'EnterPhoneNumber1'      => 'لطفا شماره تلفن همراه خود را وارد کنید',
+    'EnterPhoneNumber2'      => 'ما یک کد تایید برای شما ارسال خواهیم کرد',
+    'ViewAsGuest'            => 'بازگشت و مشاهده به عنوان مهمان',
+    'RequiredPhoneNumber'    => 'شماره همراه خود را وارد کنید',
+    'CorrectPhoneNumber'     => 'شماره همراه نامعتبر است',
+    'CorrectCountryCodes'    => 'کد کشور مورد نظر درحال حاضر پشتیبانی نمیشود',
+
 ];

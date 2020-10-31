@@ -40,10 +40,10 @@
                 <!-- Cart Amount Area-->
                 <div class="card cart-amount-area">
                     <div class="card-body d-flex align-items-center justify-content-between">
-                        <h5 class="total-price mb-0">
+                        <h6 class="total-price mb-0">
                             <span class="counter">{{number_format($totalPrice)}}</span>
                             @lang('mainFrontend.Currency')
-                        </h5>
+                        </h6>
                         <a class="btn btn-warning" href="#">@lang('mainFrontend.Next')</a>
                     </div>
                 </div>

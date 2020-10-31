@@ -308,6 +308,7 @@ textarea:invalid {
   z-index: 1;
   margin-bottom: 1rem; }
   .section-heading h6 {
+    font-size: 0.9rem;
     margin-bottom: 0;
     color: #020310; }
   .section-heading p {
@@ -319,7 +320,7 @@ textarea:invalid {
   -webkit-box-shadow: 0 1px 1px 0px #d7def4;
           box-shadow: 0 1px 1px 0px #d7def4; }
   .card .card-body {
-    padding: 0.6rem; }
+    padding: 0.4rem; }
 
 .card-img-top {
   border-top-right-radius: calc(.75rem - 1px);
@@ -1294,14 +1295,14 @@ li.suha-dropdown-menu {
     padding-bottom: 0.25rem; }
   .category-card i {
     margin-bottom: 0.75rem;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     display: block;
     color: #100DD1; }
   .category-card span {
     -webkit-transition-duration: 500ms;
             transition-duration: 500ms;
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     line-height: 1;
     color: #747794; }
@@ -1329,7 +1330,7 @@ li.suha-dropdown-menu {
     -webkit-transition-duration: 500ms;
             transition-duration: 500ms;
     color: #020310;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     display: block;
     line-height: 1.2;
@@ -1387,7 +1388,7 @@ li.suha-dropdown-menu {
     font-size: 1.25rem;
     line-height: 1; }
   .top-product-card .product-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     margin-bottom: 0.25rem;
     color: #020310; }
@@ -1469,11 +1470,11 @@ li.suha-dropdown-menu {
     .weekly-product-card .product-description .product-title {
       margin-bottom: 0.5rem;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       color: #020310; }
     .weekly-product-card .product-description .sale-price {
       margin-bottom: 0.5rem;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #020310;
       display: -webkit-box;
@@ -1501,7 +1502,7 @@ li.suha-dropdown-menu {
         color: #ea4c62;
         margin-right: 0.25rem; }
     .weekly-product-card .product-description .product-rating {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       margin-bottom: 0.5rem;
       display: -webkit-box;
@@ -1526,7 +1527,7 @@ li.suha-dropdown-menu {
         margin-left: 0.25rem;
         padding-right: 1px; }
     .weekly-product-card .product-description .btn i {
-      font-size: 14px; }
+      font-size: 13px; }
   .weekly-product-card:hover .product-title, .weekly-product-card:focus .product-title {
     color: #100DD1; }
 
@@ -2983,7 +2984,20 @@ li.suha-dropdown-menu {
     background-color: #100DD1;
     color: #ffffff; }
 
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+
 .otp-form {
+    direction: ltr;
   position: relative;
   z-index: 1; }
   .otp-form .form-control {
@@ -3010,7 +3024,8 @@ li.suha-dropdown-menu {
       color: #ffffff;
       opacity: 0.5; }
   .otp-form select.form-select {
-    padding: 0.5rem 0.75rem;
+    text-align: right !important;
+    padding-left: 35px;
     height: 50px;
     border: 0;
     font-size: 14px;
@@ -3018,8 +3033,8 @@ li.suha-dropdown-menu {
     font-weight: 700;
     color: #ffffff;
     border-radius: 0.5rem;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
     -webkit-box-flex: 0;
         -ms-flex: 0 0 80px;
             flex: 0 0 80px;
@@ -3031,8 +3046,8 @@ li.suha-dropdown-menu {
   .otp-form select option {
     background-color: #100DD1; }
   .otp-form input.form-control {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important; }
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important; }
 
 .otp-verify-form {
   position: relative;
