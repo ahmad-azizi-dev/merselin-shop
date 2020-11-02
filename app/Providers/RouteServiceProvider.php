@@ -45,6 +45,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->group(base_path('routes/api.php'));
         });
+
+        Route::pattern('loginByPhone', '[0-9]+');
     }
 
     /**

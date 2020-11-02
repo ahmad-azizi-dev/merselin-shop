@@ -5,15 +5,16 @@
                 form.submit();
             }
         });
-        $('#quickForm').validate({
+        $('#loginForm').validate({
             rules: {
                 phoneNumber: {
                     required: true,
                     normalizer: function (value) {
-                        if (value = parseInt(value, 10)) {
-                            return $.trim(value);
-                        }
-                        return null;
+                        if (value.length < 12)
+                            if (value = parseInt(value, 10)) {
+                                return $.trim(value);
+                            }
+                        return value;
                     },
                     number: true,
                     minlength: 10,
@@ -41,7 +42,7 @@
             errorElement: 'span',
             errorPlacement: function (error, element) {
                 error.addClass('text-danger d-block');
-                element.closest('#quickForm').append(error);
+                element.closest('#loginForm').append(error);
             },
             highlight: function (element, errorClass, validClass) {
                 $(element).addClass('text-warning');

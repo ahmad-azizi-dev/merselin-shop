@@ -28,6 +28,8 @@ Route::middleware(['web', 'Local'])->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::get('login', [AuthController::class, 'login'])->name('frontendLogin');
     Route::post('login', [AuthController::class, 'postLoginNumber'])->name('postLoginNumber');
+    Route::get('otp-confirm/{loginByPhone}', [AuthController::class, 'otpConfirm'])->name('otpConfirm');
+    Route::post('otp-confirm', [AuthController::class, 'postOtpConfirm'])->name('postOtpConfirm');
 
 });
 

@@ -52,5 +52,12 @@ return [
     'RequiredPhoneNumber'    => 'شماره همراه خود را وارد کنید',
     'CorrectPhoneNumber'     => 'شماره همراه نامعتبر است',
     'CorrectCountryCodes'    => 'کد کشور مورد نظر درحال حاضر پشتیبانی نمیشود',
-
+    'ConfirmPhoneNumber'     => 'تأیید شماره تلفن',
+    'RequiredCode'           => 'لطفا کد خود را وارد نمایید',
+    'CorrectCode'            => 'کد وارد شده نامعتبر است',
+    'EnterCode'              => '  لطفا کد ارسال شده به شماره همراهتان را وارد نمایید',
+    'Confirm'                => ' تأیید و ادامه',
+    'TryAgain'               => '   دوباره تلاش کنید',
+    'ChangePhoneNumber'      => ' می خواهید شماره همراه خود را تغییر دهید؟',
+    'Expired'                => 'منقضی شد',
 ];
