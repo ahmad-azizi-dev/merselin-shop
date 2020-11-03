@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'phone_number', 'name', 'email', 'password',
     ];
 
     /**
@@ -48,6 +48,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * Retrieve a user by their phone number.
+     *
+     * @param $phone_number
+     * @return $this
+     */
+    public static function retrieveUserByPhoneNumber($phone_number)
+    {
+        return static::where('phone_number', $phone_number)->first();
+    }
 
     public function medias()
     {

@@ -66,8 +66,14 @@
         <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
         @include('frontend.login.opt-confirm-validator')
         <script>
+
+                @if(Session::has('wrongCode'))
+            var date = new Date(localStorage.getItem('expiredDate'));
+                @else
             var date = new Date();
             date.setMinutes(date.getMinutes() + 3);
+            localStorage.setItem('expiredDate', date);
+            @endif
 
             $('#clock').countdown(date)
                 .on('update.countdown', function (event) {
@@ -82,6 +88,12 @@
                 });
 
             $('input').autotab();
+
+            @if(Session::has('wrongCode'))
+            $("body").append("<div class='add2cart-notification-login animated fadeIn bg-danger'> {{Session('wrongCode'),}} </div>");
+            $(".add2cart-notification-login").delay(6000).fadeOut();
+            @endif
+
         </script>
     @endpush
 

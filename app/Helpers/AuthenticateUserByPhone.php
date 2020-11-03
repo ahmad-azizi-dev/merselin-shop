@@ -5,7 +5,7 @@ namespace App\Helpers;
 use App\Models\LoginByPhoneToken;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 
 class AuthenticateUserByPhone
@@ -27,6 +27,9 @@ class AuthenticateUserByPhone
         $this->request = $request;
     }
 
+    /**
+     * Send a sign in token to the user phone.
+     */
     public function invite()
     {
         $this->validateRequest()
@@ -35,22 +38,12 @@ class AuthenticateUserByPhone
         return $this->request->phoneNumber;
     }
 
-    /**
-     * Log in the user associated with a token.
-     *
-     * @param LoginToken $token
-     * @return void
-     */
-    public function login(LoginToken $token)
-    {
-        Auth::login($token->user);
-        $token->delete();
-    }
 
     /**
      * Validate the request data.
      *
      * @return $this
+     * @throws ValidationException
      */
     protected function validateRequest()
     {
@@ -63,7 +56,7 @@ class AuthenticateUserByPhone
     /**
      * Prepare a log in token for the user.
      *
-     * @return LoginToken
+     * @return LoginByPhoneToken
      */
     protected function createToken()
     {

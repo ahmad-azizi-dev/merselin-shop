@@ -21,3 +21,12 @@
     <li><a href="#"><i class="lni lni-cog"></i>@lang('mainFrontend.FooterNav-settings')</a></li>
 
 </x-footer>
+
+@push('script')
+    @if(Session::has('SuccessfulLogin'))
+        <script>
+            $("body").append("<div class='add2cart-notification animated fadeIn'> {{Session('SuccessfulLogin')}} </div>");
+            $(".add2cart-notification").delay(6000).fadeOut();
+        </script>
+    @endif
+@endpush

@@ -54,6 +54,13 @@
     @push('script')
         <script src="{{asset('js/jquery.validate.min.js')}}"></script>
         @include('frontend.login.validate')
+
+        @if(Session::has('expired'))
+            <script>
+                $("body").append("<div class='add2cart-notification-login animated fadeIn bg-danger'> {{Session('expired')}} </div>");
+                $(".add2cart-notification-login").delay(6000).fadeOut();
+            </script>
+        @endif
     @endpush
 
 </x-frontend-layout>

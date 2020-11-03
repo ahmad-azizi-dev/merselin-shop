@@ -6,7 +6,9 @@ use App\Helpers\AuthenticateUserByPhone;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OtpConfirmRequest;
 use App\Models\LoginByPhoneToken;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -32,9 +34,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Login the user, using the given token.
+     * Show the otp confirm page.
      *
-     * @param Request $request
+     * @param LoginByPhoneToken $loginByPhone
      * @return string
      */
     public function otpConfirm(LoginByPhoneToken $loginByPhone)
@@ -44,11 +46,71 @@ class AuthController extends Controller
         ]);
     }
 
-    public function PostOtpConfirm(OtpConfirmRequest $request)
+    /**
+     * Authenticate the user, using the given token.
+     *
+     * @param OtpConfirmRequest $confirmRequest
+     * @return string
+     */
+    public function PostOtpConfirm(OtpConfirmRequest $confirmRequest)
     {
-        dd($request->opt());
+        if (!$loginToken = $this->checkToken($confirmRequest)) {    // token expired
+            return redirect(route('frontendLogin'))->with([
+                'expired' => trans('mainFrontend.ExpiredMessage', ['phoneNumber' => $confirmRequest->phone_number]),
+            ]);
+        }
 
-        return redirect(route('home'));
+        if ($loginToken == $confirmRequest->opt()) {                // token matched
+            $this->loginUser($confirmRequest->phone_number);
+            return redirect(route('home'))->with([
+                'SuccessfulLogin' => trans('mainFrontend.SuccessfulLogin'),
+            ]);
+        }
+
+        // redirect back to otp-confirm page for getting OTP
+        return back()->with([
+            'wrongCode' => trans('mainFrontend.WrongCode'),
+        ]);
+    }
+
+    /**
+     * check the given token.
+     *
+     * @param OtpConfirmRequest $confirmRequest
+     * @return string
+     */
+    protected function checkToken($confirmRequest)
+    {
+        $loginToken = LoginByPhoneToken::retrieveTokenByPhoneNumber($confirmRequest);
+
+        // first check the expiration date
+        if ($loginToken->created_at->addSecond(18000)->greaterThan(now())) {
+            return $loginToken->token;
+            //   return $loginToken->token == $confirmRequest->opt();
+        }
+        return false;
+    }
+
+
+    /**
+     * Login or register the user associated with a token.
+     *
+     * @param $phone_number
+     * @return void
+     */
+    protected function loginUser($phone_number)
+    {
+        $user = User::retrieveUserByPhoneNumber($phone_number);
+
+        if (!$user) {
+            $user = User::create([
+                'phone_number' => $phone_number,
+                'name'         => 'not_set',
+                'email'        => 'not_set-' . Str::random(60),
+                'password'     => 'not_set',
+            ]);
+        }
+        Auth::login($user, true);
     }
 
 }

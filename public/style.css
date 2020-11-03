@@ -2726,6 +2726,20 @@ li.suha-dropdown-menu {
   line-height: 30px;
   font-weight: 700; }
 
+.add2cart-notification-login {
+    position: fixed;
+    padding: 5px;
+    top: 10px;
+    width: 100%;
+    height: auto;
+    background-color: #00b894;
+    z-index: 1000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 700; }
+
 .discount-coupon-card {
   position: relative;
   z-index: 1;

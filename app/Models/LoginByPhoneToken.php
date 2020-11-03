@@ -14,7 +14,7 @@ class LoginByPhoneToken extends Model
     /**
      * Generate a new token for the given phone number.
      *
-     * @param User $user
+     * @param $phoneNumber
      * @return $this
      */
     public static function generateFor($phoneNumber)
@@ -35,6 +35,19 @@ class LoginByPhoneToken extends Model
     {
         return 'phone_number';
     }
+
+
+    /**
+     * Retrieve a token by their phone number.
+     *
+     * @param $confirmRequest
+     * @return $this
+     */
+    public static function retrieveTokenByPhoneNumber($confirmRequest)
+    {
+        return static::where('phone_number', $confirmRequest->phone_number)->firstOrFail();
+    }
+
 
     /**
      * Send the token to the user.
