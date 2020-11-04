@@ -1016,7 +1016,6 @@ textarea:invalid {
       height: 110px;
       top: -15px;
       right: -15px;
-      background-image: url(img/core-img/dot.png);
       content: "";
       z-index: -10;
       opacity: 0.2;

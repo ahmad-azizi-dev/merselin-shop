@@ -21,9 +21,9 @@ return [
     'Navbar-login'    => 'ورود',
 
     'FooterNav-home'     => 'خانه',
-    'FooterNav-message'  => 'حمایت کردن',
+    'FooterNav-message'  => 'پشتیبان',
     'FooterNav-cart'     => 'سبد خرید',
-    'FooterNav-heart'    => 'صفحات',
+    'FooterNav-heart'    => 'علاقه مندی ها',
     'FooterNav-settings' => 'تنظیمات',
 
     'NightMode'         => 'حالت شب',
@@ -63,4 +63,12 @@ return [
     'ExpiredMessage'         => 'مهلت استفاده از کد تایید برای شماره :phoneNumber منقضی شده! لطفا دوباره تلاش کنید',
     'WrongCode'              => 'کد وارد شده صحیح نیست',
     'SuccessfulLogin'        => 'شما با موفقیت وارد شدید',
+
+    'Notifications'   => 'اطلاعیه ها',
+    'UserName'        => 'نام کاربر',
+    'PhoneNumber'     => 'شماره همراه',
+    'NotSet'          => 'تعریف نشده',
+    'Profile'         => 'حساب کاربری',
+    'PurchaseHistory' => 'تاریخچه خرید',
+    'Exit'            => 'خروج',
 ];

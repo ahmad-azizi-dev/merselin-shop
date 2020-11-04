@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OtpConfirmRequest;
 use App\Models\LoginByPhoneToken;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -84,7 +85,7 @@ class AuthController extends Controller
         $loginToken = LoginByPhoneToken::retrieveTokenByPhoneNumber($confirmRequest);
 
         // first check the expiration date
-        if ($loginToken->created_at->addSecond(18000)->greaterThan(now())) {
+        if ($loginToken->created_at->addSecond(185)->greaterThan(now())) {
             return $loginToken->token;
             //   return $loginToken->token == $confirmRequest->opt();
         }
@@ -113,4 +114,14 @@ class AuthController extends Controller
         Auth::login($user, true);
     }
 
+    /**
+     * Log out the user.
+     *
+     * @return RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return back();
+    }
 }

@@ -45,7 +45,8 @@ class LoginByPhoneToken extends Model
      */
     public static function retrieveTokenByPhoneNumber($confirmRequest)
     {
-        return static::where('phone_number', $confirmRequest->phone_number)->firstOrFail();
+        return static::where('phone_number', $confirmRequest->phone_number)
+            ->orderBy('created_at', 'desc')->firstOrFail();
     }
 
 

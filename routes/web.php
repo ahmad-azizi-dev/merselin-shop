@@ -30,6 +30,7 @@ Route::middleware(['web', 'Local'])->group(function () {
     Route::post('login', [AuthController::class, 'postLoginNumber'])->name('postLoginNumber');
     Route::get('otp-confirm/{loginByPhone}', [AuthController::class, 'otpConfirm'])->name('otpConfirm');
     Route::post('otp-confirm', [AuthController::class, 'postOtpConfirm'])->name('postOtpConfirm');
+    Route::post('logout', [AuthController::class, 'logout'])->name('frontendLogout');
 
 });
 
