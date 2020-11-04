@@ -22,11 +22,15 @@
     <!-- Flash Sale Slide-->
         @include('frontend.partials.FlashSaleSlide')
 
-        @livewire('frontend.home', ['TopProducts' => $TopProducts,
-        'cartProducts' => $cartProducts ])
+    </div>
+
+    @livewire('frontend.home', ['TopProducts' => $TopProducts,
+    'cartProducts' => $cartProducts ])
+
+    <div class="page-content-wrapper">
 
         <!-- Discount Coupon Card-->
-        @include('frontend.partials.DiscountCouponCard')
+    @include('frontend.partials.DiscountCouponCard')
 
     <!-- Night Mode View Card-->
         @include('frontend.partials.NightModeViewCard')

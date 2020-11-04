@@ -23,7 +23,7 @@ return [
     'FooterNav-home'     => 'خانه',
     'FooterNav-message'  => 'پشتیبان',
     'FooterNav-cart'     => 'سبد خرید',
-    'FooterNav-heart'    => 'علاقه مندی ها',
+    'FooterNav-heart'    => 'علاقه مندی',
     'FooterNav-settings' => 'تنظیمات',
 
     'NightMode'         => 'حالت شب',
@@ -70,5 +70,6 @@ return [
     'NotSet'          => 'تعریف نشده',
     'Profile'         => 'حساب کاربری',
     'PurchaseHistory' => 'تاریخچه خرید',
+    'CartDetails'     => 'جزییات سبد خرید',
     'Exit'            => 'خروج',
 ];

@@ -27,4 +27,3 @@
 
 </x-header>
 
-@include('frontend.partials.SidebarWrapper')

@@ -1,5 +1,7 @@
 <div>
 
+    @include('frontend.partials.SidebarWrapper')
+
     <x-loading></x-loading>
 
     <!-- Top Products-->

@@ -39,11 +39,7 @@
 
     </x-header>
 
-    @include('frontend.partials.SidebarWrapper')
-
-    <div class="page-content-wrapper">
         @livewire('frontend.cart', ['cartProducts' => $cartProducts ])
-    </div>
 
     <!-- Footer Nav-->
     @include('frontend.partials.footerNav')
