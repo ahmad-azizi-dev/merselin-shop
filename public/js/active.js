@@ -1,6 +1,35 @@
 (function () {
     'use strict';
 
+    //Detecting a mobile browser
+    var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+    var width  = window.innerWidth  || document.body.clientWidth;
+    var height = window.innerHeight || document.body.clientHeight;
+
+    if( (!isMobile.any()) || width > height || width < 360  || height < 680) {
+        document.body.style.zoom = "85%";
+    }
+
     var suhaWindow = $(window);
     var sideNavWrapper = $("#sidenavWrapper");
     var blackOverlay = $(".sidenav-black-overlay");

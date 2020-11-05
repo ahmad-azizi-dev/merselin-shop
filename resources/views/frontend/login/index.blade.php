@@ -46,7 +46,9 @@
 
         <!-- View As Guest-->
         <div class="view-as-guest mt-4">
-            <a class="btn" href="{{ URL::previous() }}"> @lang('mainFrontend.ViewAsGuest')</a>
+            <a class="btn" href="{{($url = session('beforeLoginUrl')) ? $url : route('home') }}">
+                @lang('mainFrontend.ViewAsGuest')
+            </a>
         </div>
 
     </x-login-wrapper>

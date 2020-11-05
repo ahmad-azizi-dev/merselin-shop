@@ -11,7 +11,7 @@
 <!-- Header Area-->
     @include('frontend.partials.HeaderArea')
 
-    <div class="page-content-wrapper">
+    <div class="page-content-wrapper mb-3">
 
         <!-- Hero Slides-->
     @include('frontend.partials.HeroSlides')

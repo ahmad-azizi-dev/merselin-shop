@@ -37,6 +37,26 @@
 @import url(css/font-awesome.min.css);
 @import url(css/default/lineicons.min.css);
 /* Reboot CSS */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9193ba;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 * {
   margin: 0;
   padding: 0; }
@@ -2862,7 +2882,7 @@ li.suha-dropdown-menu {
 .login-wrapper {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 130vh;
   background: #100DD1;
   background: -webkit-gradient(linear, left top, right top, from(#100DD1), to(#0d3bd1));
   background: linear-gradient(to right, #100DD1, #0d3bd1);

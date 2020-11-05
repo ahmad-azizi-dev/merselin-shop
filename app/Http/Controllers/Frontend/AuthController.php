@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\URL;
 
 class AuthController extends Controller
 {
@@ -20,6 +21,10 @@ class AuthController extends Controller
      */
     public function login()
     {
+        // Store the before login url in the session.
+        if ((!Str::contains($url = URL::previous(), 'otp-confirm')) & Str::contains($url, url('/'))) {
+            session(['beforeLoginUrl' => $url]);
+        }
         return view('frontend.login.index');
     }
 
@@ -63,9 +68,8 @@ class AuthController extends Controller
 
         if ($loginToken == $confirmRequest->opt()) {                // token matched
             $this->loginUser($confirmRequest->phone_number);
-            return redirect(route('home'))->with([
-                'SuccessfulLogin' => trans('mainFrontend.SuccessfulLogin'),
-            ]);
+            return redirect(($url = session('beforeLoginUrl')) ? $url : route('home'))
+                ->with(['SuccessfulLogin' => trans('mainFrontend.SuccessfulLogin'),]);
         }
 
         // redirect back to otp-confirm page for getting OTP

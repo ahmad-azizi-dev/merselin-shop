@@ -51,13 +51,15 @@
                             </li>
                             <hr class="text-success">
                         @endforeach
-                        <li>
-                            <a class="text-warning" href="{{Request::routeIs('cart')?'#':route('cart')}}">
-                                <i class="lni lni-cart-full text-warning"></i>
-                                @lang('mainFrontend.CartDetails')
-                            </a>
-                        </li>
-                        <hr class="text-white">
+                        @if(!Str::contains(URL::current(), 'cart'))
+                            <li>
+                                <a class="text-warning" href="{{route('cart')}}">
+                                    <i class="lni lni-cart-full text-warning"></i>
+                                    @lang('mainFrontend.CartDetails')
+                                </a>
+                            </li>
+                            <hr class="text-white">
+                        @endif
                     </ul>
                 </li>
             @else
