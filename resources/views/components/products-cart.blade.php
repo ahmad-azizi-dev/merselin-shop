@@ -8,9 +8,11 @@
             </a>
         </th>
         <td>
-            <x-product-img :product=$product></x-product-img>
+            <a href="{{route('showProduct',['slug'=>$product->slug])}}">
+                <x-product-img :product=$product></x-product-img>
+            </a>
         </td>
-        <td><a href="#"> {{$product->title}}
+        <td><a href="{{route('showProduct',['slug'=>$product->slug])}}"> {{$product->title}}
                 <span class="text-success">
                     @if($product->discount_price)
                         <span class="text-decoration-line-through text-danger">{{$product->price}}

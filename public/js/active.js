@@ -153,28 +153,6 @@
         $.preventDefault();
     });
 
-    // :: Password Strength Active Code
-    if ($.fn.passwordStrength) {
-        $('#registerPassword').passwordStrength({
-            minimumChars: 8
-        });
-    }
-
-    // :: Cart Quantity Button Handler
-    $(".quantity-button-handler").on("click", function () {
-        var value = $(this).parent().find("input.cart-quantity-input").val();
-        if ($(this).text() == "+") {
-            var newVal = parseFloat(value) + 1;
-        } else {
-            if (value > 1) {
-                var newVal = parseFloat(value) - 1;
-            } else {
-                newVal = 1;
-            }
-        }
-        $(this).parent().find("input").val(newVal);
-    });
-
     // :: Data Countdown
     $('[data-countdown]').each(function () {
         var $this = $(this),

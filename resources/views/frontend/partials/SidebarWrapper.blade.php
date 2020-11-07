@@ -38,7 +38,11 @@
                         <hr class="text-success">
                         @foreach($eagerProducts as $product)
                             <li>
-                                <a href="#">
+                                @if(isset($currentUrl))
+                                <a href="{{($url=route('showProduct',['slug'=>$product->slug])) != $currentUrl ? $url : '#'}}">
+                                    @else
+                                        <a href="{{route('showProduct',['slug'=>$product->slug])}}">
+                                    @endif
                                     <div class="mr-2" style="width: 70px">
                                         <x-product-img :product=$product></x-product-img>
                                     </div>

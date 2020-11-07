@@ -12,7 +12,7 @@
             @foreach($FlashSaleProducts as $product)
                 <div class="card flash-sale-card">
                     <div class="card-body">
-                        <a href="#">
+                        <a href="{{route('showProduct',['slug'=>$product->slug])}}">
                             <x-product-img :product=$product></x-product-img>
 
                             <span class="product-title">{{$product->title}}</span>

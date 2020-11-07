@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttributeValueController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
+use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\AuthController;
@@ -31,6 +32,8 @@ Route::middleware(['web', 'Local'])->group(function () {
     Route::get('otp-confirm/{loginByPhone}', [AuthController::class, 'otpConfirm'])->name('otpConfirm');
     Route::post('otp-confirm', [AuthController::class, 'postOtpConfirm'])->name('postOtpConfirm');
     Route::post('logout', [AuthController::class, 'logout'])->name('frontendLogout');
+
+    Route::get('product/{slug}', [FrontendProductController::class, 'show'])->name('showProduct');
 
 });
 

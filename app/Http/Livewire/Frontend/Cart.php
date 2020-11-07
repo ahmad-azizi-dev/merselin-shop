@@ -28,11 +28,7 @@ class Cart extends Component
 
     public function removeFromCart($productId, $removeType = 'all')
     {
-        if ($removeType == 'all') {
-            CartFacade::remove($productId);
-        } else {
-            CartFacade::removeSingle($productId);
-        }
+        $this->typeCheckAndRemove($productId, $removeType);
         $this->cartProducts = CartFacade::get()['products'];
         $this->getEagerProducts();
         $this->emit('productRemoved', $this->cartTotal());
@@ -43,19 +39,19 @@ class Cart extends Component
         return view('livewire.frontend.cart');
     }
 
-    private function cartTotal()
+    protected function cartTotal()
     {
-        return count(array_unique(CartFacade::get()['products']));
+        return count(array_unique($this->cartProducts));
     }
 
-    private function getEagerProducts()
+    protected function getEagerProducts()
     {
         $this->eagerProducts = Product::with('medias')->whereIn('id', $this->cartProducts)->get();
         $this->productCountValues = array_count_values($this->cartProducts);
         $this->getTotalPrice();
     }
 
-    private function getTotalPrice()
+    protected function getTotalPrice()
     {
         $this->totalPrice = 0;
         foreach ($this->eagerProducts as $product) {
@@ -64,6 +60,15 @@ class Cart extends Component
             } elseif ($product->price) {
                 $this->totalPrice += $product->price * $this->productCountValues[$product->id];
             }
+        }
+    }
+
+    protected function typeCheckAndRemove($productId, $removeType)
+    {
+        if ($removeType == 'all') {
+            CartFacade::remove($productId);
+        } else {
+            CartFacade::removeSingle($productId);
         }
     }
 }

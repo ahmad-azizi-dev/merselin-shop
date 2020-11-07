@@ -651,7 +651,7 @@ textarea:invalid {
     .preview-iframe-wrapper .preview-hero-area::after {
       position: absolute;
       content: "";
-      background-image: url(img/core-img/curve.png);
+      background-image: url(img/curve.png);
       bottom: 50px;
       width: 142px;
       height: 121px;
@@ -2048,7 +2048,6 @@ li.suha-dropdown-menu {
 
 .single-product-slide,
 .blog-details-post-thumbnail {
-  position: relative;
   z-index: 1;
   width: 100%;
   height: 380px;
@@ -2462,7 +2461,9 @@ li.suha-dropdown-menu {
 .product-slides {
   position: relative;
   z-index: 1;
-  margin-bottom: -40px; }
+  max-width:900px;
+  margin:auto;}
+
   .product-slides .owl-prev,
   .product-slides .owl-next {
     position: absolute;
@@ -2507,8 +2508,8 @@ li.suha-dropdown-menu {
               flex: 0 0 12px;
       width: 12px;
       max-width: 12px;
-      height: 2px;
-      background-color: #ebebeb;
+      height: 3px;
+      background-color: #ffffff;
       margin: 0 5px; }
       .product-slides .owl-dots .owl-dot.active {
         -webkit-box-flex: 0;
@@ -2516,7 +2517,7 @@ li.suha-dropdown-menu {
                 flex: 0 0 24px;
         width: 24px;
         max-width: 24px;
-        background-color: #ffaf00; }
+        background-color: #6678af; }
 
 .product-title-meta-data {
   border-top-right-radius: 3rem;
@@ -2524,8 +2525,8 @@ li.suha-dropdown-menu {
   .product-title-meta-data::after {
     position: absolute;
     content: "";
-    background-image: url(img/core-img/curve.png);
-    top: -121px;
+    background-image: url(img/curve.png);
+    top: -120px;
     width: 142px;
     height: 121px;
     background-repeat: no-repeat;
@@ -2600,8 +2601,6 @@ li.suha-dropdown-menu {
     cursor: pointer;
     -webkit-transition-duration: 500ms;
             transition-duration: 500ms; }
-    .cart-form .quantity-button-handler:hover {
-      color: #100DD1; }
 
 .p-wishlist-share a {
   display: inline-block;
@@ -2710,7 +2709,7 @@ li.suha-dropdown-menu {
       background: transparent !important;
       cursor: pointer; }
       .ratings-submit-form .stars label:hover ~ span {
-        background-position: 100% -30px; }
+        background-position: 100% -60px; }
       .ratings-submit-form .stars label.star-5:hover ~ span {
         width: 100% !important; }
       .ratings-submit-form .stars label.star-4:hover ~ span {
@@ -3628,7 +3627,7 @@ li.suha-dropdown-menu {
   [data-theme="dark"] .weekly-product-card .product-thumbnail-side .delete-btn {
     color: #020310; }
   [data-theme="dark"] .product-title-meta-data::after {
-    background-image: url(img/core-img/curve2.png); }
+    background-image: url(img/curve2.png); }
   [data-theme="dark"] .top-product-card .wishlist-btn {
     color: #ea4c62; }
   [data-theme="dark"] .category-card i {

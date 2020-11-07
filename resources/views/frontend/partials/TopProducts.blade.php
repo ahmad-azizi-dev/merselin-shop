@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-heading d-flex align-items-center justify-content-between">
             <h6 class="ml-1">@lang('mainFrontend.TopProducts')</h6>
-            <a class="btn btn-primary btn-sm" href="shop-grid.html">@lang('mainFrontend.ViewAll')</a>
+            <a class="btn btn-primary btn-sm" href="#">@lang('mainFrontend.ViewAll')</a>
         </div>
         <div class="row g-3">
             <!-- Single Top Product Card-->
@@ -12,10 +12,13 @@
                         <div class="card-body"><span class="badge badge-warning">HOT</span>
                             <a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a>
 
-                            <a class="product-thumbnail d-block mb-2" href="#">
+                            <a class="product-thumbnail d-block mb-2"
+                               href="{{route('showProduct',['slug'=>$product->slug])}}">
                                 <x-product-img :product=$product></x-product-img>
                             </a>
-                            <a class="product-title d-block" href="#">{{$product->title}}</a>
+                            <a class="product-title d-block" href="{{route('showProduct',['slug'=>$product->slug])}}">
+                                {{$product->title}}
+                            </a>
                             <p class="sale-price"><span
                                     class="@if(!$product->discount_price)text-decoration-none @endif "> {{number_format($product->price)}} </span>
                                 {{$product->discount_price?number_format($product->discount_price):''}} @lang('mainFrontend.Currency')

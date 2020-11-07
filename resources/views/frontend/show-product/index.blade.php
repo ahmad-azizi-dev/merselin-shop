@@ -3,7 +3,7 @@
     @push('head')
         <meta name="description" content="cart">
         <!-- Title-->
-        <title>@lang('mainFrontend.FooterNav-cart')</title>
+        <title>{{ __('product.title') . $product->title }} </title>
         @livewireStyles
     @endpush
 
@@ -11,13 +11,13 @@
     <x-header>
         <!-- Back Button-->
         <div class="back-button">
-            <a href="{{($url = session('beforeCartUrl')) ? $url : route('home') }}">
+            <a href="{{($url = session('beforeProductUrl')) ? $url : route('home') }}">
                 <i class="lni lni-arrow-right"></i>
             </a>
         </div>
         <!-- Page Title-->
         <div class="page-heading">
-            <h6 class="mb-0">@lang('mainFrontend.FooterNav-cart')</h6>
+            <h6 class="mb-0">@lang('product.title')</h6>
         </div>
     @guest
         <!-- Navbar -->
@@ -39,22 +39,22 @@
 
     </x-header>
 
-        @livewire('frontend.cart', ['cartProducts' => $cartProducts ])
+    <div class="page-content-wrapper mb-0">
+        @include('frontend.show-product.productData')
+    </div>
+
+    @livewire('frontend.product', ['cartProducts' => $cartProducts,
+        'product' => $product, 'currentUrl' => URL::current()])
 
     <!-- Footer Nav-->
     @include('frontend.partials.footerNav')
 
     @push('script')
+        <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 
         @livewireScripts
 
-        <script src="{{asset('js/waypoints.min.js')}}"></script>
-        <script src="{{asset('js/jquery.counterup.min.js')}}"></script>
-
-        <script>
-            @include('frontend.partials.counterUp')
-        </script>
-        @include('frontend.cart.AddToCartNotify')
+        @include('frontend.partials.AddToCartNotify')
 
     @endpush
 
