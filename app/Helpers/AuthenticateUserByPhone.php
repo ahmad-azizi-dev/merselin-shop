@@ -48,7 +48,8 @@ class AuthenticateUserByPhone
     protected function validateRequest()
     {
         $this->validate($this->request, [
-            'phoneNumber' => 'required|min:10|max:11|regex:/^[0-9]*$/i'
+            'phoneNumber' => 'required|min:10|max:11|regex:/^[0-9]*$/i',
+            'captcha' => 'required|captcha'
         ]);
         return $this;
     }

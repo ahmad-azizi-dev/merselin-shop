@@ -21,10 +21,8 @@ class AuthController extends Controller
      */
     public function login()
     {
-        // Store the before login url in the session.
-        if ((!Str::contains($url = URL::previous(), 'otp-confirm')) & Str::contains($url, url('/'))) {
-            session(['beforeLoginUrl' => $url]);
-        }
+        // Store the url for redirect back to the same page after successful login.
+        $this->storePreviousUrl();
         return view('frontend.login.index');
     }
 
@@ -69,7 +67,7 @@ class AuthController extends Controller
         if ($loginToken == $confirmRequest->opt()) {                // token matched
             $this->loginUser($confirmRequest->phone_number);
             return redirect(($url = session('beforeLoginUrl')) ? $url : route('home'))
-                ->with(['SuccessfulLogin' => trans('mainFrontend.SuccessfulLogin'),]);
+                ->with('SuccessfulLogin', trans('mainFrontend.SuccessfulLogin'));
         }
 
         // redirect back to otp-confirm page for getting OTP
@@ -126,6 +124,19 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return back();
+        return back()->with('SuccessfulLogout', trans('mainFrontend.SuccessfulLogout'));
     }
+
+    /**
+     *  Store the before login url in the session. for redirect back to the same page after successful login.
+     *
+     * @return void
+     */
+    protected function storePreviousUrl()
+    {
+        if (!Str::contains($url = URL::previous(), ['otp-confirm', 'login']) & Str::contains($url, url('/'))) {
+            session(['beforeLoginUrl' => $url]);
+        }
+    }
+
 }

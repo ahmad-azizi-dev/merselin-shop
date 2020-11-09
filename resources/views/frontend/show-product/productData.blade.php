@@ -14,8 +14,13 @@
         <div class="container d-flex justify-content-between">
             <div class="p-title-price">
                 <h6 class="mb-1">{{$product->title}} </h6>
-                <p class="sale-price mb-0">{{number_format($product->discount_price)}} @lang('mainFrontend.Currency')
+                <p class="sale-price mb-2">
+                @if($product->discount_price)
+                {{number_format($product->discount_price)}} @lang('mainFrontend.Currency')
                     <span>{{number_format($product->price)}} @lang('mainFrontend.Currency')</span>
+                @else
+                   {{number_format($product->price)}} @lang('mainFrontend.Currency')
+                @endif
                 </p>
             </div>
             <div class="p-wishlist-share mr-2">

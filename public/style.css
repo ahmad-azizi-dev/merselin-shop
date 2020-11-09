@@ -2744,19 +2744,18 @@ li.suha-dropdown-menu {
   line-height: 30px;
   font-weight: 700; }
 
-.add2cart-notification-login {
+.notification-login {
     position: fixed;
-    padding: 5px;
-    top: 10px;
+    bottom: 58px;
     width: 100%;
-    height: auto;
+    height: 30px;
     background-color: #00b894;
     z-index: 1000;
     color: #ffffff;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 30px;
-    font-weight: 700; }
+    font-weight: 700;  }
 
 .discount-coupon-card {
   position: relative;
@@ -2881,7 +2880,7 @@ li.suha-dropdown-menu {
 .login-wrapper {
   position: relative;
   width: 100%;
-  min-height: 130vh;
+  min-height: 150vh;
   background: #100DD1;
   background: -webkit-gradient(linear, left top, right top, from(#100DD1), to(#0d3bd1));
   background: linear-gradient(to right, #100DD1, #0d3bd1);
@@ -3080,6 +3079,15 @@ li.suha-dropdown-menu {
   .otp-form input.form-control {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important; }
+  .otp-form input.captcha {
+      border-radius: 0.5rem !important;
+      direction: rtl;
+      text-align: center;
+      font-family: Arial !important;
+    }
+  span.captcha{
+      opacity: 0.5;
+  }
 
 .otp-verify-form {
   position: relative;

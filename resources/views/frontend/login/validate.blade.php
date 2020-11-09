@@ -1,8 +1,21 @@
 <script type="text/javascript">
+    var submit = true;
+
+    if (!$("#phone_number").val()) {
+        $("div.captcha").hide();
+        submit = false;
+    }
+
+    function dropdownCaptcha() {
+        $("div.captcha").fadeIn(700);
+        submit = true;
+    }
+
     $(document).ready(function () {
         $.validator.setDefaults({
             submitHandler: function () {
-                form.submit();
+                if (submit) form.submit();
+                dropdownCaptcha();
             }
         });
         $('#loginForm').validate({
@@ -25,6 +38,11 @@
                     required: true,
                     min: 98, //should change in some countries
                 },
+                captcha: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 3,
+                },
             },
             messages: {
                 phoneNumber: {
@@ -37,6 +55,11 @@
                 CountryCodes: {
                     required: "@lang('mainFrontend.RequiredPhoneNumber')",
                     min: "@lang('mainFrontend.CorrectCountryCodes')",
+                },
+                captcha: {
+                    required: "@lang('mainFrontend.RequiredCode')",
+                    minlength: "@lang('mainFrontend.CorrectCode')",
+                    maxlength: "@lang('mainFrontend.CorrectCode')",
                 },
             },
             errorElement: 'span',

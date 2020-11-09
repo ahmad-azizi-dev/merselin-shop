@@ -53,7 +53,8 @@ return [
     'CorrectPhoneNumber'     => 'شماره همراه نامعتبر است',
     'CorrectCountryCodes'    => 'کد کشور مورد نظر درحال حاضر پشتیبانی نمیشود',
     'ConfirmPhoneNumber'     => 'تأیید شماره تلفن',
-    'RequiredCode'           => 'لطفا کد خود را وارد نمایید',
+    'captchaPlaceholder'     => 'حاصل جمع عبارت بالا را در این کادر وارد کنید...',
+    'RequiredCode'           => 'لطفا کد را وارد نمایید',
     'CorrectCode'            => 'کد وارد شده نامعتبر است',
     'EnterCode'              => '  لطفا کد ارسال شده به شماره همراهتان را وارد نمایید',
     'Confirm'                => ' تأیید و ادامه',
@@ -63,6 +64,7 @@ return [
     'ExpiredMessage'         => 'مهلت استفاده از کد تایید برای شماره :phoneNumber منقضی شده! لطفا دوباره تلاش کنید',
     'WrongCode'              => 'کد وارد شده صحیح نیست',
     'SuccessfulLogin'        => 'شما با موفقیت وارد شدید',
+    'SuccessfulLogout'       => 'شما از حساب کاربری خود خارج شدید',
 
     'Notifications'   => 'اطلاعیه ها',
     'UserName'        => 'نام کاربر',
