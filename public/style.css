@@ -333,6 +333,24 @@ textarea:invalid {
     color: #020310; }
   .section-heading p {
     margin-bottom: 0; }
+.wire-loading {
+    position: absolute;
+    left: 70px; }
+
+div.paginate-loading{
+    animation: pulse 0.8s infinite;}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
 
 .card {
   border-color: transparent !important;

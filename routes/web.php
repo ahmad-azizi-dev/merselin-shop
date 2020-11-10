@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttributeValueController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
+use App\Http\Controllers\Frontend\FrontendCategoryController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
@@ -34,6 +35,7 @@ Route::middleware(['web', 'Local'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('frontendLogout');
 
     Route::get('product/{slug}', [FrontendProductController::class, 'show'])->name('showProduct');
+    Route::get('category/{category}', [FrontendCategoryController::class, 'show'])->name('showCategory');
 
 });
 

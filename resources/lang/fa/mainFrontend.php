@@ -28,6 +28,8 @@ return [
 
     'NightMode'         => 'حالت شب',
     'ProductCategories' => 'دسته بندی محصولات',
+    'SubCategories'     => 'زیر مجموعه ها',
+    'CategoriesTitle'   => 'محصولات دسته',
     'FlashSale'         => 'فروش ویژه',
     'ViewAll'           => 'مشاهده همه',
     'Currency'          => 'تومان',

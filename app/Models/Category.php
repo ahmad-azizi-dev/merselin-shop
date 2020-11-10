@@ -16,6 +16,16 @@ class Category extends Model
      */
     protected $table = 'categories';
 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');

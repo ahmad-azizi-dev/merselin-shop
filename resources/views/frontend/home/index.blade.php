@@ -17,7 +17,7 @@
     @include('frontend.partials.HeroSlides')
 
     <!-- Product Categories-->
-    @include('frontend.partials.ProductCategories')
+    @include('frontend.partials.ProductCategories',['title'=>trans('mainFrontend.ProductCategories')])
 
     <!-- Flash Sale Slide-->
         @include('frontend.partials.FlashSaleSlide')

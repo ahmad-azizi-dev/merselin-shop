@@ -8,6 +8,13 @@ class Product extends Model
 {
     protected $guarded = [];
 
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['medias'];
+
     public function getPriceAttribute($price)
     {
         $price = round($price);

@@ -20,4 +20,5 @@ return [
     'submitReview'   => 'ارسال نظر شما',
     'writeReview'    => 'نظر خود را بنوسید...',
     'saveReview'     => 'ثبت نظر',
+    'view'           => 'نمایش',
 ];
