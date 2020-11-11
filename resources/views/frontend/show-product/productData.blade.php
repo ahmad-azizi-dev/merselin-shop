@@ -15,12 +15,12 @@
             <div class="p-title-price">
                 <h6 class="mb-1">{{$product->title}} </h6>
                 <p class="sale-price mb-2">
-                @if($product->discount_price)
-                {{number_format($product->discount_price)}} @lang('mainFrontend.Currency')
-                    <span>{{number_format($product->price)}} @lang('mainFrontend.Currency')</span>
-                @else
-                   {{number_format($product->price)}} @lang('mainFrontend.Currency')
-                @endif
+                    @if($product->discount_price)
+                        {{number_format($product->discount_price)}} @lang('mainFrontend.Currency')
+                        <span>{{number_format($product->price)}} @lang('mainFrontend.Currency')</span>
+                    @else
+                        {{number_format($product->price)}} @lang('mainFrontend.Currency')
+                    @endif
                 </p>
             </div>
             <div class="p-wishlist-share mr-2">
@@ -48,5 +48,17 @@
     <!-- Flash Sale Panel-->
 
     <!-- Selection Panel-->
-
+    <div class="selection-panel bg-white mb-3 py-3">
+        <div class="container">
+            <!-- Categories-->
+            <h6>@lang('product.categories')</h6>
+            <p class="my-0">
+                @foreach($product->categories as $category)
+                    <span class="d-inline-block"> <i class="lni lni-chevron-left-circle ml-2"></i>
+                        <a href="{{route('showCategory',['category'=>$category->slug])}}">{{$category->name}}</a>
+                    </span>
+                @endforeach
+            </p>
+        </div>
+    </div>
 </div>

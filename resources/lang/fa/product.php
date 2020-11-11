@@ -21,4 +21,5 @@ return [
     'writeReview'    => 'نظر خود را بنوسید...',
     'saveReview'     => 'ثبت نظر',
     'view'           => 'نمایش',
+    'categories'     => 'دسته ها',
 ];

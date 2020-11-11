@@ -50,6 +50,11 @@ class Cart
         return request()->session()->get('cart');
     }
 
+    public function getProducts()
+    {
+        return $this->get()['products'];
+    }
+
     private function set($cart)
     {
         request()->session()->put('cart', $cart);

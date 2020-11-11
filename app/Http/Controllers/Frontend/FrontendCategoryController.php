@@ -19,7 +19,7 @@ class FrontendCategoryController extends Controller
         return view('frontend.category.index', [
             'thisCategory' => $category,
             'categories'   => Category::whereParent_id($category->id)->get(),
-            'cartProducts' => Cart::get()['products'],
+            'cartProducts' => Cart::getProducts(),
         ]);
     }
 

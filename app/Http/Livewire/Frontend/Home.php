@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Frontend;
 
+use App\Http\Livewire\Frontend\Traits\CartTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Home extends Component
 {
-    use cartTrait;
+    use CartTrait;
 
     public $TopProducts = [];
 

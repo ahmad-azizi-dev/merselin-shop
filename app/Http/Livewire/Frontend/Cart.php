@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Frontend;
 
+use App\Http\Livewire\Frontend\Traits\CartTrait;
 use Livewire\Component;
 
 class Cart extends Component
 {
-    use cartTrait;
+    use CartTrait;
 
     public $totalPrice = 0;
 
@@ -30,11 +31,16 @@ class Cart extends Component
     {
         $this->totalPrice = 0;
         foreach ($this->eagerProducts as $product) {
-            if ($product->discount_price) {
-                $this->totalPrice += $product->discount_price * $this->productCountValues[$product->id];
-            } elseif ($product->price) {
-                $this->totalPrice += $product->price * $this->productCountValues[$product->id];
-            }
+            $this->summationPrices($product);
+        }
+    }
+
+    protected function summationPrices($product)
+    {
+        if ($product->discount_price) {
+            $this->totalPrice += $product->discount_price * $this->productCountValues[$product->id];
+        } elseif ($product->price) {
+            $this->totalPrice += $product->price * $this->productCountValues[$product->id];
         }
     }
 

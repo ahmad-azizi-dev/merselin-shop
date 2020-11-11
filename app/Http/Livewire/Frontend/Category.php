@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\Frontend;
 
+use App\Http\Livewire\Frontend\Traits\CartTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Category extends Component
 {
-    use cartTrait;
+    use CartTrait;
     use WithPagination;
 
     public $thisCategory = [];

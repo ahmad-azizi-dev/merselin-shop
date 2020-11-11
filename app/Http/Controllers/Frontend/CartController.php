@@ -18,7 +18,7 @@ class CartController extends Controller
     {
         $this->storeBeforeCartUrl();
         return view('frontend.cart.index', [
-            'cartProducts' => Cart::get()['products'],
+            'cartProducts' => Cart::getProducts(),
         ]);
     }
 

@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Frontend;
 
-use App\Models\Product as ProductModel;
+use App\Http\Livewire\Frontend\Traits\CartTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Product extends Component
 {
-    use cartTrait;
+    use CartTrait;
 
     public $product = [];
     public $currentUrl = [];
@@ -30,7 +30,6 @@ class Product extends Component
 
     protected function getEagerProductGuest()
     {
-        $this->eagerProducts = ProductModel::with('medias')->whereId($this->product->id)->get();
         $this->productCountValues = array_count_values($this->cartProducts);
     }
 

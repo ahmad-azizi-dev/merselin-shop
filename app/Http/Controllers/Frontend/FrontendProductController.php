@@ -13,14 +13,15 @@ class FrontendProductController extends Controller
     /**
      * Show the product.
      *
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
     {
         $this->storeBeforeProductUrl();
         return view('frontend.show-product.index', [
-            'cartProducts' => Cart::get()['products'],
-            'product'      => Product::with(['attributeValues', 'brand', 'categories', 'medias'])->whereSlug($slug)->first()
+            'cartProducts' => Cart::getProducts(),
+            'product'      => Product::with(['attributeValues', 'categories'])->whereSlug($slug)->firstorfail()
         ]);
     }
 

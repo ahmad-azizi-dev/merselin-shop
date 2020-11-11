@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Traits;
 
 use App\Facades\Cart as CartFacade;
 use App\Models\Product;
 use App\Models\Product as ProductModel;
 
-trait cartTrait
+trait CartTrait
 {
     public $cartProducts = [];
     public $eagerProducts = [];
@@ -15,7 +15,7 @@ trait cartTrait
     public function addToCart(int $productId)
     {
         CartFacade::add(Product::where('id', $productId)->first());
-        $this->cartProducts = CartFacade::get()['products'];
+        $this->cartProducts = CartFacade::getProducts();
         $this->getEagerProducts();
         $this->emit('productAdded', $this->cartTotal());
     }
@@ -23,7 +23,7 @@ trait cartTrait
     public function removeFromCart($productId, $removeType = 'all')
     {
         $this->typeCheckAndRemove($productId, $removeType);
-        $this->cartProducts = CartFacade::get()['products'];
+        $this->cartProducts = CartFacade::getProducts();
         $this->getEagerProducts();
         $this->emit('productRemoved', $this->cartTotal());
     }
@@ -44,7 +44,7 @@ trait cartTrait
 
     protected function getProductsData()
     {
-        $this->eagerProducts = ProductModel::with('medias')->whereIn('id', $this->cartProducts)->get();
+        $this->eagerProducts = ProductModel::whereIn('id', $this->cartProducts)->get();
         $this->productCountValues = array_count_values($this->cartProducts);
     }
 }

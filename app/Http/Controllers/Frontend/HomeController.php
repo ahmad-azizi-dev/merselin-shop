@@ -19,9 +19,9 @@ class HomeController extends Controller
     {
         return view('frontend.home.index', [
             'categories'        => Category::whereParent_id('0')->get(),
-            'FlashSaleProducts' => Product::with(['medias'])->whereNotNull('discount_price')->get(),
-            'TopProducts'       => Product::with(['medias'])->get(),
-            'cartProducts'      => Cart::get()['products'],
+            'FlashSaleProducts' => Product::whereNotNull('discount_price')->get(),
+            'TopProducts'       => Product::get(),
+            'cartProducts'      => Cart::getProducts(),
         ]);
     }
 }
