@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\ProductController;
@@ -37,6 +38,9 @@ Route::middleware(['web', 'Local'])->group(function () {
     Route::get('product/{slug}', [FrontendProductController::class, 'show'])->name('showProduct');
     Route::get('category/{category}', [FrontendCategoryController::class, 'show'])->name('showCategory');
 
+    Route::middleware(['auth'])->group(function () {
+        Route::get('profile', [ProfileController::class, 'show'])->name('profile');
+    });
 });
 
 

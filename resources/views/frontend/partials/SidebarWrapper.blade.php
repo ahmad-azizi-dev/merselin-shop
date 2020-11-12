@@ -5,7 +5,7 @@
     <div class="suha-sidenav-wrapper" id="sidenavWrapper">
         <!-- Sidenav Profile-->
         <div class="sidenav-profile">
-            <div class="user-profile"><img src="{{asset('img/personal.png')}}" alt="user img"></div>
+            <div class="user-profile"><img src="{{auth()->user()->profile_photo_url}}" alt="user img"></div>
             <div class="user-info">
                 <p class="mb-0 mt-4">
                     @lang('mainFrontend.UserName')
@@ -20,7 +20,11 @@
         </div>
         <!-- Sidenav Nav-->
         <ul class="sidenav-nav pl-0 mt-2">
-            <li><a href="#"><i class="lni lni-user"></i>@lang('mainFrontend.Profile')</a></li>
+            <li>
+                <a href="{{Request::routeIs('profile')?'#':route('profile')}}">
+                    <i class="lni lni-user"></i>@lang('mainFrontend.Profile')
+                </a>
+            </li>
             <li>
                 <a href="#"><i class="lni lni-alarm lni-tada-effect"></i>
                     @lang('mainFrontend.Notifications')
