@@ -40,6 +40,8 @@ Route::middleware(['web', 'Local'])->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::get('profile', [ProfileController::class, 'show'])->name('profile');
+        Route::get('profile/edit', [ProfileController::class, 'edit'])->name('editProfile');
+        Route::post('profile', [ProfileController::class, 'update'])->name('updateProfile');
     });
 });
 

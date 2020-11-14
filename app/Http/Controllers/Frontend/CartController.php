@@ -27,7 +27,7 @@ class CartController extends Controller
      */
     protected function storeBeforeCartUrl()
     {
-        if (!Str::contains($url = URL::previous(), ['otp-confirm', 'logout', 'cart', 'login']) & Str::contains($url, url('/'))) {
+        if (!Str::contains($url = URL::previous(), ['otp-confirm', 'logout', 'cart', 'login', 'profile/edit']) & Str::contains($url, url('/'))) {
             session(['beforeCartUrl' => $url]);
         }
     }

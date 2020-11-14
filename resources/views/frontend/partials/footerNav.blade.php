@@ -33,5 +33,10 @@
             $("body").append("<div class='notification-login animated fadeIn bg-danger'> {{Session('SuccessfulLogout')}} </div>");
             $(".notification-login").delay(6000).fadeOut();
         </script>
+    @elseif(Session::has('SuccessProfileEdit'))
+        <script>
+            $("body").append("<div class='notification-login animated fadeIn bg-warning'> {{Session('SuccessProfileEdit')}} </div>");
+            $(".notification-login").delay(6000).fadeOut();
+        </script>
     @endif
 @endpush

@@ -1914,6 +1914,25 @@ li.suha-dropdown-menu {
     .user-info-card .user-profile img {
       border-radius: 50%; }
 
+.user-info-card .user-profile span {
+    position: absolute;
+    right: 38px;
+    font-size: 9pt;}
+
+.user-info-card .user-profile div {
+    position: absolute;
+    right: 85px;
+    top: 60px;}
+
+.user-info-card .user-profile p {
+    position: absolute;
+    display: block;
+    right: 165px;
+    top: 56px;
+    font-size: 9pt;
+    color: #d42c2c;
+    width: 130px;}
+
 .single-profile-data {
   position: relative;
   z-index: 1;
@@ -1948,7 +1967,7 @@ li.suha-dropdown-menu {
     width: 50%;
     max-width: 50%;
     font-size: 13px;
-    text-align: left;
+    text-align: right;
     color: #747794; }
 
 .user-data-card {

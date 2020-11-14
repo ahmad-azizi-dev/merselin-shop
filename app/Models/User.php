@@ -70,6 +70,14 @@ class User extends Authenticatable
         return static::where('phone_number', $phone_number)->first();
     }
 
+    /**
+     * Get the shipping address for the user.
+     */
+    public function shippingAddress()
+    {
+        return $this->hasOne(ShippingAddress::class);
+    }
+
     public function medias()
     {
         return $this->hasMany(Media::class);
