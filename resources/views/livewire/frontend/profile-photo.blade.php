@@ -1,5 +1,5 @@
 <div class="user-profile mr-3">
-    <img src="{{$profilePhotoUrl}}" alt="profile img">
+    <img id="profile-img" src="{{$profilePhotoUrl}}" alt="profile img">
     <div class="change-user-thumb">
         <form>
             <input type="file" wire:model="photo">

@@ -37,7 +37,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * update the profile in storage.
+     * update the profile data and store in storage.
      *
      * @param Request $request
      * @return void

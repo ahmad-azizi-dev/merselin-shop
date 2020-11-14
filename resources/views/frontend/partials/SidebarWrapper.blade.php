@@ -5,7 +5,7 @@
     <div class="suha-sidenav-wrapper" id="sidenavWrapper">
         <!-- Sidenav Profile-->
         <div class="sidenav-profile">
-            <div class="user-profile"><img src="{{auth()->user()->profile_photo_url}}" alt="user img"></div>
+            <div class="user-profile"><img id="sidebar-img" src="{{auth()->user()->profile_photo_url}}" alt="user img"></div>
             <div class="user-info">
                 <p class="mb-0 mt-4">
                     @lang('mainFrontend.UserName')

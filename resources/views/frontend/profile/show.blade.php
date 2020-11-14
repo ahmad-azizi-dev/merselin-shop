@@ -21,7 +21,7 @@
                     <div class="title d-flex align-items-center">
                         <i class="lni lni-user"></i><span>@lang('mainFrontend.FullName')</span>
                     </div>
-                    <div class="data-content">
+                    <div class="data-content text-blue">
                         {{$user->name=='not_set' ? trans('mainFrontend.NotSet') : $user->name}}
                     </div>
                 </div>
@@ -30,13 +30,13 @@
                         <i class="lni lni-phone"></i>
                         <span>@lang('mainFrontend.PhoneNumber')</span>
                     </div>
-                    <div class="data-content">0{{$user->phone_number}}</div>
+                    <div class="data-content text-blue">0{{$user->phone_number}}</div>
                 </div>
                 <div class="single-profile-data d-flex align-items-center justify-content-between">
                     <div class="title d-flex align-items-center">
                         <i class="lni lni-envelope"></i><span>@lang('mainFrontend.Email')</span>
                     </div>
-                    <div class="data-content">
+                    <div class="data-content text-blue">
                         {{Str::startsWith($user->email,'not_set-')?'---':$user->email}}
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         <i class="lni lni-map-marker"></i>
                         <span>@lang('mainFrontend.ShippingAddress')</span>
                     </div>
-                    <div class="data-content">{{($x=$user->shippingAddress)?$x->shipping_address:'---'}}</div>
+                    <div class="data-content text-blue">{{($x=$user->shippingAddress)?$x->shipping_address:'---'}}</div>
                 </div>
                 <div class="single-profile-data d-flex align-items-center justify-content-between">
                     <div class="title d-flex align-items-center">

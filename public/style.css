@@ -1933,6 +1933,14 @@ li.suha-dropdown-menu {
     color: #d42c2c;
     width: 130px;}
 
+.validation-error-message{
+    font-size: 10pt;
+    display: block;
+    margin-top: 10px;}
+
+.text-blue{
+    color: #3959a8 !important;}
+
 .single-profile-data {
   position: relative;
   z-index: 1;
