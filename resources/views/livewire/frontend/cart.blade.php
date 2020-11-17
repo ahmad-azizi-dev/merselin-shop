@@ -48,7 +48,7 @@
                                 <span class="counter">{{number_format($totalPrice)}}</span>
                                 @lang('mainFrontend.Currency')
                             </h6>
-                            <a class="btn btn-warning" href="#">@lang('mainFrontend.Next')</a>
+                            <a class="btn btn-warning" href="{{route('checkout')}}">@lang('mainFrontend.Next')</a>
                         </div>
                     </div>
                 </div>

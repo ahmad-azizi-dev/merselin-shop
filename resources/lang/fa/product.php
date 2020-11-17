@@ -22,4 +22,12 @@ return [
     'saveReview'     => 'ثبت نظر',
     'view'           => 'نمایش',
     'categories'     => 'دسته ها',
+
+    'billingInformation'   => 'اطلاعات صورتحساب',
+    'billingEdit'          => 'ویرایش صورتحساب',
+    'email'                => 'ایمیل',
+    'shippingMethodChoose' => 'روش ارسال را انتخاب کنید',
+    'confirmAndNext'       => 'تایید و ادامه',
+    'shippingPrice'        => 'هزینه ارسال',
+
 ];

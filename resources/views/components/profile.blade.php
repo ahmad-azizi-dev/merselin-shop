@@ -1,4 +1,4 @@
-<div class="page-content-wrapper mb-3">
+<div class="page-content-wrapper mb-5">
 
     <div class="container">
         <!-- Profile Wrapper-->

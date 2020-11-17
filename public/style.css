@@ -934,7 +934,7 @@ div.paginate-loading{
           align-items: center; }
   .back-button a i {
     font-size: 1.25rem;
-    margin-left: 0.25rem; }
+    margin-right: 0.3rem; }
   .back-button a:hover, .back-button a:focus {
     color: #100DD1; }
 
@@ -1018,7 +1018,8 @@ div.paginate-loading{
     right: 0; }
     .suha-sidenav-wrapper.nav-active .go-home-btn {
       visibility: visible;
-      opacity: 1; }
+      opacity: 1;
+    padding-top: 0.2rem}
   .suha-sidenav-wrapper.filter-nav {
     background: #f8f8ff; }
 
@@ -2618,6 +2619,19 @@ li.suha-dropdown-menu {
     color: #00b894;
     font-size: 12px;
     font-weight: 700; }
+
+.total-price{
+    margin: 7px;}
+
+.total-price .price-title{
+    font-size: 11pt;
+    font-weight: bold;
+    display: block;
+    color: #0055ff !important;
+    margin-bottom: 3px;}
+
+.total-price .price{
+    font-size: 10pt;}
 
 .cart-form {
   position: relative;

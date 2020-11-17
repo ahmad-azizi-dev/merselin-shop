@@ -10,6 +10,11 @@ use Illuminate\Support\Str;
 class CartController extends Controller
 {
     /**
+     * Part of excluded Url from storing in session
+     */
+    protected $excludedUrl = ['otp-confirm', 'logout', 'cart', 'login', 'profile/edit', 'checkout'];
+
+    /**
      * Display the cart.
      *
      * @return \Illuminate\Http\Response
@@ -27,7 +32,7 @@ class CartController extends Controller
      */
     protected function storeBeforeCartUrl()
     {
-        if (!Str::contains($url = URL::previous(), ['otp-confirm', 'logout', 'cart', 'login', 'profile/edit']) & Str::contains($url, url('/'))) {
+        if (!Str::contains($url = URL::previous(), $this->excludedUrl) & Str::contains($url, url('/'))) {
             session(['beforeCartUrl' => $url]);
         }
     }

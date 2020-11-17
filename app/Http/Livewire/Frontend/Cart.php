@@ -25,8 +25,17 @@ class Cart extends Component
     {
         $this->getProductsData();
         $this->getTotalPrice();
+        session(['preparedCartData' => [
+            'cartProducts' => $this->cartProducts,
+            'totalPrice'   => $this->totalPrice
+        ]]);
     }
 
+    /**
+     * Get the total price of cart data.
+     *
+     * @return void
+     */
     protected function getTotalPrice()
     {
         $this->totalPrice = 0;
@@ -35,6 +44,12 @@ class Cart extends Component
         }
     }
 
+    /**
+     * Get the sum price.
+     *
+     * @param $product
+     * @return void
+     */
     protected function summationPrices($product)
     {
         if ($product->discount_price) {

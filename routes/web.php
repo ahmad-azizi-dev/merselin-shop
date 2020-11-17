@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttributeValueController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\MediaController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendCategoryController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -42,6 +43,8 @@ Route::middleware(['web', 'Local'])->group(function () {
         Route::get('profile', [ProfileController::class, 'show'])->name('profile');
         Route::get('profile/edit', [ProfileController::class, 'edit'])->name('editProfile');
         Route::post('profile', [ProfileController::class, 'update'])->name('updateProfile');
+        Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
+        Route::post('checkout', [CheckoutController::class, 'postCheckout'])->name('postCheckout');
     });
 });
 
