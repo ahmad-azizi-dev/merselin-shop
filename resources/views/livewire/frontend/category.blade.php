@@ -4,10 +4,20 @@
 
     <div class="top-products-area clearfix py-3">
         <div class="container">
+            <h6 class="ml-2">@lang('mainFrontend.CategoriesTitle')
+                <b class="text-danger">{{$thisCategory->name}}</b>
+            </h6>
             <div class="section-heading d-flex align-items-center justify-content-between">
-                <h6 class="ml-1">@lang('mainFrontend.CategoriesTitle')
-                    <b class="text-danger">{{$thisCategory->name}}</b>
-                </h6>
+                <!-- Layout Options-->
+                <div class="layout-options mx-2">
+                    <a @if($showType=='grid') class="active" wire:click @else wire:click="showType('grid')" @endif>
+                        <i class="lni lni-grid-alt"></i>
+                    </a>
+                    <a @if($showType=='list') class="active" wire:click @else wire:click="showType('list')" @endif>
+                        <i class="lni lni-radio-button"></i>
+                    </a>
+                    <span wire:target="showType" wire:loading.class="spinner-grow"></span>
+                </div>
                 <span wire:target="perPage" wire:loading.class="spinner-grow wire-loading"></span>
                 <div class="mx-2">
                     <select wire:model="perPage" wire:loading.attr="disabled" class="form-select text-secondary">
@@ -19,9 +29,11 @@
             </div>
             <div class="row g-3">
                 <!-- Single Top Product Card-->
-                @foreach($categoryProducts as $product)
-                    <x-product :product=$product :cartProducts=$cartProducts></x-product>
-                @endforeach
+                    @if($showType=='list')
+                        <x-product-list :products=$categoryProducts :cartProducts=$cartProducts></x-product-list>
+                    @elseif($showType=='grid')
+                        <x-product-grid :products=$categoryProducts :cartProducts=$cartProducts></x-product-grid>
+                    @endif
                 <div id="paginate-loading" class="mx-1 mt-4">
                     {{ $categoryProducts->links() }}
                 </div>

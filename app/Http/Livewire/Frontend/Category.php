@@ -14,11 +14,12 @@ class Category extends Component
 
     public $thisCategory = [];
     public $perPage = 10;
+    public $showType = 'grid';
     protected $paginationTheme = 'bootstrap';
 
     public function mount()
     {
-        $this->getPerPageSession();
+        $this->getPageSession();
         $this->getEagerProducts();
     }
 
@@ -39,6 +40,14 @@ class Category extends Component
         session(['perPageCategory' => $this->perPage]);
     }
 
+    public function showType($show)
+    {
+        if (in_array($show, ['list', 'grid'])) {
+            $this->showType = $show;
+            session(['showTypeCategory' => $show]);
+        }
+    }
+
     protected function getEagerProducts()
     {
         if (Auth::check()) {
@@ -46,10 +55,13 @@ class Category extends Component
         }
     }
 
-    protected function getPerPageSession()
+    protected function getPageSession()
     {
         if ($value = session('perPageCategory')) {
             $this->perPage = $value;
+        }
+        if ($value = session('showTypeCategory')) {
+            $this->showType = $value;
         }
     }
 }

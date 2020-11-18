@@ -6,9 +6,7 @@
         </div>
         <div class="row g-3">
             <!-- Single Top Product Card-->
-            @foreach($TopProducts as $product)
-                <x-product :product=$product :cartProducts=$cartProducts></x-product>
-            @endforeach
+                <x-product-grid :products=$TopProducts :cartProducts=$cartProducts></x-product-grid>
         </div>
     </div>
 </div>

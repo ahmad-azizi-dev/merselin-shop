@@ -1724,7 +1724,7 @@ li.suha-dropdown-menu {
     color: #747794; }
     .layout-options a i {
       line-height: 30px; }
-    .layout-options a:hover, .layout-options a:focus, .layout-options a.active {
+    .layout-options a.active {
       color: #ffffff;
       background-color: #ea4c62; }
 
