@@ -8,7 +8,9 @@ use App\Models\Product;
 use App\Models\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -22,7 +24,7 @@ class CheckoutController extends Controller
     public function show()
     {
         if (Auth::user()->name != 'not_set') {
-            if (URL::previous() === route('cart')) {
+            if ($this->checkPreviousData()) {
                 return view('frontend.checkout.show', $this->getAllViewData());
             }
             return redirect(route('cart'));
@@ -31,14 +33,51 @@ class CheckoutController extends Controller
     }
 
     /**
-     * store the checkout data.
+     * store the selected shipping method data in session.
      *
      * @param Request $request
      * @return void
      */
     public function postCheckout(Request $request)
     {
-        dd($request->input());
+        $request->validate(['shippingMethod' => 'required']);
+        session(['selectedShippingMethod' => $request->shippingMethod]);
+        return redirect(route('checkoutPayment'));
+    }
+
+    /**
+     * Display the checkout payment page for selecting a payment method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkoutPayment()
+    {
+        if (URL::previous() === route('postCheckout')) {
+            return view('frontend.checkout.checkout-payment', $this->getCheckoutPaymentViewData());
+        }
+        return redirect(route('cart'));
+    }
+
+    /**
+     * check the previous URL and session for correct performance.
+     *
+     * @return boolean
+     */
+    protected function checkPreviousData()
+    {
+        return Str::contains(URL::previous(), [route('editProfile'), route('cart')]) & session::has('preparedCartData');
+    }
+
+    /**
+     * Get all the data for passing to checkoutPayment view.
+     *
+     * @return array
+     */
+    protected function getCheckoutPaymentViewData()
+    {
+        return array_merge($this->cartData(), [
+            'shippingMethodPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->first()->price,
+        ]);
     }
 
     /**

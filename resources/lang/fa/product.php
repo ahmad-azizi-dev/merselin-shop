@@ -29,5 +29,10 @@ return [
     'shippingMethodChoose' => 'روش ارسال را انتخاب کنید',
     'confirmAndNext'       => 'تایید و ادامه',
     'shippingPrice'        => 'هزینه ارسال',
+    'paymentMethod'        => 'شیوه پرداخت',
+    'choosePaymentMethod'  => 'لطفا یک شیوه پرداخت را انتخاب نمایید',
+    'bank'                 => 'پرداخت اینترنتی',
+    'creditCard'           => 'کارت به کارت',
+    'totalCartAmount'      => 'مبلغ قابل پرداخت',
 
 ];

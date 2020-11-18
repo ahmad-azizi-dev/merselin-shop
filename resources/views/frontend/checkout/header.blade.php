@@ -7,7 +7,7 @@
     </div>
     <!-- Page Title-->
     <div class="page-heading">
-        <h6 class="mb-0">{{__('product.billingInformation')}}</h6>
+        <h6 class="mb-0">{{$title}}</h6>
     </div>
 @guest
     <!-- Navbar -->

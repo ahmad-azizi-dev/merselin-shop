@@ -8,13 +8,14 @@
     @endpush
 
 <!-- Header Area-->
-    @include('frontend.checkout.header')
+    @include('frontend.checkout.header',['title' => trans('product.billingInformation')])
     @include('frontend.partials.SidebarWrapper')
 
     <div class="page-content-wrapper">
         <div class="container">
             <!-- Checkout Wrapper-->
-            <div x-data="{shippingMethods: {{$shippingMethods}}, selectedMethod: {{$shippingMethods[0]->id}},
+            <div x-data="{shippingMethods: {{$shippingMethods}}, selectedMethod:
+                 {{Session::has('selectedShippingMethod')?Session('selectedShippingMethod'):$shippingMethods[0]->id}},
                  cartTotalPrice: {{Session('preparedCartData')['totalPrice']}} }"
                  class="checkout-wrapper-area py-3">
                 <!-- Billing Address-->

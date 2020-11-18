@@ -45,6 +45,7 @@ Route::middleware(['web', 'Local'])->group(function () {
         Route::post('profile', [ProfileController::class, 'update'])->name('updateProfile');
         Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
         Route::post('checkout', [CheckoutController::class, 'postCheckout'])->name('postCheckout');
+        Route::get('checkout/payment', [CheckoutController::class, 'checkoutPayment'])->name('checkoutPayment');
     });
 });
 
