@@ -34,5 +34,11 @@ return [
     'bank'                 => 'پرداخت اینترنتی',
     'creditCard'           => 'کارت به کارت',
     'totalCartAmount'      => 'مبلغ قابل پرداخت',
+    'totalAmount'          => 'مبلغ کل',
+    'couponCodeAmount'     => 'مبلغ کد تخفیف',
+    'couponCode'           => 'کد تخفیف',
+    'requiredCoupon'       => 'فیلد کد تخفیف خالی است!',
+    'addCoupon'            => 'کد تخفیف اعمال شد',
+    'removeCoupon'         => 'کد تخفیف حذف شد!',
 
 ];

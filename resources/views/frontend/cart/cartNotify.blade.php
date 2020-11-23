@@ -27,4 +27,14 @@
 
         @auth() dropdownMenu(); @endauth
     })
+
+    //  Coupon Notify
+    Livewire.on('Coupon', couponMessage => {
+        if (couponMessage) {
+            @include('frontend.partials.counterUp')
+            $("body").append("<div class='add2cart-notification animated fadeIn bg-warning'>" + couponMessage + "</div>");
+            $(".add2cart-notification").delay(2500).fadeOut();
+        }
+        @auth() dropdownMenu(); @endauth
+    })
 </script>

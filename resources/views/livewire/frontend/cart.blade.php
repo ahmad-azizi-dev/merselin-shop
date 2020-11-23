@@ -24,27 +24,28 @@
                         </div>
                     </div>
                     <!-- Coupon Area-->
-                    <div class="card coupon-card mb-3">
-                        <div class="card-body">
-                            <div class="apply-coupon">
-                                <h6 class="mb-0">@lang('mainFrontend.Coupon')</h6>
-                                <p class="mb-2">@lang('mainFrontend.EnterCoupon')</p>
-                                <div class="coupon-form">
-                                    <form action=" ">
-                                        <input class="form-control" type="text"
-                                               placeholder="@lang('mainFrontend.SampleCoupon')">
-                                        <button class="btn badge-primary text-white"
-                                                type="submit">@lang('mainFrontend.Check')
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cart Amount Area-->
+                @include('frontend.cart.coupon-area')
+
+                <!-- Cart Amount Area-->
                     <div class="card cart-amount-area">
+                        @if($couponData && Auth::check())
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <p class="total-price mb-0 mx-auto">
+                                    <span class="price-title">@lang('product.couponCodeAmount')</span>
+                                    <span class="text-danger price">{{number_format($couponData->price)}}</span>
+                                    <span class="price">@lang('mainFrontend.Currency')</span>
+                                </p>
+                                <h5 class="m-auto">-</h5>
+                                <p class="total-price mb-0 mx-auto">
+                                    <span class="price-title">@lang('product.totalAmount')</span>
+                                    <span class="text-danger price">{{number_format($withoutCouponPrice)}}</span>
+                                    <span class="price">@lang('mainFrontend.Currency')</span>
+                                </p>
+                            </div>
+                            <hr class="mt-0 mb-2 mx-4">
+                        @endif
                         <div class="card-body d-flex align-items-center justify-content-between">
-                            <h6 class="total-price mb-0">
+                            <h6 class="total-price my-0">
                                 <span class="counter">{{number_format($totalPrice)}}</span>
                                 @lang('mainFrontend.Currency')
                             </h6>

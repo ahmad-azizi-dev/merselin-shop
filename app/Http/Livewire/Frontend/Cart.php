@@ -3,16 +3,23 @@
 namespace App\Http\Livewire\Frontend;
 
 use App\Http\Livewire\Frontend\Traits\CartTrait;
+use App\Http\Livewire\Frontend\Traits\CouponTrait;
 use Livewire\Component;
 
 class Cart extends Component
 {
     use CartTrait;
+    use CouponTrait;
 
-    public $totalPrice = 0;
+    public $totalPrice;
+    protected $listeners = ['checkCoupon' => 'checkCoupon'];
+    protected $rules = [
+        'couponCode' => 'required|string|min:5|max:10',
+    ];
 
     public function mount()
     {
+        $this->getCouponData();
         $this->getEagerProducts();
     }
 
@@ -21,10 +28,25 @@ class Cart extends Component
         return view('livewire.frontend.cart');
     }
 
+    /**
+     * Retrieve and calculate all needed data in cart page.
+     *
+     * @return void
+     */
     protected function getEagerProducts()
     {
         $this->getProductsData();
         $this->getTotalPrice();
+        $this->storeCartData();
+    }
+
+    /**
+     * Store cart data in the session.
+     *
+     * @return void
+     */
+    protected function storeCartData()
+    {
         session(['preparedCartData' => [
             'cartProducts' => $this->cartProducts,
             'totalPrice'   => $this->totalPrice
@@ -42,6 +64,7 @@ class Cart extends Component
         foreach ($this->eagerProducts as $product) {
             $this->summationPrices($product);
         }
+        $this->calculateCouponPrice();
     }
 
     /**

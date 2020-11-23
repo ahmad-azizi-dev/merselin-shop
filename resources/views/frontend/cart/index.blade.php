@@ -39,7 +39,7 @@
 
     </x-header>
 
-        @livewire('frontend.cart', ['cartProducts' => $cartProducts ])
+    @livewire('frontend.cart', ['cartProducts' => $cartProducts ])
 
     <!-- Footer Nav-->
     @include('frontend.partials.footerNav')
@@ -50,11 +50,44 @@
 
         <script src="{{asset('js/waypoints.min.js')}}"></script>
         <script src="{{asset('js/jquery.counterup.min.js')}}"></script>
-
+        <script src="{{asset('js/jquery.validate.min.js')}}"></script>
         <script>
             @include('frontend.partials.counterUp')
+
+            $(document).ready(function () {
+                $.validator.setDefaults({
+                    submitHandler: function () {
+                        Livewire.emit('checkCoupon')
+                    }
+                });
+                $('#coupon').validate({
+                    rules: {
+                        couponCode: {
+                            required: true,
+                            rangelength: [5, 10],
+                        },
+                    },
+                    messages: {
+                        couponCode: {
+                            required: "@lang('product.requiredCoupon')",
+                            rangelength: "@lang('mainFrontend.CorrectCode')",
+                        },
+                    },
+                    errorElement: 'p',
+                    errorPlacement: function (error, element) {
+                        error.addClass('text-danger my-1 ml-1');
+                        $('#couponCode-error').html(error);
+                    },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    }
+                });
+            });
         </script>
-        @include('frontend.cart.AddToCartNotify')
+        @include('frontend.cart.cartNotify')
 
     @endpush
 
