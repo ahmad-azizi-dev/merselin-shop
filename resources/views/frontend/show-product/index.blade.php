@@ -5,6 +5,7 @@
         <!-- Title-->
         <title>{{ __('product.title') . $product->title }} </title>
         @livewireStyles
+        <link href="{{asset('css/simple-lightbox.css')}}" rel="stylesheet"/>
     @endpush
 
 <!-- Header Area-->
@@ -44,14 +45,29 @@
     </div>
 
     @livewire('frontend.product', ['cartProducts' => $cartProducts,
-        'product' => $product, 'currentUrl' => URL::current()])
+    'product' => $product, 'currentUrl' => URL::current()])
 
     <!-- Footer Nav-->
     @include('frontend.partials.footerNav')
 
     @push('script')
         <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-
+        <script src="{{asset('js/simple-lightbox.jquery.min.js')}}"></script>
+        <script>
+            var gallery = $('a.z1').simpleLightbox({
+                // image preloading
+                preloading: false,
+                // RTL mode
+                rtl: true,
+                // width / height ratios
+                widthRatio: 1,
+                heightRatio: 1,
+                // show an alert if image was not found
+                alertError: false,
+                // adds class to html element if lightbox is open
+                htmlClass: 'product-magnifier',
+            });
+        </script>
         @livewireScripts
 
         @include('frontend.partials.AddToCartNotify')

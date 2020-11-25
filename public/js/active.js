@@ -27,7 +27,7 @@
     var height = window.innerHeight || document.body.clientHeight;
 
     if( (!isMobile.any()) || width > height || width < 360  || height < 680) {
-        document.body.style.zoom = "85%";
+        $('html').addClass('zoom-html');
     }
 
     var suhaWindow = $(window);
@@ -132,13 +132,23 @@
         productslides.owlCarousel({
             items: 1,
             margin: 0,
-            loop: false,
+            loop: true,
             autoplay: true,
-            autoplayTimeout: 5000,
+            autoplayTimeout: 4000,
             dots: true,
             nav: true,
             navText: [('<i class="lni lni-chevron-right"></i>'), ('<i class="lni lni-chevron-left"></i>')]
-        })
+        });
+
+        productslides.on('drag.owl.carousel', function(event) {
+            $('.magnifier').hide();
+        }).on('dragged.owl.carousel', function(event) {
+            $('.magnifier').show();
+        }).on('translate.owl.carousel', function(event) {
+            $('.magnifier').hide();
+        }).on('translated.owl.carousel', function(event) {
+            $('.magnifier').show();
+        });
     }
 
     // :: Jarallax

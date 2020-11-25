@@ -4,15 +4,19 @@
 <div class="row">
     @foreach ($uploadedPhotos as $photo)
         <div style="width: 300px !important;" class="img-thumbnail m-2 p-0 bg-gradient-light">
-            <div class="alert alert-dismissible ">
+            <div class="alert alert-dismissible pt-1">
                 <button type="button" data-toggle="modal" data-target="#delete{{$photo->id}}"
-                        class="close" data-dismiss="aler888t"><span class="text-danger">&#10060;</span>
+                        class="btn bg-gradient-danger my-1 px-1 py-0">
+                    <span style="font-size: 22pt; line-height: 20px">&times;</span>
                 </button>
-                <h6>{{$photo->original_name}}
-                    <span wire:loading wire:target="deletePhoto"
-                          class="spinner-border spinner-border-sm text-danger"></span>
+                <h6 class="d-inline ml-5">{{$photo->original_name}}
+                    <span wire:target="deletePhoto"
+                          wire:loading.class="spinner-border spinner-border-sm text-danger d-inline-block">
+                    </span>
                 </h6>
-                <img class="mt-1" src="{{ url('/').'/storage/photos/'. $photo->path }}" width="250px" alt="{{$photo->original_name}}">
+                <img class="mt-1"
+                     src="{{ url('/').'/storage/photos/'.(in_array($photo->original_name, ['1.jpg', '1.png'])?'':'2'). $photo->path }}"
+                     width="250px" alt="{{$photo->original_name}}">
             </div>
         </div>
 

@@ -40,5 +40,6 @@ return [
     'requiredCoupon'       => 'فیلد کد تخفیف خالی است!',
     'addCoupon'            => 'کد تخفیف اعمال شد',
     'removeCoupon'         => 'کد تخفیف حذف شد!',
+    'magnifier'            => 'بزرگنمایی',
 
 ];

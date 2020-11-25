@@ -2095,7 +2095,7 @@ li.suha-dropdown-menu {
 .single-product-slide,
 .blog-details-post-thumbnail {
   z-index: 1;
-  width: 100%;
+  width: 102%;
   height: 380px;
   background-position: center center;
   background-size: cover; }
@@ -2115,6 +2115,20 @@ li.suha-dropdown-menu {
     .single-product-slide,
     .blog-details-post-thumbnail {
       height: 600px; } }
+
+.single-product-slide .magnifier{
+    position: relative;
+    left: 77%;
+    top: 81%;
+    width: 50px;
+    text-align: center;
+    font-size: 10pt;
+    color: #4c4cf1;
+    z-index: 10000;
+}
+.single-product-slide i{
+    font-size: 17pt;
+    color: rgb(151, 151, 180);}
 
 .catagory-single-img {
   position: relative;
@@ -2815,6 +2829,12 @@ li.suha-dropdown-menu {
     font-size: 12px;
     line-height: 30px;
     font-weight: 700;  }
+
+.zoom-html{
+    zoom: 85%;}
+
+.product-magnifier{
+   zoom: 100%!important;}
 
 .discount-coupon-card {
   position: relative;
