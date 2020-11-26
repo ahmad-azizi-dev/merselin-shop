@@ -66,6 +66,12 @@
                 alertError: false,
                 // adds class to html element if lightbox is open
                 htmlClass: 'product-magnifier',
+                // closes the lightbox when clicking outside
+                docClose: false,
+                // swipe up or down to close gallery
+                swipeClose: false,
+                // whether to uniqualize images
+                uniqueImages: false,
             });
         </script>
         @livewireScripts

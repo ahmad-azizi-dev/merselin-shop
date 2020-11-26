@@ -132,7 +132,7 @@
         productslides.owlCarousel({
             items: 1,
             margin: 0,
-            loop: true,
+            loop: false,
             autoplay: true,
             autoplayTimeout: 4000,
             dots: true,

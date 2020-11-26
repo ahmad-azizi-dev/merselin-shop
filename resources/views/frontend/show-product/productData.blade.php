@@ -3,15 +3,15 @@
 <div class="product-slides owl-carousel">
     <!-- Single Slide-->
     @for ($i = 2; $i <= count($medias=$product->medias); $i++)
-        <div class="single-product-slide" style="background-image: url('{{ url('/').'/storage/photos/'.
-                 ($path=$medias->whereIn('original_name',["$i.jpg","$i.png"])->pluck('path')->get(0)) }}')">
-            <div class="magnifier">
-                <a class="z1" href="{{ url('/').'/storage/photos/2'.$path }}" onclick="event.preventDefault()">
+        <a class="z1" onclick="event.preventDefault()" href="{{ url('/').'/storage/photos/2'.
+        ($path=$medias->whereIn('original_name',["$i.jpg","$i.png"])->pluck('path')->get(0)) }}">
+            <div class="single-product-slide" style="background-image: url('{{ url('/').'/storage/photos/'.$path }}')">
+                <div class="magnifier">
                     <i class="fa fa-search"></i>
                     @lang('product.magnifier')
-                </a>
+                </div>
             </div>
-        </div>
+        </a>
     @endfor
 </div>
 
