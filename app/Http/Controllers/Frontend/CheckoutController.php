@@ -76,7 +76,7 @@ class CheckoutController extends Controller
     protected function getCheckoutPaymentViewData()
     {
         return array_merge($this->cartData(), [
-            'shippingMethodPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->first()->price,
+            'shippingMethodPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->firstOrFail()->price,
         ]);
     }
 

@@ -41,5 +41,8 @@ return [
     'addCoupon'            => 'کد تخفیف اعمال شد',
     'removeCoupon'         => 'کد تخفیف حذف شد!',
     'magnifier'            => 'بزرگنمایی',
+    'successfulOrder'      => 'سفارش شما با موفقیت ثبت شد',
+    'orderCode'            => 'کد رهگیری:',
+    'backHome'             => 'بازگشت به صفحه اصلی',
 
 ];

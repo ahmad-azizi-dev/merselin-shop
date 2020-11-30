@@ -24,7 +24,12 @@
                         <!-- Single Payment Method-->
                         <div class="col-6 col-md-5">
                             <div class="single-payment-method">
-                                <a class="credit-card" href="#">
+                                <form id="creditCardPayment" action="{{ route('creditCardPayment') }}" method="POST" class="d-none">
+                                    @csrf
+                                    <input name="payment_method" type="hidden" value="credit-card">
+                                </form>
+                                <a class="credit-card" href="{{ route('creditCardPayment') }}"
+                                   onclick="event.preventDefault(); document.getElementById('creditCardPayment').submit();">
                                     <i class="lni lni-credit-cards"></i>
                                     <h6>{{__('product.creditCard')}}</h6>
                                 </a>

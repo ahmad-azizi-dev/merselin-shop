@@ -17,10 +17,11 @@ class Localization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->route()->action['prefix']) {
-            App::setLocale('fa');
-        } else {
+      //  dd(stripos($request->route()->uri(), 'administrator') === 0);
+        if (stripos($request->route()->uri(), 'administrator') === 0) {
             App::setLocale('en');
+        } else {
+            App::setLocale('fa');
         }
         return $next($request);
     }
