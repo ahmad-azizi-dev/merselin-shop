@@ -52,7 +52,7 @@
                     <div class="card-body d-flex justify-content-between my-1">
                         <h6>{{__('product.totalCartAmount')}}</h6>
                         <div class="text-warning">
-                            {{number_format($shippingMethodPrice+Session('preparedCartData')['totalPrice'])}}
+                            {{number_format(Session('orderedPrice'))}}
                             @lang('mainFrontend.Currency')
                         </div>
                     </div>

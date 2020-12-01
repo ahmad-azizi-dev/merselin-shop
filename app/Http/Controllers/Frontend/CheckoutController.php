@@ -75,9 +75,11 @@ class CheckoutController extends Controller
      */
     protected function getCheckoutPaymentViewData()
     {
-        return array_merge($this->cartData(), [
-            'shippingMethodPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->firstOrFail()->price,
+        session([
+            'orderedPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->firstOrFail()->price +
+                Session('preparedCartData')['totalPrice']
         ]);
+        return $this->cartData();
     }
 
     /**
