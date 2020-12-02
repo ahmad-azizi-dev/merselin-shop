@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Facades\Cart;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -13,6 +12,8 @@ use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
+    use RetrieveCartData;
+
     protected $cartProducts;
 
     /**
@@ -81,32 +82,7 @@ class ProfileController extends Controller
      */
     protected function getAllViewData()
     {
-        $this->getCartProducts();
         return array_merge($this->cartData(), ['user' => Auth::user()->load('shippingAddress')]);
-    }
-
-    /**
-     * Get the cart data.
-     *
-     * @return array
-     */
-    protected function cartData()
-    {
-        return [
-            'cartProducts'       => $this->cartProducts,
-            'eagerProducts'      => Product::whereIn('id', $this->cartProducts)->get(),
-            'productCountValues' => array_count_values($this->cartProducts),
-        ];
-    }
-
-    /**
-     * Get the cart products.
-     *
-     * @return void
-     */
-    protected function getCartProducts()
-    {
-        $this->cartProducts = Cart::getProducts();
     }
 
     /**

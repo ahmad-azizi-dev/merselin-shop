@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Facades\Cart;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
 use App\Models\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +13,8 @@ use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
+    use RetrieveCartData;
+
     protected $cartProducts;
 
     /**
@@ -93,31 +94,6 @@ class CheckoutController extends Controller
             'user'            => Auth::user()->load('shippingAddress'),
             'shippingMethods' => ShippingMethod::allShipping(),
         ]);
-    }
-
-    /**
-     * Get the cart products ID.
-     *
-     * @return void
-     */
-    protected function getCartProducts()
-    {
-        $this->cartProducts = Cart::getProducts();
-    }
-
-    /**
-     * Get the cart data.
-     *
-     * @return array
-     */
-    protected function cartData()
-    {
-        $this->getCartProducts();
-        return [
-            'cartProducts'       => $this->cartProducts,
-            'eagerProducts'      => Product::whereIn('id', $this->cartProducts)->get(),
-            'productCountValues' => array_count_values($this->cartProducts),
-        ];
     }
 
 }

@@ -13,6 +13,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "ghasedak/laravel": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hekmatinasser/verta": "^1.11",
         "intervention/image": "^2.5",
         "laravel/framework": "^8.0",
         "laravel/jetstream": "^1.3",

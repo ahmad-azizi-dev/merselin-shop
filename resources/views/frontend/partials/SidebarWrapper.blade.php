@@ -80,7 +80,7 @@
                 @endif
 
                 </li>
-                <li><a href="#"><i class="lni lni-investment"></i> @lang('mainFrontend.PurchaseHistory')</a></li>
+                <li><a href="{{route('showMyOrders')}}"><i class="lni lni-investment"></i> @lang('mainFrontend.PurchaseHistory')</a></li>
                 <li class="suha-dropdown-menu">
                     <a href="#"><i class="lni lni-heart"></i>
                         @lang('mainFrontend.FooterNav-heart')

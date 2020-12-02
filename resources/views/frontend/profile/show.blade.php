@@ -53,7 +53,7 @@
                         <span>@lang('mainFrontend.PurchaseHistory')</span>
                     </div>
                     <div class="data-content">
-                        <a class="btn btn-danger btn-sm" href="#">@lang('mainFrontend.View')</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('showMyOrders')}}">@lang('mainFrontend.View')</a>
                     </div>
                 </div>
             </div>

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
 use App\Models\GeneralOption;
 use App\Models\Order;
-use App\Models\Product;
+use App\Models\ShippingMethod;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+    use RetrieveCartData;
+
     /**
      * Process a submitted order.
      *
@@ -57,7 +60,7 @@ class PaymentController extends Controller
     {
         return Order::create([
             'user_id' => Auth::id(),
-            'data'    => $this->getJsonOrderedData(),
+            'data'    => $this->getOrderedDataArray(), //will be serialized into JSON by eloquent mutators
             'status'  => 0,
             'code'    => $this->generateOrderCode(),
         ])->code;
@@ -89,43 +92,18 @@ class PaymentController extends Controller
     }
 
     /**
-     * Get the cart products ID.
-     *
-     * @return void
-     */
-    protected function getCartProducts()
-    {
-        $this->cartProducts = Cart::getProducts();
-    }
-
-    /**
-     * Get the cart data.
+     * Get the ordered data in array.
      *
      * @return array
      */
-    protected function cartData()
+    protected function getOrderedDataArray()
     {
-        $this->getCartProducts();
         return [
-            'cartProducts'       => $this->cartProducts,
-            'eagerProducts'      => Product::whereIn('id', $this->cartProducts)->get(),
-            'productCountValues' => array_count_values($this->cartProducts),
-        ];
-    }
-
-    /**
-     * Get ordered data in JSON string form.
-     *
-     * @return false|string
-     */
-    protected function getJsonOrderedData()
-    {
-        return collect([
             'preparedCartData'       => session('preparedCartData'),
             'couponData'             => session('couponData'),
-            'selectedShippingMethod' => session('selectedShippingMethod'),
+            'selectedShippingMethod' => ShippingMethod::selectedShippingMethod(),
             'orderedPrice'           => session('orderedPrice'),
-        ])->tojson();
+        ];
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\MyOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,7 @@ Route::middleware(['web', 'Local'])->group(function () {
         Route::get('checkout/payment', [CheckoutController::class, 'checkoutPayment'])->name('checkoutPayment');
         Route::post('credit-card-payment', [PaymentController::class, 'creditCard'])->name('creditCardPayment');
         Route::get('credit-card-payment', [PaymentController::class, 'showCreditCard'])->name('showCreditCardPayment');
+        Route::get('my-orders', [MyOrdersController::class, 'show'])->name('showMyOrders');
     });
 });
 

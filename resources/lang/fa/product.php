@@ -45,4 +45,12 @@ return [
     'orderCode'            => 'کد رهگیری:',
     'backHome'             => 'بازگشت به صفحه اصلی',
 
+    'waitingPayment'       => 'در انتظار پرداخت',
+    'preparing'            => 'در حال آماده سازی',
+    'sending'              => 'در حال ارسال',
+    'delivered'            => 'تحویل شده',
+    'emptyPurchaseHistory' => 'شما سفارش ثبت شده ندارید!',
+    'unit'                 => 'عدد',
+    'quantity'             => 'تعداد:',
+
 ];

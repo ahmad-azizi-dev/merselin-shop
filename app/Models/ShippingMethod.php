@@ -27,4 +27,13 @@ class ShippingMethod extends Model
     {
         return static::where('priority', '>', 0)->orderBy('priority', 'asc')->get(['id', 'title', 'price']);
     }
+
+    /**
+     * Get the selected shipping methods.
+     *
+     */
+    public static function selectedShippingMethod()
+    {
+        return static::where('id', session('selectedShippingMethod'))->firstOrFail(['title', 'price']);
+    }
 }
