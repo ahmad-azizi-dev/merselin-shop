@@ -52,10 +52,10 @@ class CheckoutController extends Controller
      */
     public function checkoutPayment()
     {
-        if (URL::previous() === route('postCheckout')) {
+        if (URL::previous() === route('postCheckout') && session()->has('selectedShippingMethod')) {
             return view('frontend.checkout.checkout-payment', $this->getCheckoutPaymentViewData());
         }
-        return redirect(route('cart'));
+        return redirect(route('home'));
     }
 
     /**

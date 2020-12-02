@@ -124,6 +124,7 @@ class PaymentController extends Controller
             'preparedCartData'       => session('preparedCartData'),
             'couponData'             => session('couponData'),
             'selectedShippingMethod' => session('selectedShippingMethod'),
+            'orderedPrice'           => session('orderedPrice'),
         ])->tojson();
     }
 
