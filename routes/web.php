@@ -51,6 +51,7 @@ Route::middleware(['web', 'Local'])->group(function () {
         Route::post('credit-card-payment', [PaymentController::class, 'creditCard'])->name('creditCardPayment');
         Route::get('credit-card-payment', [PaymentController::class, 'showCreditCard'])->name('showCreditCardPayment');
         Route::get('my-orders', [MyOrdersController::class, 'show'])->name('showMyOrders');
+        Route::post('my-orders/cancel', [MyOrdersController::class, 'cancelOrder'])->name('cancelOrder');
     });
 });
 

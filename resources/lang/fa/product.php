@@ -52,5 +52,12 @@ return [
     'emptyPurchaseHistory' => 'شما سفارش ثبت شده ندارید!',
     'unit'                 => 'عدد',
     'quantity'             => 'تعداد:',
+    'shippingMethod'       => 'روش ارسال',
+    'cancelOrder'          => ' لغو سفارش',
+    'canceled'             => ' لغو شده',
+    'danger'               => 'هشدار!',
+    'no'                   => 'خیر',
+    'yes'                  => 'بله',
+    'areYouSureCancel'     => 'آیا مطمئن هستید که میخواهد سفارش با کدرهگیری: :orderCode را لغو کنید؟',
 
 ];

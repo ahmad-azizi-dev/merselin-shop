@@ -27,6 +27,7 @@
 
 {{$slot}}
 
+@stack('modal')
 </body>
 
 <!-- All JavaScript Files-->
