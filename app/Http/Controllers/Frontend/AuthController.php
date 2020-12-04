@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OtpConfirmRequest;
 use App\Models\LoginByPhoneToken;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -17,7 +18,7 @@ class AuthController extends Controller
     /**
      * Show the login page.
      *
-     * @return Response
+     * @return View
      */
     public function login()
     {
@@ -29,7 +30,8 @@ class AuthController extends Controller
     /**
      * Handle the login form submission.
      *
-     * @return string
+     * @param AuthenticateUserByPhone $auth
+     * @return RedirectResponse
      */
     public function postLoginNumber(AuthenticateUserByPhone $auth)
     {
@@ -41,7 +43,7 @@ class AuthController extends Controller
      * Show the otp confirm page.
      *
      * @param LoginByPhoneToken $loginByPhone
-     * @return string
+     * @return View
      */
     public function otpConfirm(LoginByPhoneToken $loginByPhone)
     {
@@ -54,66 +56,19 @@ class AuthController extends Controller
      * Authenticate the user, using the given token.
      *
      * @param OtpConfirmRequest $confirmRequest
-     * @return string
+     * @return RedirectResponse
      */
-    public function PostOtpConfirm(OtpConfirmRequest $confirmRequest)
+    public function postOtpConfirm(OtpConfirmRequest $confirmRequest)
     {
         if (!$loginToken = $this->checkToken($confirmRequest)) {    // token expired
-            return redirect(route('frontendLogin'))->with([
-                'expired' => trans('mainFrontend.ExpiredMessage', ['phoneNumber' => $confirmRequest->phone_number]),
-            ]);
+            return redirect(route('frontendLogin'))->with($this->message('expired', $confirmRequest->phone_number));
         }
-
         if ($loginToken == $confirmRequest->opt()) {                // token matched
             $this->loginUser($confirmRequest->phone_number);
-            return redirect(($url = session('beforeLoginUrl')) ? $url : route('home'))
-                ->with('SuccessfulLogin', trans('mainFrontend.SuccessfulLogin'));
+            return redirect($this->beforeLoginUrl())->with($this->message('SuccessfulLogin'));
         }
-
-        // redirect back to otp-confirm page for getting OTP
-        return back()->with([
-            'wrongCode' => trans('mainFrontend.WrongCode'),
-        ]);
-    }
-
-    /**
-     * check the given token.
-     *
-     * @param OtpConfirmRequest $confirmRequest
-     * @return string
-     */
-    protected function checkToken($confirmRequest)
-    {
-        $loginToken = LoginByPhoneToken::retrieveTokenByPhoneNumber($confirmRequest);
-
-        // first check the expiration date
-        if ($loginToken->created_at->addSecond(185)->greaterThan(now())) {
-            return $loginToken->token;
-            //   return $loginToken->token == $confirmRequest->opt();
-        }
-        return false;
-    }
-
-
-    /**
-     * Login or register the user associated with a token.
-     *
-     * @param $phone_number
-     * @return void
-     */
-    protected function loginUser($phone_number)
-    {
-        $user = User::retrieveUserByPhoneNumber($phone_number);
-
-        if (!$user) {
-            $user = User::create([
-                'phone_number' => $phone_number,
-                'name'         => 'not_set',
-                'email'        => 'not_set-' . Str::random(60),
-                'password'     => 'not_set',
-            ]);
-        }
-        Auth::login($user, true);
+      //  dd($this->message('wrongCode'));
+        return back()->with($this->message('wrongCode'));       // redirect back to otp-confirm page for getting OTP
     }
 
     /**
@@ -125,6 +80,82 @@ class AuthController extends Controller
     {
         Auth::logout();
         return back()->with('SuccessfulLogout', trans('mainFrontend.SuccessfulLogout'));
+    }
+
+    /**
+     * The appropriate message.
+     *
+     * @param $key
+     * @param null $phone_number
+     * @return array
+     */
+    protected function message($key, $phone_number = null)
+    {
+        switch ($key) {
+            case 'expired':
+                return ['expired' => trans('mainFrontend.ExpiredMessage', ['phoneNumber' => $phone_number])];
+            case 'SuccessfulLogin':
+                return ['SuccessfulLogin' => trans('mainFrontend.SuccessfulLogin')];
+            case 'wrongCode':
+                return ['wrongCode' => trans('mainFrontend.WrongCode')];
+        }
+    }
+
+    /**
+     * Get the before login url form session if exist.
+     *
+     * @return string
+     */
+    protected function beforeLoginUrl()
+    {
+        return ($url = session('beforeLoginUrl')) ? $url : route('home');
+    }
+
+    /**
+     * check the given token.
+     *
+     * @param OtpConfirmRequest $confirmRequest
+     * @return string|boolean
+     */
+    protected function checkToken(OtpConfirmRequest $confirmRequest)
+    {
+        $loginToken = LoginByPhoneToken::retrieveTokenByPhoneNumber($confirmRequest);
+
+        // first check the expiration date
+        if ($loginToken->created_at->addSecond(185)->greaterThan(now())) {
+            return $loginToken->token;
+        }
+        return false;
+    }
+
+    /**
+     * Login or register the user associated with a token.
+     *
+     * @param $phone_number
+     * @return void
+     */
+    protected function loginUser($phone_number)
+    {
+        if (!$user = User::retrieveUserByPhoneNumber($phone_number)) {
+            $user = $this->createUser($phone_number);
+        }
+        Auth::login($user, true);
+    }
+
+    /**
+     * Create a user with the validated given phone number.
+     *
+     * @param $phone_number
+     * @return User
+     */
+    protected function createUser($phone_number)
+    {
+        return User::create([
+            'phone_number' => $phone_number,
+            'name'         => 'not_set',
+            'email'        => 'not_set-' . Str::random(40),
+            'password'     => 'not_set',
+        ]);
     }
 
     /**

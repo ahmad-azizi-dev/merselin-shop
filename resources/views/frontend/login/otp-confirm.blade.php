@@ -48,6 +48,9 @@
                         <p class="text-danger ltr">{{ $error }}</p>
                     @endforeach
                 @endif
+                @if(Session::has('wrongCode'))
+                    <span class="error text-danger d-block ltr">{{Session('wrongCode')}}</span>
+                @endif
             </form>
 
             <!-- Term & Privacy Info-->
@@ -64,7 +67,7 @@
         <script src="{{asset('js/jquery.validate.min.js')}}"></script>
         <script src="{{asset('js/jquery.autotab.min.js')}}"></script>
         <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
-        @include('frontend.login.opt-confirm-validator')
+        @include('frontend.login.otp-confirm-validator')
         <script>
 
                 @if(Session::has('wrongCode'))
