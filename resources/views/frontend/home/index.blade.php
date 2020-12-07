@@ -44,7 +44,7 @@
     @push('script')
         <script src="{{asset('js/owl.carousel.min.js')}}"></script>
         @livewireScripts
-
+		@include('frontend.partials.cart-modal-script')
         @include('frontend.partials.AddToCartNotify')
     @endpush
 

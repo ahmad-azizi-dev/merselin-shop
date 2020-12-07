@@ -20,7 +20,7 @@
                             {{number_format($product->discount_price)}}@lang('mainFrontend.Currency')
                             <span
                                 style="font-size: inherit">{{number_format($product->price)}} @lang('mainFrontend.Currency')
-                                        </span>
+                            </span>
                         @else
                             {{number_format($product->price)}} @lang('mainFrontend.Currency')
                         @endif
@@ -33,12 +33,12 @@
                             <i class="mr-1 lni lni-cart"></i>@lang('mainFrontend.BuyNow')
                         </a>
                     @else
-                        <a wire:click="removeFromCart({{ $product->id }})"
-                           class="btn badge-danger text-white btn-sm ">
+                        <button type="button" class="btn badge-danger text-white btn-sm" data-toggle="modal"
+                                data-target="#removeFromCart{{$product->id}}">
                             <i class="mr-1 lni lni-cart-full"></i>@lang('mainFrontend.Delete')
-                        </a>
+                        </button>
                     @endif
-
+                    @include('frontend.partials.cart-modal')
                 </div>
             </div>
         </div>

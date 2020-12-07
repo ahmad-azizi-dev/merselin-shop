@@ -12,7 +12,9 @@ class Cart extends Component
     use CouponTrait;
 
     public $totalPrice;
-    protected $listeners = ['checkCoupon' => 'checkCoupon'];
+    protected $listeners = [
+        'checkCoupon'    => 'checkCoupon',
+        'removeFromCart' => 'removeFromCart'];
     protected $rules = [
         'couponCode' => 'required|string|min:5|max:10',
     ];

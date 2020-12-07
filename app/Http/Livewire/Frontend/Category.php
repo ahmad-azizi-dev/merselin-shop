@@ -16,6 +16,7 @@ class Category extends Component
     public $perPage = 10;
     public $showType = 'grid';
     protected $paginationTheme = 'bootstrap';
+    protected $listeners = ['removeFromCart' => 'removeFromCart'];
 
     public function mount()
     {

@@ -19,13 +19,13 @@
 				</div>
 				<!-- Modal footer -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary w-50 mr-5" data-dismiss="modal">
+					<button type="button" class="btn btn-secondary w-50 mr-4" data-dismiss="modal">
 						@lang('product.no')
 					</button>
 					<form action="{{ route('cancelOrder') }}" method="POST">
 						@csrf
 						<input name="order" type="hidden" value="{{$order->id}}">
-						<button class="btn btn-danger w-50 mx-2 pr-5 pl-4">
+						<button class="btn btn-danger w-25 mx-2 pr-5 pl-4">
 							@lang('product.yes')
 						</button>
 					</form>

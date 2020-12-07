@@ -12,6 +12,7 @@ class Product extends Component
 
     public $product = [];
     public $currentUrl = [];
+    protected $listeners = ['removeFromCart' => 'removeFromCart'];
 
     public function mount()
     {

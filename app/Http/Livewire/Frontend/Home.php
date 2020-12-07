@@ -10,6 +10,8 @@ class Home extends Component
 {
     use CartTrait;
 
+    protected $listeners = ['removeFromCart' => 'removeFromCart'];
+
     public $TopProducts = [];
 
     public function mount()

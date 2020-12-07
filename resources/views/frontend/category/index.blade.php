@@ -32,6 +32,7 @@
 
     @push('script')
         @livewireScripts
+        @include('frontend.partials.cart-modal-script')
         @include('frontend.partials.AddToCartNotify')
         <script>
             document.addEventListener("DOMContentLoaded", () => {

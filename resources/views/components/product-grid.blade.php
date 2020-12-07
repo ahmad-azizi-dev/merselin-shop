@@ -11,8 +11,10 @@
                 <a class="product-title d-block" href="{{route('showProduct',['slug'=>$product->slug])}}">
                     {{$product->title}}
                 </a>
-                <p class="sale-price"><span
-                        class="@if(!$product->discount_price)text-decoration-none @endif "> {{number_format($product->price)}} </span>
+                <p class="sale-price">
+                    <span class="@if(!$product->discount_price)text-decoration-none @endif ">
+                        {{number_format($product->price)}}
+                    </span>
                     {{$product->discount_price?number_format($product->discount_price):''}} @lang('mainFrontend.Currency')
                 </p>
                 <div class="product-rating">
@@ -27,10 +29,12 @@
                        class="btn badge-success text-white"><i class="lni lni-cart"></i>
                     </a>
                 @else
-                    <a wire:click="removeFromCart({{ $product->id }})" style="width: 25px; height: 25px;"
-                       class="btn badge-danger text-white"><i class="lni lni-cart-full"></i>
-                    </a>
+                    <button type="button" class="btn badge-danger text-white" data-toggle="modal"
+                            data-target="#removeFromCart{{$product->id}}" style="width: 25px; height: 25px">
+                        <i class="lni lni-cart-full"></i>
+                    </button>
                 @endif
+                @include('frontend.partials.cart-modal')
             </div>
         </div>
     </div>
