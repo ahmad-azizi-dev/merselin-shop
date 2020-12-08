@@ -16,6 +16,8 @@ class Category extends Model
      */
     protected $table = 'categories';
 
+    protected $guarded = [];
+
     /**
      * Get the route key for the model.
      *

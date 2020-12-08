@@ -7,15 +7,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Path
+    | Fortify Routes Prefix / Subdomain
     |--------------------------------------------------------------------------
     |
-    | Change the prefix path for the admin routes.
+    | Here you may specify which prefix Fortify will assign to all the routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Fortify routes will be available.
     |
     */
 
-    'path' => 'administrator',
+    'prefix' => 'administrator',
 
+    'domain' => null,
 
     /*
     |--------------------------------------------------------------------------

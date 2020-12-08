@@ -46,6 +46,8 @@ class CategoryRequest extends FormRequest
             'slug'          => Rule::unique('categories', 'slug')->ignore($this->category),
             'meta_desc'     => 'required',
             'meta_keywords' => 'required',
+            'icon'          => 'nullable|image',
+            'image'         => 'nullable|image',
         ];
     }
 
