@@ -215,9 +215,9 @@ class CategoryController extends Controller
     {
         $path = storage_path('app/public/categories/' . $filename);
         if ($type === 'icon') {
-            Image::make($path)->fit(200, 200)->save($path);
+            Image::make($path)->fit(200, 150)->save($path);
         } else {
-            Image::make($path)->fit(1920, 310)->save($path);
+            Image::make($path)->fit(2700, 540)->save($path);
         }
     }
 

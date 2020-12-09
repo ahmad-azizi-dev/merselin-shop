@@ -12,7 +12,7 @@
 
     <div class="page-content-wrapper mb-3">
         <!-- Catagory Single Image-->
-        <div class="catagory-single-img" style="background-image: url('https://placehold.it/1920x310')"></div>
+        <div class="category-single-img " style="background-image: url('{{url('storage/categories/').'/'.$thisCategory->image}}');"></div>
 
         <!-- Product Categories-->
         @include('frontend.partials.ProductCategories',['title'=>trans('mainFrontend.SubCategories')])

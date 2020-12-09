@@ -85,9 +85,9 @@
 					<div class="col-sm-6">
 						<!-- select -->
 						<div class="form-group">
-							{!! Form::label('category_parent', ' parent for this category') !!}
+							{!! Form::label('parent_id', ' parent for this category') !!}
 							
-							<select name="category_parent" id="" class="form-control">
+							<select name="parent_id" id="" class="form-control">
 								<option class="text-danger" value="0">no parent &#10060;</option>
 								@foreach($categories as $category_data)
 									

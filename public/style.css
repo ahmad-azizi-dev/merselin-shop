@@ -2134,25 +2134,14 @@ li.suha-dropdown-menu {
     font-size: 17pt;
     color: rgb(151, 151, 180);}
 
-.catagory-single-img {
+.category-single-img {
   position: relative;
   z-index: 1;
-  width: 100%;
+  max-width: 900px;
+  margin: auto;
   height: 180px;
   background-position: center center;
   background-size: cover; }
-  @media only screen and (min-width: 576px) and (max-width: 767px) {
-    .catagory-single-img {
-      height: 210px; } }
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .catagory-single-img {
-      height: 240px; } }
-  @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .catagory-single-img {
-      height: 270px; } }
-  @media only screen and (min-width: 1200px) {
-    .catagory-single-img {
-      height: 310px; } }
 
 .faq-search-form {
   position: relative;
