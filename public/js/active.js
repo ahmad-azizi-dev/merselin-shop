@@ -175,6 +175,21 @@
         });
     });
 
+    $(".search-box").hide();
+    $(".search-input").focusin(function(){
+        $(".search-box").fadeIn();
+    });
+    $(".search-input").focusout(function(){
+        $(".search-box").fadeOut();
+    });
+    $(".search-input").on("input", function() {
+        if ($(this).val().length>1){
+            Livewire.emit('updateSearch',$(this).val())
+        }else {
+            $(".search-box").html("");
+        }
+    });
+
     if ($.fn.toast) {
         $('#pwaInstallToast').toast('show');
     }

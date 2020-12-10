@@ -15,7 +15,9 @@
         <div class="category-single-img " style="background-image: url('{{url('storage/categories/').'/'.$thisCategory->image}}');"></div>
 
         <!-- Product Categories-->
-        @include('frontend.partials.ProductCategories',['title'=>trans('mainFrontend.SubCategories')])
+        @if(($categories?$categories->count():false))
+            @include('frontend.partials.ProductCategories',['title'=>trans('mainFrontend.SubCategories')])
+        @endif
     </div>
 
     @livewire('frontend.category', ['thisCategory' => $thisCategory,

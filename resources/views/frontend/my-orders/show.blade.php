@@ -35,6 +35,7 @@
 	@include('frontend.partials.footerNav')
 	
 	@push('script')
+		@livewireScripts
 		<script>
 			@include('frontend.partials.DropdownMenu')
 		</script>

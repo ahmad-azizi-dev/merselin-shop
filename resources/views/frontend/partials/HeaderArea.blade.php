@@ -3,9 +3,11 @@
     <div class="logo-wrapper"><a href="#"><img src="https://placehold.it/35x35" alt=""></a></div>
     <!-- Search Form-->
     <div class="top-search-form">
-        <form action="#" method="">
-            <input class="form-control" type="search" placeholder="@lang('mainFrontend.SearchForm')">
-            <button type="submit"><i class="fa fa-search"></i></button>
+        <form action="#">
+            <input name="search" class="form-control search-input" type="search"
+                   placeholder="@lang('mainFrontend.SearchForm')">
+            <button type="button"><i class="fa fa-search mt-2"></i></button>
+            @livewire('frontend.live-search')
         </form>
     </div>
 @guest
