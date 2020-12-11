@@ -26,10 +26,11 @@
                 </div>
                 @if(!in_array($product->id, $cartProducts))
                     <a wire:click="addToCart({{ $product->id }})" style="width: 25px; height: 25px;"
-                       class="btn badge-success text-white"><i class="lni lni-cart"></i>
+                       class="btn badge-success text-white d-flex justify-content-center align-items-center">
+                        <i class="lni lni-cart"></i>
                     </a>
                 @else
-                    <button type="button" class="btn badge-danger text-white" data-toggle="modal"
+                    <button type="button" class="btn badge-danger text-white d-flex justify-content-center align-items-center" data-toggle="modal"
                             data-target="#removeFromCart{{$product->id}}" style="width: 25px; height: 25px">
                         <i class="lni lni-cart-full"></i>
                     </button>
