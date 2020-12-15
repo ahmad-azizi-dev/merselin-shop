@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use App\Models\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
 class CheckoutController extends Controller
 {
     use RetrieveCartData;
+    use Wishlist;
 
     protected $cartProducts;
 
@@ -80,7 +82,7 @@ class CheckoutController extends Controller
             'orderedPrice' => ShippingMethod::whereId(session('selectedShippingMethod'))->firstOrFail()->price +
                 Session('preparedCartData')['totalPrice']
         ]);
-        return $this->cartData();
+        return array_merge($this->cartData(), $this->allWishlistProductsData());
     }
 
     /**
@@ -90,7 +92,7 @@ class CheckoutController extends Controller
      */
     protected function getAllViewData()
     {
-        return array_merge($this->cartData(), [
+        return array_merge($this->cartData(), $this->allWishlistProductsData(), [
             'user'            => Auth::user()->load('shippingAddress'),
             'shippingMethods' => ShippingMethod::allShipping(),
         ]);

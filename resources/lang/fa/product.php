@@ -61,4 +61,8 @@ return [
     'areYouSureCancel'     => 'آیا مطمئن هستید که میخواهد سفارش با کدرهگیری: :orderCode را لغو کنید؟',
     'areYouSureDelete'     => 'آیا مایل به حذف این کالا از سبد خود هستید؟',
 
+    'areYouSureDeleteWishlist' => 'آیا مایل به حذف این کالا از علاقه مندی هستید؟',
+    'addedWishlist'            => 'به علاقه مندی اضافه شد',
+    'removedWishlist'          => 'از علاقه مندی حذف شد',
+
 ];

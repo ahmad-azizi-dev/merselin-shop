@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use App\Models\GeneralOption;
 use App\Models\Order;
 use App\Models\ShippingMethod;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class PaymentController extends Controller
 {
     use RetrieveCartData;
+    use Wishlist;
 
     /**
      * Process a submitted order.
@@ -88,7 +90,7 @@ class PaymentController extends Controller
      */
     protected function getCreditCardData()
     {
-        return array_merge($this->cartData(), GeneralOption::allCreditCard());
+        return array_merge($this->cartData(), $this->allWishlistProductsData(), GeneralOption::allCreditCard());
     }
 
     /**

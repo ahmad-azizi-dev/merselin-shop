@@ -6,7 +6,7 @@
         </div>
         <div class="row g-3">
             <!-- Single Top Product Card-->
-                <x-product-grid :products=$TopProducts :cartProducts=$cartProducts></x-product-grid>
+            @include('frontend.partials.product-grid',['products'=>$TopProducts])
         </div>
     </div>
 </div>

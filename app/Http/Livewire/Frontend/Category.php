@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend;
 
 use App\Http\Livewire\Frontend\Traits\CartTrait;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,17 +11,19 @@ use Livewire\WithPagination;
 class Category extends Component
 {
     use CartTrait;
+    use Wishlist;
     use WithPagination;
 
     public $thisCategory = [];
     public $perPage = 10;
     public $showType = 'grid';
     protected $paginationTheme = 'bootstrap';
-    protected $listeners = ['removeFromCart' => 'removeFromCart'];
+    protected $listeners = ['removeFromCart' => 'removeFromCart', 'removeFromWishlist' => 'removeFromWishlist'];
 
     public function mount()
     {
         $this->getPageSession();
+        $this->initializeWishlist();
         $this->getEagerProducts();
     }
 
@@ -53,6 +56,7 @@ class Category extends Component
     {
         if (Auth::check()) {
             $this->getProductsData();
+            $this->getWishlistProductsData();
         }
     }
 

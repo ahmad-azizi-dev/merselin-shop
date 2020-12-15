@@ -87,7 +87,7 @@
                 });
             });
         </script>
-		@include('frontend.partials.cart-modal-script')
+		@include('frontend.partials.modal-script')
         @include('frontend.cart.cartNotify')
 
     @endpush

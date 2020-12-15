@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Frontend;
 
 use App\Http\Livewire\Frontend\Traits\CartTrait;
 use App\Http\Livewire\Frontend\Traits\CouponTrait;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use Livewire\Component;
 
 class Cart extends Component
 {
     use CartTrait;
+    use Wishlist;
     use CouponTrait;
 
     public $totalPrice;
@@ -22,6 +24,7 @@ class Cart extends Component
     public function mount()
     {
         $this->getCouponData();
+        $this->initializeWishlist();
         $this->getEagerProducts();
     }
 
@@ -38,6 +41,7 @@ class Cart extends Component
     protected function getEagerProducts()
     {
         $this->getProductsData();
+        $this->getWishlistProductsData();
         $this->getTotalPrice();
         $this->storeCartData();
     }

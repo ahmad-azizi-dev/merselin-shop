@@ -34,8 +34,8 @@
 
     @push('script')
         @livewireScripts
-        @include('frontend.partials.cart-modal-script')
-        @include('frontend.partials.AddToCartNotify')
+        @include('frontend.partials.modal-script')
+        @include('frontend.partials.notifyScript')
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 Livewire.hook('message.sent', (message, component) => {

@@ -2,8 +2,18 @@
     <div class="col-6 col-md-4 col-lg-3">
         <div class="card top-product-card">
             <div class="card-body"><span class="badge badge-warning">HOT</span>
-                <a class="wishlist-btn" href="#"><i class="lni lni-heart"></i></a>
-
+                @if(!in_array($product->id, $wishlistProducts, true))
+                    <button wire:click="addToWishlist({{$product->id}})"
+                            class="wishlist-btn btn p-1 m-0">
+                        <i class="lni lni-heart font-normal"></i>
+                    </button>
+                @else
+                    <a class="wishlist-btn btn p-1 m-0" data-toggle="modal"
+                       data-target="#removeFromWishlist{{$product->id}}">
+                        <i class="lni lni-heart-filled"></i>
+                    </a>
+                @endif
+                @include('frontend.partials.wishlist-modal')
                 <a class="product-thumbnail d-block mb-2"
                    href="{{route('showProduct',['slug'=>$product->slug])}}">
                     <x-product-img :product=$product></x-product-img>
@@ -24,7 +34,7 @@
                     <i class="lni lni-star-half"></i>
                     <i class="lni lni-star-empty"></i>
                 </div>
-                @if(!in_array($product->id, $cartProducts))
+                @if(!in_array($product->id, $cartProducts, true))
                     <a wire:click="addToCart({{ $product->id }})" style="width: 25px; height: 25px;"
                        class="btn badge-success text-white d-flex justify-content-center align-items-center">
                         <i class="lni lni-cart"></i>

@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Frontend;
 
 use App\Http\Livewire\Frontend\Traits\CartTrait;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Home extends Component
 {
     use CartTrait;
+    use Wishlist;
 
-    protected $listeners = ['removeFromCart' => 'removeFromCart'];
+    protected $listeners = ['removeFromCart' => 'removeFromCart', 'removeFromWishlist' => 'removeFromWishlist'];
 
     public $TopProducts = [];
 
     public function mount()
     {
+        $this->initializeWishlist();
         $this->getEagerProducts();
     }
 
@@ -28,6 +31,7 @@ class Home extends Component
     {
         if (Auth::check()) {
             $this->getProductsData();
+            $this->getWishlistProductsData();
         }
     }
 }

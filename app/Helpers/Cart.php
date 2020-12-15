@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Models\Product;
 
 class Cart
 {
@@ -12,17 +11,17 @@ class Cart
             $this->set($this->empty());
     }
 
-    public function add(Product $product)
+    public function add($productId)
     {
         $cart = $this->get();
-        array_push($cart['products'], $product->id);
+        $cart['products'][] = $productId;
         $this->set($cart);
     }
 
     public function remove(int $productId)
     {
         $cart = $this->get();
-        while (in_array($productId, $cart['products'])) {
+        while (in_array($productId, $cart['products'], true)) {
             $cart = $this->deleteIdFromProductsCart($cart, $productId);
         }
         $this->indexArrayAndSet($cart);

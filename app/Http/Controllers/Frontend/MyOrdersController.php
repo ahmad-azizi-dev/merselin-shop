@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use App\Models\GeneralOption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class MyOrdersController extends Controller
 {
     use RetrieveCartData;
+    use Wishlist;
 
     /**
      * Display the purchase history.
@@ -41,7 +43,7 @@ class MyOrdersController extends Controller
      */
     protected function getAllViewData()
     {
-        return array_merge($this->cartData(), $this->allOrders(), GeneralOption::allCreditCard());
+        return array_merge($this->cartData(), $this->allWishlistProductsData(), $this->allOrders(), GeneralOption::allCreditCard());
     }
 
     /**

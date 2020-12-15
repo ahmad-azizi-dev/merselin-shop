@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\RetrieveCartData;
+use App\Http\Livewire\Frontend\Traits\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -13,6 +14,7 @@ use Illuminate\Support\Str;
 class ProfileController extends Controller
 {
     use RetrieveCartData;
+    use Wishlist;
 
     protected $cartProducts;
 
@@ -82,7 +84,7 @@ class ProfileController extends Controller
      */
     protected function getAllViewData()
     {
-        return array_merge($this->cartData(), ['user' => Auth::user()->load('shippingAddress')]);
+        return array_merge($this->cartData(), $this->allWishlistProductsData(), ['user' => Auth::user()->load('shippingAddress')]);
     }
 
     /**

@@ -81,15 +81,40 @@
 
                 </li>
                 <li><a href="{{route('showMyOrders')}}"><i class="lni lni-investment"></i> @lang('mainFrontend.PurchaseHistory')</a></li>
+        
+                @if($countWishlist=count($wishlistProducts))
                 <li class="suha-dropdown-menu">
-                    <a href="#"><i class="lni lni-heart"></i>
+                    <a href="#"><i class="lni lni-heart-filled"></i>
                         @lang('mainFrontend.FooterNav-heart')
+                        <span class="mx-1 text-danger">({{$countWishlist}})</span>
                     </a>
                     <ul>
-                        <li><a href="#">----</a></li>
-                        <li><a href="#">----</a></li>
+	                    <hr class="text-success">
+	                    @foreach($wishlistProductsData as $product)
+		                    <li>
+			                    @if(isset($currentUrl))
+                                <a href="{{($url=route('showProduct',['slug'=>$product->slug])) != $currentUrl ? $url : '#'}}">
+					            @else
+						        <a href="{{route('showProduct',['slug'=>$product->slug])}}">
+                                @endif
+                                <div class="mr-2" style="width: 60px">
+                                     <x-product-img :product=$product></x-product-img>
+                                </div>
+                                     <span class="d-inline w-100"> {{$product->title}}</span>
+                                </a>
+		                    </li>
+		                    <hr class="text-success">
+	                    @endforeach
                     </ul>
                 </li>
+                @else
+                    <li>
+                        <a href="#"><i class="lni lni-heart"></i>
+                            @lang('mainFrontend.FooterNav-heart')
+                        </a>
+                    </li>
+                @endif
+            
                 <li>
                     <a href="#"><i class="lni lni-cog"></i> @lang('mainFrontend.FooterNav-settings')</a>
                 </li>

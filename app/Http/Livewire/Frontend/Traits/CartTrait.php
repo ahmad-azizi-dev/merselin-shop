@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Frontend\Traits;
 
 use App\Facades\Cart as CartFacade;
 use App\Models\Product;
-use App\Models\Product as ProductModel;
 
 trait CartTrait
 {
@@ -14,7 +13,7 @@ trait CartTrait
 
     public function addToCart(int $productId)
     {
-        CartFacade::add(Product::where('id', $productId)->first());
+        CartFacade::add($productId);
         $this->cartProducts = CartFacade::getProducts();
         $this->getEagerProducts();
         $this->emit('productAdded', $this->cartTotal());
@@ -44,7 +43,7 @@ trait CartTrait
 
     protected function getProductsData()
     {
-        $this->eagerProducts = ProductModel::whereIn('id', $this->cartProducts)->get();
+        $this->eagerProducts = Product::whereIn('id', $this->cartProducts)->get();
         $this->productCountValues = array_count_values($this->cartProducts);
     }
 }

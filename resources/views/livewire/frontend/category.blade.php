@@ -30,9 +30,9 @@
             <div class="row g-3">
                 <!-- Single Top Product Card-->
                     @if($showType=='list')
-                        <x-product-list :products=$categoryProducts :cartProducts=$cartProducts></x-product-list>
+                        @include('frontend.partials.product-list',['products'=>$categoryProducts])
                     @elseif($showType=='grid')
-                        <x-product-grid :products=$categoryProducts :cartProducts=$cartProducts></x-product-grid>
+                        @include('frontend.partials.product-grid',['products'=>$categoryProducts])
                     @endif
                 <div id="paginate-loading" class="mx-1 mt-4">
                     {{ $categoryProducts->links() }}

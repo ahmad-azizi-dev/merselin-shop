@@ -6,7 +6,7 @@
         </div>
         <div class="row g-3">
             <!-- Single Weekly Product Card-->
-                <x-product-list :products=$TopProducts :cartProducts=$cartProducts></x-product-list>
+            @include('frontend.partials.product-list',['products'=>$TopProducts])
         </div>
     </div>
 </div>
