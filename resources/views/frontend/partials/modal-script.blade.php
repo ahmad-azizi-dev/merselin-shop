@@ -1,5 +1,6 @@
 <script>
     <!-- The Cart Modal -->
+  function cartModal() {
     $(".modal-content.cart").prepend(
         "<div class='modal-header'>" +
 	        "<h5 class='modal-title text-danger'>" +
@@ -33,4 +34,7 @@
         "<button type='button' class='btn btn-secondary w-50 mr-5' data-dismiss='modal'>" +
             "@lang('product.no')" +
         "</button>");
+  }
+  cartModal();
+  
 </script>

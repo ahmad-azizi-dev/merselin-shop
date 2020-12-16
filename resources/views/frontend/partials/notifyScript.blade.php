@@ -38,6 +38,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         Livewire.hook('message.processed', (message, component) => {
             dropdownMenu();
+            cartModal();
         })
     });
 	@endauth

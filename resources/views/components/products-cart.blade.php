@@ -5,7 +5,7 @@
                     data-target="#removeFromCart{{$product->id}}">
                 <i class=" lni lni-cart-full"></i> @lang('mainFrontend.Delete')
             </button>
-            @include('frontend.partials.cart-modal')
+            @push('modal') @include('frontend.partials.cart-modal') @endpush
         </th>
         <td>
             <a href="{{route('showProduct',['slug'=>$product->slug])}}">

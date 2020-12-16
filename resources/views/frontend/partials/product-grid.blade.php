@@ -13,7 +13,7 @@
                         <i class="lni lni-heart-filled"></i>
                     </a>
                 @endif
-                @include('frontend.partials.wishlist-modal')
+	            @push('product-grid') @include('frontend.partials.wishlist-modal') @endpush
                 <a class="product-thumbnail d-block mb-2"
                    href="{{route('showProduct',['slug'=>$product->slug])}}">
                     <x-product-img :product=$product></x-product-img>
@@ -45,8 +45,9 @@
                         <i class="lni lni-cart-full"></i>
                     </button>
                 @endif
-                @include('frontend.partials.cart-modal')
+	            @push('product-grid') @include('frontend.partials.cart-modal') @endpush
             </div>
         </div>
+	    @stack('product-grid')
     </div>
 @endforeach

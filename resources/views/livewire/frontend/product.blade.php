@@ -41,7 +41,7 @@
 			                    <i class=" lni lni-cart-full"></i> @lang('mainFrontend.Delete')
 		                    </button>
                         @endif
-	                    @include('frontend.partials.cart-modal')
+	                    @push('product-modal') @include('frontend.partials.cart-modal') @endpush
                     </form>
                 </div>
             </div>
@@ -83,4 +83,5 @@
         </div>
 
     </div>
+	@stack('product-modal')
 </div>
