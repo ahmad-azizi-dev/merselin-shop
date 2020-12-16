@@ -31,9 +31,15 @@
                 </p>
             </div>
             <div class="p-wishlist-share mr-2">
-                <a href="#">
-                    <i class="lni lni-heart"></i>
-                </a>
+	            <a id="wishlist-false" class="p-1 m-0 d-none"
+	               onClick="Livewire.emit('addToWishlist',{{ $product->id }})">
+		            <i class="lni lni-heart"></i>
+	            </a>
+	            <a id="wishlist-true" class="p-1 m-0 d-none" data-toggle="modal"
+	               data-target="#removeFromWishlist{{$product->id}}">
+		            <i class="lni lni-heart-filled"></i>
+	            </a>
+	            @push('modal') @include('frontend.partials.wishlist-modal') @endpush
             </div>
         </div>
         <!-- Ratings-->

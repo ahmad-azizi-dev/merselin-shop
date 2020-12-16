@@ -14,8 +14,8 @@
                                 data-target="#removeFromWishlist{{$product->id}}">
                             <i class="lni lni-heart-filled"></i>
                         </a>
+		                @push('product-list') @include('frontend.partials.wishlist-modal') @endpush
                     @endif
-                    @push('product-list') @include('frontend.partials.wishlist-modal') @endpush
                     <a class="product-thumbnail d-block"
                        href="{{route('showProduct',['slug'=>$product->slug])}}">
                         <x-product-img :product=$product></x-product-img>
@@ -48,11 +48,11 @@
                                 data-target="#removeFromCart{{$product->id}}">
                             <i class="mr-1 lni lni-cart-full"></i>@lang('mainFrontend.Delete')
                         </button>
+		                @push('product-list') @include('frontend.partials.cart-modal') @endpush
                     @endif
-	                @push('product-list') @include('frontend.partials.cart-modal') @endpush
                 </div>
             </div>
         </div>
-	    @stack('product-list')
     </div>
 @endforeach
+@stack('product-list')

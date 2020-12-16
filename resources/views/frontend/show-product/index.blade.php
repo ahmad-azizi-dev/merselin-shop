@@ -73,6 +73,15 @@
                 // whether to uniqualize images
                 uniqueImages: false,
             });
+
+            @if(Request::routeIs('showProduct'))
+            //  Set the wishlist status of product.
+            if ($("#wishlistStatus").val()) {
+                $("#wishlist-true").removeClass("d-none");
+            } else {
+                $("#wishlist-false").removeClass("d-none");
+            }
+	        @endif
         </script>
         @livewireScripts
         @include('frontend.partials.modal-script')

@@ -1,6 +1,6 @@
 <script>
-
-    @includeWhen(Auth::check(),'frontend.partials.DropdownMenu')
+	
+	@includeWhen(Auth::check(),'frontend.partials.DropdownMenu')
 
     //  Add to cart notify.
     Livewire.on('productAdded', totalCart => {
@@ -26,12 +26,22 @@
     Livewire.on('addedWishlist', function () {
         $("body").append("<div class='add2cart-notification animated fadeIn'> @lang('product.addedWishlist') </div>");
         $(".add2cart-notification").delay(1500).fadeOut();
+        
+		@if(Request::routeIs('showProduct'))
+        $("#wishlist-true").removeClass("d-none");
+        $("#wishlist-false").addClass("d-none");
+		@endif
     })
 
     //  Remove from wishlist notify.
     Livewire.on('removedWishlist', function () {
         $("body").append("<div class='add2cart-notification animated fadeIn bg-danger'> @lang('product.removedWishlist') </div>");
         $(".add2cart-notification").delay(1500).fadeOut();
+        
+		@if(Request::routeIs('showProduct'))
+        $("#wishlist-true").addClass("d-none");
+        $("#wishlist-false").removeClass("d-none");
+		@endif
     })
 	
 	@auth()

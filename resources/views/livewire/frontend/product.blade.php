@@ -3,6 +3,7 @@
     @include('frontend.partials.SidebarWrapper')
 
     <x-loading></x-loading>
+	<input id="wishlistStatus" type="hidden" value="{{in_array($product->id, $wishlistProducts, true)}}">
 
     <div class="page-content-wrapper mt-0">
         <div class="product-description pb-3">
@@ -41,7 +42,7 @@
 			                    <i class=" lni lni-cart-full"></i> @lang('mainFrontend.Delete')
 		                    </button>
                         @endif
-	                    @push('product-modal') @include('frontend.partials.cart-modal') @endpush
+	                    @push('modal') @include('frontend.partials.cart-modal') @endpush
                     </form>
                 </div>
             </div>

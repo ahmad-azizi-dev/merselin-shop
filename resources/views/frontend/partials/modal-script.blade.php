@@ -1,7 +1,7 @@
 <script>
     <!-- The Cart Modal -->
   function cartModal() {
-    $(".modal-content.cart").prepend(
+    $(".modal-content.cart").removeClass('cart').prepend(
         "<div class='modal-header'>" +
 	        "<h5 class='modal-title text-danger'>" +
 	            "<i class='fa fa-window-close'></i>" +
@@ -15,7 +15,7 @@
             "@lang('product.areYouSureDelete')" +
         "</div>");
 
-    $(".modal-content.wishlist").prepend(
+    $(".modal-content.wishlist").removeClass('wishlist').prepend(
         "<div class='modal-header'>" +
             "<h5 class='modal-title text-danger'>" +
                 "<i class='lni lni-heart-filled'></i>" +
@@ -29,8 +29,8 @@
              "@lang('product.areYouSureDeleteWishlist')" +
         "</div>");
     
-    $(".modal-footer button").addClass("btn btn-danger w-25 mx-2 pr-4 pl-4").append("@lang('product.yes')");
-    $(".modal-footer").prepend(
+    $(".modal-footer.flag button").addClass("btn btn-danger w-25 mx-2 pr-4 pl-4").append("@lang('product.yes')");
+    $(".modal-footer.flag").removeClass('flag').prepend(
         "<button type='button' class='btn btn-secondary w-50 mr-5' data-dismiss='modal'>" +
             "@lang('product.no')" +
         "</button>");
