@@ -157,6 +157,16 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{(Request::routeIs('slides')?'#':route('slides'))}}"
+                       class="nav-link {{(Request::routeIs('slides')?'active':'')}}">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>
+                            Slides
+                            <span class="right badge badge-secondary">top home page</span>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
