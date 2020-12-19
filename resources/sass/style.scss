@@ -31,13 +31,15 @@
 'Roboto', sans-serif;
 ----------------------------------------- */
 /* Import Fonts & All CSS Files */
-@import url(css/bootstrap.min.css);
-@import url(css/animate.css);
-@import url(css/owl.carousel.min.css);
-@import url(css/font-awesome.min.css);
-@import url(css/default/lineicons.min.css);
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~animate.css/animate.css';
+@import '~owl.carousel2/dist/assets/owl.carousel.min.css';
+//@import '~font-awesome/css/font-awesome.min.css';
+//@import url(css/default/lineicons.min.css);
 /* Reboot CSS */
-
+.owl-carousel{
+    direction: ltr;
+}
 .modal-backdrop{
     width: 100%;
     height: 100%;}

@@ -11,8 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+// mix.js('resources/js/app.js', 'public/js')
+//     .postCss('resources/css/app.css', 'public/css', [
+//         require('postcss-import'),
+//         require('tailwindcss'),
+//     ]);
+
+mix.sass('resources/sass/style.scss','public/style.css').options({
+    processCssUrls: false
+});
+mix.styles(['resources/css/importLineIcone.css','public/style.css'],'public/style.css');
