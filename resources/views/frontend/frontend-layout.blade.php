@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
 
 </head>
-<body>
+<body class="rtl">
 <!-- Preloader-->
 <div class="preloader" id="preloader">
     <div class="spinner-grow text-secondary" role="status">

@@ -31,7 +31,7 @@
 'Roboto', sans-serif;
 ----------------------------------------- */
 /* Import Fonts & All CSS Files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap-v4-rtl/scss/bootstrap-rtl';
 @import '~animate.css/animate.css';
 @import '~owl.carousel2/dist/assets/owl.carousel.min.css';
 //@import '~font-awesome/css/font-awesome.min.css';
@@ -370,8 +370,7 @@ textarea:invalid {
 
 .section-heading {
   position: relative;
-  z-index: 1;
-  margin-bottom: 1rem; }
+  z-index: 1; }
   .section-heading h6 {
     font-size: 0.9rem;
     margin-bottom: 0;
@@ -3847,3 +3846,7 @@ li.suha-dropdown-menu {
     background-color: #242644 !important; }
   [data-theme="dark"] .btn-warning {
     color: #020310; }
+
+  .row{
+      margin: 0 -8px;
+  }

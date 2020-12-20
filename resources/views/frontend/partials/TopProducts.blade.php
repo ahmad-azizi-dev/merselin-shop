@@ -4,7 +4,7 @@
             <h6 class="ml-1">@lang('mainFrontend.TopProducts')</h6>
             <a class="btn btn-primary btn-sm" href="#">@lang('mainFrontend.ViewAll')</a>
         </div>
-        <div class="row g-3">
+        <div class="row">
             <!-- Single Top Product Card-->
             @include('frontend.partials.product-grid',['products'=>$TopProducts])
         </div>

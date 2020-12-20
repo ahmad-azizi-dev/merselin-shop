@@ -1,5 +1,5 @@
 @foreach($products as $product)
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 px-2 mt-3">
         <div class="card weekly-product-card">
             <div class="card-body d-flex align-items-center">
                 <div class="product-thumbnail-side p-0">

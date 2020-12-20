@@ -1,5 +1,5 @@
 @foreach($products as $product)
-    <div class="col-6 col-md-4 col-lg-3">
+    <div class="col-6 col-md-4 col-lg-3 px-2 mt-3">
         <div class="card top-product-card">
             <div class="card-body"><span class="badge badge-warning">HOT</span>
                 @if(!in_array($product->id, $wishlistProducts, true))
