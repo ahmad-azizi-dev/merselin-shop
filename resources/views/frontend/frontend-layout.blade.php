@@ -14,7 +14,7 @@
     <link rel="icon" href="https://placehold.it/35x35">
 
     <!-- Stylesheet-->
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 <body class="rtl">

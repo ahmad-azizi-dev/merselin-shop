@@ -17,7 +17,8 @@ const mix = require('laravel-mix');
 //         require('tailwindcss'),
 //     ]);
 
-mix.sass('resources/sass/style.scss','public/style.css').options({
+mix.sass('resources/sass/style.scss','public/css/style.css').options({
     processCssUrls: false
 });
-mix.styles(['resources/css/importLineIcone.css','public/style.css'],'public/style.css');
+
+mix.copyDirectory('resources/LineIcons-Package-2.0/LineIcons-fonts', 'public/fonts/LineIcons-fonts');

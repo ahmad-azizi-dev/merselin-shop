@@ -12,5 +12,6 @@ npm-debug.log
 yarn-error.log
 .idea
 /public/images
-/public/style.css
+/public/css/style.css
 /public/mix-manifest.json
+public/fonts/LineIcons-fonts
