@@ -15,7 +15,6 @@
         "axios": "^0.19",
         "bootstrap-v4-rtl": "^4.5.2-1",
         "cross-env": "^7.0",
-        "font-awesome": "^4.7.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
         "owl.carousel2": "^2.2.1",

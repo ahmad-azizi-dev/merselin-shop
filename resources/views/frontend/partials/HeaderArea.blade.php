@@ -6,7 +6,7 @@
         <form action="#">
             <input name="search" class="form-control search-input" type="search"
                    placeholder="@lang('mainFrontend.SearchForm')">
-            <button type="button"><i class="fa fa-search mt-2"></i></button>
+            <button type="button"><i class="lni lni-search-alt mt-2"></i></button>
             @livewire('frontend.live-search')
         </form>
     </div>
