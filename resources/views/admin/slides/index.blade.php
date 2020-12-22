@@ -24,5 +24,11 @@
 
 @section('script')
 	@livewireScripts
-
+	<!-- bs-custom-file-input -->
+	<script src="{{asset('admin/js/bs-custom-file-input.min.js')}}"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
+	</script>
 @endsection
