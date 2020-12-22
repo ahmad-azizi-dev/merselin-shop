@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 
 
-class SlideCotroller extends Controller
+class SlideController extends Controller
 {
 
     public function index()

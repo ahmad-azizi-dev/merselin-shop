@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	
-	<livewire:admin.slides />
+	@livewire('admin.slides.slides-index')
 
 @endsection
 

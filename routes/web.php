@@ -14,7 +14,7 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\MyOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProfileController;
-use App\Http\Controllers\Frontend\SlideCotroller;
+use App\Http\Controllers\backend\SlideController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\ProductController;
@@ -69,7 +69,7 @@ Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(func
     Route::resource('medias', MediaController::class);
     Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
     Route::resource('products', ProductController::class);
-    Route::get('slides', [SlideCotroller::class, 'index'])->name('slides');
+    Route::get('slides', [SlideController::class, 'index'])->name('slides');
 
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
