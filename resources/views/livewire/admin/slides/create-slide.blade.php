@@ -55,7 +55,10 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<h6 class="mt-1 mx-1" style="font-size: 16px; font-weight: 700; margin-bottom: 9px">Image</h6>
+				<h6 class="mt-1 mx-1" style="font-size: 16px; font-weight: 700; margin-bottom: 9px">Image
+					<span wire:target="img" wire:loading.class="spinner-grow spinner-grow-sm text-secondary"></span>
+					<span wire:target="img" wire:loading.class="spinner-grow spinner-grow-sm text-secondary"></span>
+				</h6>
 				<div class="custom-file">
 					<input wire:model.lazy="img" class="custom-file-input @error('img') is-invalid @enderror "
 					       id="img" name="img" type="file">
@@ -66,18 +69,19 @@
 							Choose file
 						@endif
 					</label>
-					@error('img') <span class="error text-danger ml-1">{{ $message }}</span> @enderror
+					@error('img') <span class="error text-danger ml-1 d-block">{{ $message }}</span> @enderror
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Modal footer -->
 	<div class="modal-footer">
-		<button type="button" class="btn btn-block btn-secondary w-25 mr-3"
-		        data-dismiss="modal">dismiss
+		<button type="button" class="btn btn-block btn-secondary mr-3"
+		        data-dismiss="modal" style="width: 35%">dismiss
 		</button>
-		<button wire:click="store" class="btn btn-block bg-gradient-warning m-2 w-25">
+		<button wire:click="store" class="btn btn-block bg-gradient-warning m-2" style="width: 35%">
 			submit
+			<span wire:target="store" wire:loading.class="spinner-grow spinner-grow-sm text-white"></span>
 		</button>
 	</div>
 	

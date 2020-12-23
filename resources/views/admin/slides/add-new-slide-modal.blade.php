@@ -3,8 +3,8 @@
 		<div class="modal-content">
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title text-info"><i class="fa fa-edit"></i>
-					add new slide</h4>
+				<h5 class="modal-title text-info"><i class="fa fa-edit"></i>
+					add new slide</h5>
 				<button type="button" class="close" data-dismiss="modal">&times;
 				</button>
 			</div>
