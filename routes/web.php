@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AttributeGroupController;
 use App\Http\Controllers\Backend\AttributeValueController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\LoginByPhoneTokenController;
 use App\Http\Controllers\Backend\MediaController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendCategoryController;
@@ -70,6 +71,8 @@ Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(func
     Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
     Route::resource('products', ProductController::class);
     Route::get('slides', [SlideController::class, 'index'])->name('slides');
+    Route::get('loginByPhoneToken', [LoginByPhoneTokenController::class, 'index'])->name('loginByPhoneToken');
+
 
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
