@@ -31,13 +31,15 @@
 'Roboto', sans-serif;
 ----------------------------------------- */
 /* Import Fonts & All CSS Files */
-@import url(css/bootstrap.min.css);
-@import url(css/animate.css);
-@import url(css/owl.carousel.min.css);
-@import url(css/font-awesome.min.css);
-@import url(css/default/lineicons.min.css);
+@import '~bootstrap-v4-rtl/scss/bootstrap-rtl';
+@import '~animate.css/animate.css';
+@import '~owl.carousel2/dist/assets/owl.carousel.min.css';
+//@import '~font-awesome/css/font-awesome.min.css';
+@import 'resources/LineIcons-Package-2.0/scss/main.scss';
 /* Reboot CSS */
-
+.owl-carousel{
+    direction: ltr;
+}
 .modal-backdrop{
     width: 100%;
     height: 100%;}
@@ -105,7 +107,7 @@
   padding: 0; }
   @font-face {
     font-family: iransans;
-    src: url('./fonts/IRANSansWeb(FaNum).ttf');
+    src: url('../fonts/IRANSansWeb(FaNum).ttf');
 }
 body,
 html {
@@ -368,8 +370,7 @@ textarea:invalid {
 
 .section-heading {
   position: relative;
-  z-index: 1;
-  margin-bottom: 1rem; }
+  z-index: 1; }
   .section-heading h6 {
     font-size: 0.9rem;
     margin-bottom: 0;
@@ -712,7 +713,7 @@ div.paginate-loading{
     .preview-iframe-wrapper .preview-hero-area::after {
       position: absolute;
       content: "";
-      background-image: url(img/curve.png);
+      background-image: url(../img/curve.png);
       bottom: 50px;
       width: 142px;
       height: 121px;
@@ -751,7 +752,7 @@ div.paginate-loading{
           position: absolute;
           width: 200px;
           height: 200px;
-          background-image: url(img/core-img/dot-blue.png);
+          background-image: url(../img/core-img/dot-blue.png);
           background-repeat: repeat;
           bottom: -70px;
           right: -70px;
@@ -2615,7 +2616,7 @@ li.suha-dropdown-menu {
   .product-title-meta-data::after {
     position: absolute;
     content: "";
-    background-image: url(img/curve.png);
+    background-image: url(../img/curve.png);
     top: -120px;
     width: 142px;
     height: 121px;
@@ -3744,7 +3745,7 @@ li.suha-dropdown-menu {
   [data-theme="dark"] .weekly-product-card .product-thumbnail-side .delete-btn {
     color: #020310; }
   [data-theme="dark"] .product-title-meta-data::after {
-    background-image: url(img/curve2.png); }
+    background-image: url(../img/curve2.png); }
   [data-theme="dark"] .top-product-card .wishlist-btn {
     color: #ea4c62; }
   [data-theme="dark"] .category-card i {
@@ -3845,3 +3846,7 @@ li.suha-dropdown-menu {
     background-color: #242644 !important; }
   [data-theme="dark"] .btn-warning {
     color: #020310; }
+
+  .row{
+      margin: 0 -8px;
+  }

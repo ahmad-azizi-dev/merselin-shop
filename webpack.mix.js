@@ -11,8 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+// mix.js('resources/js/app.js', 'public/js')
+//     .postCss('resources/css/app.css', 'public/css', [
+//         require('postcss-import'),
+//         require('tailwindcss'),
+//     ]);
+
+mix.sass('resources/sass/style.scss','public/css/style.css').options({
+    processCssUrls: false
+});
+
+mix.copyDirectory('resources/LineIcons-Package-2.0/LineIcons-fonts', 'public/fonts/LineIcons-fonts');
+
+mix.sass('resources/sass/custom-simple-lightbox.scss','public/css/simple-lightbox.css');

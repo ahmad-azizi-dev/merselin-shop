@@ -6,7 +6,7 @@
             </a>
         </div>
         {{--  Flash Sale Slide--}}
-        <div class="flash-sale-slide owl-carousel">
+        <div class="flash-sale-slide owl-carousel mt-3">
 
             <!-- Single Flash Sale Card-->
             @foreach($FlashSaleProducts as $product)

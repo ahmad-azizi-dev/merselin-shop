@@ -7,7 +7,7 @@
         ($path=$medias->whereIn('original_name',["$i.jpg","$i.png"])->pluck('path')->get(0)) }}">
             <div class="single-product-slide" style="background-image: url('{{ url('/').'/storage/photos/'.$path }}')">
                 <div class="magnifier">
-                    <i class="fa fa-search"></i>
+                    <i class="lni lni-search-alt"></i>
                     @lang('product.magnifier')
                 </div>
             </div>

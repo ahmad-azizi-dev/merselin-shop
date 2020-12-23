@@ -4,11 +4,11 @@
             <h6 class="ml-1">{{$title}}</h6>
         </div>
         <div class="product-category-wrap">
-            <div class="row g-3">
+            <div class="row">
 
                 {{-- Single Category Card --}}
                 @foreach($categories as $category)
-                    <div class="col-4 col-md-2">
+                    <div class="col-4 col-md-2 pt-3 px-2">
                         <div class="card category-card">
                             <div class="card-body p-0">
                                 <a href="{{route('showCategory',['category'=>$category->slug])}}">

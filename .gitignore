@@ -12,3 +12,7 @@ npm-debug.log
 yarn-error.log
 .idea
 /public/images
+/public/css/style.css
+/public/mix-manifest.json
+public/fonts/LineIcons-fonts
+/public/css/simple-lightbox.css
