@@ -167,6 +167,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{(Request::routeIs('loginByPhoneToken')?'#':route('loginByPhoneToken'))}}"
+                       class="nav-link {{(Request::routeIs('loginByPhoneToken')?'active':'')}}">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <p>
+                            Login Phone Token List
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
