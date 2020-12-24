@@ -48,5 +48,8 @@
         $(document).ready(function () {
             bsCustomFileInput.init();
         });
+        $('.modal.edit').on('hide.bs.modal', function () {
+            Livewire.emit('refreshSlidesIndex');
+        })
 	</script>
 @endsection

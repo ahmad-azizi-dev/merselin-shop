@@ -59,7 +59,7 @@
 					<span wire:target="img" wire:loading.class="spinner-grow spinner-grow-sm text-secondary"></span>
 					<span wire:target="img" wire:loading.class="spinner-grow spinner-grow-sm text-secondary"></span>
 				</h6>
-				<div class="custom-file">
+				<div class="custom-file mb-3">
 					<input wire:model.lazy="img" class="custom-file-input @error('img') is-invalid @enderror "
 					       id="img" name="img" type="file">
 					<label for="img" class="custom-file-label">
@@ -79,7 +79,7 @@
 		<button type="button" class="btn btn-block btn-secondary mr-3"
 		        data-dismiss="modal" style="width: 35%">dismiss
 		</button>
-		<button wire:click="store" class="btn btn-block bg-gradient-warning m-2" style="width: 35%">
+		<button wire:click="store" class="btn btn-block bg-gradient-info m-2" style="width: 35%">
 			submit
 			<span wire:target="store" wire:loading.class="spinner-grow spinner-grow-sm text-white"></span>
 		</button>

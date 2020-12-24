@@ -17,4 +17,29 @@ class SlidesIndex extends Component
             'slides' => Slide::all()->sortByDesc("updated_at")
         ]);
     }
+
+    /**
+     * Remove the specified slide from storage.
+     *
+     * @param $slideId
+     * @return void
+     */
+    public function deleteSlide($slideId)
+    {
+        $slide = Slide::find($slideId);
+        $this->deleteImage($slide->img);
+        $slide->delete();
+    }
+
+    /**
+     * Delete an image from storage.
+     *
+     * @param $imgName
+     */
+    protected function deleteImage($imgName): void
+    {
+        if (file_exists(storage_path('app/public/slides/' . $imgName))) {
+            unlink(storage_path('app/public/slides/' . $imgName));
+        }
+    }
 }
