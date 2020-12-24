@@ -34,3 +34,7 @@ mix.copy('node_modules/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap
 mix.copy('node_modules/admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css','public/admin/css/');
 mix.copy('node_modules/admin-lte/plugins/select2/css/select2.min.css','public/admin/css/');
 mix.copy('node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css','public/admin/css/');
+
+mix.js('resources/js/ckeditor5.js','public/js/');
+
+mix.copy('resources/css/custom-ckeditor.css','public/css');

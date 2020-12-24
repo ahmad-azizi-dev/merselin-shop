@@ -25,3 +25,5 @@ yarn-error.log
 /public/admin/css/select2.min.css
 /public/admin/css/select2-bootstrap4.min.css
 /public/admin/css/toastr.css
+/public/js/ckeditor5.js
+/public/css/custom-ckeditor.css
