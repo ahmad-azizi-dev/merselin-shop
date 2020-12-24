@@ -18,14 +18,10 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">attributes list</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
 
     <div class="card m-2">
         <div class="card-header">
@@ -35,10 +31,9 @@
                     add new attribute
                     <i class="fa fa-edit"></i>
                 </a>
-
             </div>
         </div>
-        <!-- /.card-header -->
+    
         <div class="card-body">
             <table id="example1" class="table table-sm table-striped table-responsive ">
                 <thead>
@@ -72,8 +67,7 @@
 
 
                             </div>
-
-
+                            
                             <!-- The delete Modal -->
                             <div class="modal fade" id="delete{{$attribute->id}}">
                                 <div class="modal-dialog modal-sm">
@@ -118,8 +112,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
-
+        
     </div>
     <!-- /.card -->
     </div>

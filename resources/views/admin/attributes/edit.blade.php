@@ -14,13 +14,10 @@
                 <div class="col-sm-6">
                     <h3 class="m-0 text-dark">update the {{$attributeGroup->title}} attribute</h3>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
+   
 
     @include('admin.partials.form-errors')
 
@@ -32,7 +29,7 @@
                     You can edit the following phrase in the <b>{{$attributeGroup->title}}</b> attribute
                 </h3>
             </div>
-            <!-- /.card-header -->
+          
             <div class="card-body">
 
                 {!! Form::model($attributeGroup ,['method' => 'PATCH','route' => ['attributes-group.update', $attributeGroup->id]]) !!}
@@ -45,8 +42,7 @@
 
                     </div>
                 </div>
-
-
+                
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- select -->
@@ -72,9 +68,8 @@
                 {!! Form::close() !!}
 
             </div>
-            <!-- /.card-body -->
+         
         </div>
-        <!-- /.card -->
 
     </div>
 

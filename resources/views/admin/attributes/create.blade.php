@@ -13,14 +13,10 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h3 class="m-0 text-dark">add new attribute</h3>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
 
     @include('admin.partials.form-errors')
 
@@ -32,12 +28,10 @@
                     Please enter the following inputs
                 </h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
 
                 {!! Form::open(['method' => 'post','route' => 'attributes-group.store']) !!}
-
-
+                
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
@@ -46,8 +40,7 @@
 
                     </div>
                 </div>
-
-
+                
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- select -->
@@ -71,9 +64,8 @@
                 {!! Form::close() !!}
 
             </div>
-            <!-- /.card-body -->
+         
         </div>
-        <!-- /.card -->
 
     </div>
 

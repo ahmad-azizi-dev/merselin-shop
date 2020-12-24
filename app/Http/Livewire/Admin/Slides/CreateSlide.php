@@ -46,6 +46,7 @@ class CreateSlide extends Component
         Slide::create($this->allInputs());
         Session::flash('slideAdded', 'The "' . $this->title . '" slide added.');
         $this->resetAllData();
+        $this->emit('refreshSlidesIndex');
     }
 
     /**
