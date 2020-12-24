@@ -14,5 +14,5 @@ yarn-error.log
 /public/images
 /public/css/style.css
 /public/mix-manifest.json
-public/fonts/LineIcons-fonts
+/public/fonts/LineIcons-fonts
 /public/css/simple-lightbox.css
