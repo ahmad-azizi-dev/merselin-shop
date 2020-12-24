@@ -16,3 +16,12 @@ yarn-error.log
 /public/mix-manifest.json
 /public/fonts/LineIcons-fonts
 /public/css/simple-lightbox.css
+/public/webfonts
+/public/css/fontawesome.css
+/public/admin/css/adminlte.min.css
+/public/admin/css/OverlayScrollbars.min.css
+/public/admin/css/dataTables.bootstrap4.min.css
+/public/admin/css/responsive.bootstrap4.min.css
+/public/admin/css/select2.min.css
+/public/admin/css/select2-bootstrap4.min.css
+/public/admin/css/toastr.css

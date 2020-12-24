@@ -7,9 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('admin/css/awesome.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset('admin/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
