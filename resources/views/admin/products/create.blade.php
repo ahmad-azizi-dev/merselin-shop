@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="{{asset('admin/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom-ckeditor.css')}}">
     @livewireStyles
 
 @endsection
@@ -146,16 +147,10 @@
 
     <script src="{{asset('js/alpine.min.js')}}"></script>
     <script src="{{asset('admin/js/select2.full.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('/admin/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('js/ckeditor5.js')}}"></script>
 
     <script>
 
-        CKEDITOR.replace('textareaDescription', {
-            customConfig: 'config.js',
-            toolbar: 'simple',
-            language: 'fa',
-            removePlugins: 'cloudservices, easyimage'
-        })
 
         //Initialize Select2 Elements
         $('.select2bs4').select2({

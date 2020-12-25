@@ -24,3 +24,17 @@ mix.sass('resources/sass/style.scss','public/css/style.css').options({
 mix.copyDirectory('resources/LineIcons-Package-2.0/LineIcons-fonts', 'public/fonts/LineIcons-fonts');
 
 mix.sass('resources/sass/custom-simple-lightbox.scss','public/css/simple-lightbox.css');
+
+mix.copy('node_modules/admin-lte/dist/css/adminlte.min.css','public/admin/css');
+mix.copy('node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css','public/admin/css');
+mix.sass('resources/sass/fontawesome.scss','public/css/');
+mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts','public/webfonts');
+mix.copy('node_modules/admin-lte/plugins/toastr/toastr.css','public/admin/css/');
+mix.copy('node_modules/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css','public/admin/css/');
+mix.copy('node_modules/admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css','public/admin/css/');
+mix.copy('node_modules/admin-lte/plugins/select2/css/select2.min.css','public/admin/css/');
+mix.copy('node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css','public/admin/css/');
+
+mix.js('resources/js/ckeditor5.js','public/js/');
+
+mix.copy('resources/css/custom-ckeditor.css','public/css');
