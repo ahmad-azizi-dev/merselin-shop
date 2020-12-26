@@ -14,7 +14,7 @@
         "@fortawesome/fontawesome-free": "^5.15.1",
         "@tailwindcss/ui": "^0.5.0",
         "admin-lte": "^3.0.5",
-        "animate.css": "4.1.1",
+        "animate.css": "3.7.2",
         "axios": "^0.19",
         "bootstrap-v4-rtl": "^4.5.2-1",
         "cross-env": "^7.0",

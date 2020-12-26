@@ -6,6 +6,7 @@ use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +23,7 @@ class HomeController extends Controller
             'FlashSaleProducts' => Product::whereNotNull('discount_price')->get(),
             'TopProducts'       => Product::get(),
             'cartProducts'      => Cart::getProducts(),
+            'slides'            => Slide::whereNotIn('priority', [0])->orderBy('priority', 'asc')->get(),
         ]);
     }
 }
