@@ -18,14 +18,10 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">products list</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
 
     <div class="card m-2">
         <div class="card-header">
@@ -35,21 +31,21 @@
                     add a new product
                     <i class="fa fa-edit"></i>
                 </a>
-
             </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <table id="products" class="table table-sm table-striped table-responsive ">
+       
+        <div class="card-body table-responsive">
+            <table id="products" style="min-width: 900px" class="table table-sm table-striped" >
                 <thead>
                 <tr class="bg-gradient-info">
                     <th style="min-width: 50px !important;">id</th>
                     <th style="min-width: 150px !important;">title</th>
-                    <th style="min-width: 200px !important;">product code</th>
-                    <th style="min-width: 150px !important;">operations</th>
-                    <th style="min-width: 150px !important;">created date (Teh)</th>
-                    <th style="min-width: 150px !important;">updated date (Teh)</th>
-                    <th style="min-width: 150px !important;">update diff</th>
+                    <th>image</th>
+                    <th>product code</th>
+                    <th style="min-width: 120px !important;">operations</th>
+                    <th>created date (Teh)</th>
+                    <th>updated date (Teh)</th>
+                    <th>update diff</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,6 +54,7 @@
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->title}}</td>
+                        <td><x-product-img width="50" :product=$product></x-product-img></td>
                         <td>{{$product->sku}}</td>
 
                         <td><a class="btn btn-sm  bg-gradient-warning m-2"
@@ -116,10 +113,9 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
 
     </div>
-    <!-- /.card -->
+   
     </div>
 
 @endsection
