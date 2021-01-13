@@ -1,6 +1,16 @@
 <x-header>
     <!-- Logo Wrapper-->
     <div class="logo-wrapper"><a href="#"><img src="https://placehold.it/35x35" alt=""></a></div>
+    <ul class="d-flex">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <li>
+                <a rel="alternate" hreflang="{{ $localeCode }}"
+                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    <span class="badge  p-2">{{ $properties['native'] }}</span>
+                </a>
+            </li>
+        @endforeach
+    </ul>
     <!-- Search Form-->
     <div class="top-search-form">
         <form action="#">

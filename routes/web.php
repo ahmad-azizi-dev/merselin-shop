@@ -30,53 +30,54 @@ use App\Http\Controllers\Backend\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::middleware(['web'])->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::get('cart', [CartController::class, 'index'])->name('cart');
+        Route::get('login', [AuthController::class, 'login'])->name('frontendLogin');
+        Route::post('login', [AuthController::class, 'postLoginNumber'])->name('postLoginNumber');
+        Route::get('otp-confirm/{loginByPhone}', [AuthController::class, 'otpConfirm'])->name('otpConfirm');
+        Route::post('otp-confirm', [AuthController::class, 'postOtpConfirm'])->name('postOtpConfirm');
+        Route::post('logout', [AuthController::class, 'logout'])->name('frontendLogout');
 
-Route::middleware(['web', 'Local'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('cart', [CartController::class, 'index'])->name('cart');
-    Route::get('login', [AuthController::class, 'login'])->name('frontendLogin');
-    Route::post('login', [AuthController::class, 'postLoginNumber'])->name('postLoginNumber');
-    Route::get('otp-confirm/{loginByPhone}', [AuthController::class, 'otpConfirm'])->name('otpConfirm');
-    Route::post('otp-confirm', [AuthController::class, 'postOtpConfirm'])->name('postOtpConfirm');
-    Route::post('logout', [AuthController::class, 'logout'])->name('frontendLogout');
+        Route::get('product/{slug}', [FrontendProductController::class, 'show'])->name('showProduct');
+        Route::get('category/{category}', [FrontendCategoryController::class, 'show'])->name('showCategory');
 
-    Route::get('product/{slug}', [FrontendProductController::class, 'show'])->name('showProduct');
-    Route::get('category/{category}', [FrontendCategoryController::class, 'show'])->name('showCategory');
-
-    Route::middleware(['auth'])->group(function () {
-        Route::get('profile', [ProfileController::class, 'show'])->name('profile');
-        Route::get('profile/edit', [ProfileController::class, 'edit'])->name('editProfile');
-        Route::post('profile', [ProfileController::class, 'update'])->name('updateProfile');
-        Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
-        Route::post('checkout', [CheckoutController::class, 'postCheckout'])->name('postCheckout');
-        Route::get('checkout/payment', [CheckoutController::class, 'checkoutPayment'])->name('checkoutPayment');
-        Route::post('credit-card-payment', [PaymentController::class, 'creditCard'])->name('creditCardPayment');
-        Route::get('credit-card-payment', [PaymentController::class, 'showCreditCard'])->name('showCreditCardPayment');
-        Route::get('my-orders', [MyOrdersController::class, 'show'])->name('showMyOrders');
-        Route::post('my-orders/cancel', [MyOrdersController::class, 'cancelOrder'])->name('cancelOrder');
+        Route::middleware(['auth'])->group(function () {
+            Route::get('profile', [ProfileController::class, 'show'])->name('profile');
+            Route::get('profile/edit', [ProfileController::class, 'edit'])->name('editProfile');
+            Route::post('profile', [ProfileController::class, 'update'])->name('updateProfile');
+            Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
+            Route::post('checkout', [CheckoutController::class, 'postCheckout'])->name('postCheckout');
+            Route::get('checkout/payment', [CheckoutController::class, 'checkoutPayment'])->name('checkoutPayment');
+            Route::post('credit-card-payment', [PaymentController::class, 'creditCard'])->name('creditCardPayment');
+            Route::get('credit-card-payment', [PaymentController::class, 'showCreditCard'])->name('showCreditCardPayment');
+            Route::get('my-orders', [MyOrdersController::class, 'show'])->name('showMyOrders');
+            Route::post('my-orders/cancel', [MyOrdersController::class, 'cancelOrder'])->name('cancelOrder');
+        });
     });
-});
 
 
-Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(function () {
-    Route::get('/', [MainController::class, 'index'])->name('admin');
-    Route::resource('categories', CategoryController::class);
-    Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');
-    Route::post('/categories/{id}/settings', [CategoryController::class, 'saveSetting'])->name('categories.saveSetting');
+    Route::prefix('administrator')->middleware(['web', 'auth'])->group(function () {
+        Route::get('/', [MainController::class, 'index'])->name('admin');
+        Route::resource('categories', CategoryController::class);
+        Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');
+        Route::post('/categories/{id}/settings', [CategoryController::class, 'saveSetting'])->name('categories.saveSetting');
 
-    Route::resource('attributes-group', AttributeGroupController::class);
-    Route::resource('attributes-value', AttributeValueController::class);
-    Route::resource('brands', BrandController::class);
-    Route::resource('medias', MediaController::class);
-    Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
-    Route::resource('products', ProductController::class);
-    Route::get('slides', [SlideController::class, 'index'])->name('slides');
-    Route::get('loginByPhoneToken', [LoginByPhoneTokenController::class, 'index'])->name('loginByPhoneToken');
+        Route::resource('attributes-group', AttributeGroupController::class);
+        Route::resource('attributes-value', AttributeValueController::class);
+        Route::resource('brands', BrandController::class);
+        Route::resource('medias', MediaController::class);
+        Route::post('medias/upload', [MediaController::class, 'upload'])->name('medias.upload');
+        Route::resource('products', ProductController::class);
+        Route::get('slides', [SlideController::class, 'index'])->name('slides');
+        Route::get('loginByPhoneToken', [LoginByPhoneTokenController::class, 'index'])->name('loginByPhoneToken');
 
 
+        Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    });
 });
