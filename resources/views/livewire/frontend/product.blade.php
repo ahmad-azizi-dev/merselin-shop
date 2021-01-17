@@ -54,6 +54,32 @@
                     <div> {!!$product->description!!} </div>
                 </div>
             </div>
+	
+	        <!-- Product َAttributes-->
+	        <div class="p-specification bg-white mb-3 py-3">
+		        <div class="container">
+			        <h6>@lang('product.attributes')</h6>
+			        <div>
+				        <table class="table table-sm table-striped mt-3">
+					        <tbody>
+					        @foreach($attributesGroup as $key=>$value)
+					        <tr>
+						        <td>{{$key}}</td>
+						        <td>
+							        <ul>
+								        @foreach($value as $attributesValue)
+								            <li style="list-style: circle">{{$attributesValue}}</li>
+								        @endforeach
+							        </ul>
+						        </td>
+					        </tr>
+					        @endforeach
+					        </tbody>
+				        </table>
+			        </div>
+		        </div>
+	        </div>
+	        
             <!-- Rating & Review Wrapper-->
 
             <!-- Ratings Submit Form-->

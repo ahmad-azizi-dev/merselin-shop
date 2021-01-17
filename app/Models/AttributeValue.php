@@ -8,6 +8,13 @@ class AttributeValue extends Model
 {
     protected $table = "attributesvalue";
 
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['attributeGroup'];
+
     public function attributeGroup()
     {
         return $this->belongsTo(AttributeGroup::class, 'attributeGroup_id');

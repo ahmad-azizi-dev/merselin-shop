@@ -16,7 +16,7 @@ return [
     'ratings'        => 'نفر امتیاز ثبت کردن',
     'veryGood'       => 'خیلی خوب',
     'addCart'        => 'افزودن به سبد خرید',
-    'specifications' => 'مشخصات تکمیلی',
+    'specifications' => 'مشخصات',
     'submitReview'   => 'ارسال نظر شما',
     'writeReview'    => 'نظر خود را بنوسید...',
     'saveReview'     => 'ثبت نظر',
@@ -64,5 +64,6 @@ return [
     'areYouSureDeleteWishlist' => 'آیا مایل به حذف این کالا از علاقه مندی هستید؟',
     'addedWishlist'            => 'به علاقه مندی اضافه شد',
     'removedWishlist'          => 'از علاقه مندی حذف شد',
+    'attributes'               => 'ویژگی های محصول',
 
 ];

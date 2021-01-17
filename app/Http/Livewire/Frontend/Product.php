@@ -13,6 +13,7 @@ class Product extends Component
     use Wishlist;
 
     public $product = [];
+    public $attributesGroup = [];
     public $currentUrl = [];
     protected $listeners = [
         'removeFromCart'     => 'removeFromCart',
@@ -24,6 +25,7 @@ class Product extends Component
     {
         $this->initializeWishlist();
         $this->authCheckAndLoading();
+        $this->initializeAttributesGroup();
     }
 
     public function render()
@@ -49,5 +51,13 @@ class Product extends Component
         } else {
             $this->getEagerProductGuest();
         }
+    }
+
+    protected function initializeAttributesGroup(): void
+    {
+        $this->attributesGroup = $this->product->attributeValues->pluck('attributeGroup', 'title')
+            ->mapToGroups(function ($item, $key) {
+                return [$item['title'] => $key];
+            });
     }
 }
