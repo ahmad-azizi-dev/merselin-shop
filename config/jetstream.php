@@ -42,8 +42,8 @@ return [
 
     'features' => [
         Features::profilePhotos(),
-        Features::api(),
-        Features::teams(),
+       // Features::api(),
+       // Features::teams(),
     ],
 
 ];

@@ -41,6 +41,15 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{(Request::routeIs('userProfile')?'#':route('userProfile'))}}"
+                       class="nav-link {{(Request::routeIs('userProfile')?'active':'')}}">
+                        <i class="nav-icon fas fa-address-card"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview {{(Request::routeIs(['categories.index','categories.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-object-group"></i>
