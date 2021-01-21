@@ -16,7 +16,7 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\MyOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProfileController;
-use App\Http\Controllers\backend\SlideController;
+use App\Http\Controllers\Backend\SlideController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\ProductController;
