@@ -25,7 +25,7 @@
 					<form action="{{ route('cancelOrder') }}" method="POST">
 						@csrf
 						<input name="order" type="hidden" value="{{$order->id}}">
-						<button class="btn btn-danger w-25 mx-2 pr-5 pl-4">
+						<button class="btn btn-danger mx-3 px-4">
 							@lang('product.yes')
 						</button>
 					</form>

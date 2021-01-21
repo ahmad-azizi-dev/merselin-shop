@@ -23,14 +23,14 @@
             <form action="{{route('postLoginNumber')}}" method="post" id="loginForm" role="form">
                 @csrf
                 <div class="mb-4 d-flex">
-                    <select class="form-select text-right" name="CountryCodes">
+                    <select class="form-select text-right px-2" name="CountryCodes">
                         <option value="98">@lang('mainFrontend.CountryCodes')</option>
                         <option value="90">+90</option>
                         <option value="49">+49</option>
                         <option value="1">+1</option>
                     </select>
 
-                    <input class="form-control pl-0" name="phoneNumber" id="phone_number" type="number"
+                    <input class="form-control px-2" name="phoneNumber" id="phone_number" type="number"
                            placeholder="@lang('mainFrontend.PhoneNumberPlaceholder')" value="{{ old('phoneNumber') }}">
                 </div>
 
@@ -48,7 +48,7 @@
                     <p class="text-danger mt-0">{{ $message }}</p>
                 @endforeach
 
-                <button class="btn badge-success text-white btn-lg w-75 mt-4" type="submit">
+                <button class="btn badge-success text-white btn-lg w-75 mt-5" type="submit">
                     @lang('mainFrontend.Navbar-login')
                 </button>
 

@@ -82,3 +82,5 @@ Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(func
 //    })->name('dashboard');
 
 });
+
+Route::redirect('/adm/login', '/administrator/login');

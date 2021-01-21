@@ -44,12 +44,10 @@
 		@endif
     })
 	
-	@auth()
     document.addEventListener("DOMContentLoaded", () => {
         Livewire.hook('message.processed', (message, component) => {
-            dropdownMenu();
+	        @auth() dropdownMenu(); @endauth
             cartModal();
         })
     });
-	@endauth
 </script>
