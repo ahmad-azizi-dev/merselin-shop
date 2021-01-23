@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LoginByPhoneTokenController;
 use App\Http\Controllers\Backend\MediaController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserProfileController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendCategoryController;
@@ -74,6 +75,7 @@ Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(func
     Route::get('slides', [SlideController::class, 'index'])->name('slides');
     Route::get('loginByPhoneToken', [LoginByPhoneTokenController::class, 'index'])->name('loginByPhoneToken');
     Route::get('user-profile', [UserProfileController::class, 'index'])->name('userProfile');
+    Route::get('all-users', [UserController::class, 'index'])->name('allUsers');
 
 
 

@@ -50,6 +50,15 @@
                         </p>
                     </a>
                 </li>
+	            <li class="nav-item">
+		            <a href="{{(Request::routeIs('allUsers')?'#':route('allUsers'))}}"
+		               class="nav-link {{(Request::routeIs('allUsers')?'active':'')}}">
+			            <i class="nav-icon fas fa-address-book"></i>
+			            <p>
+				            Users
+			            </p>
+		            </a>
+	            </li>
                 <li class="nav-item has-treeview {{(Request::routeIs(['categories.index','categories.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-object-group"></i>

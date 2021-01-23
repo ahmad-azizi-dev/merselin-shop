@@ -29,7 +29,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                <div wire:target="destroy" wire:loading class="bg-dark position-absolute  rounded"
+                                <div wire:target="destroy,perPage" wire:loading class="bg-dark position-absolute  rounded"
                                      style="display:none;min-height: calc(100% - 3rem);min-width: calc(100% - 2rem);opacity: 0.5;z-index: 1000"
                                      wire:loading>
                                 </div>
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <span class=" align-self-center mr-3">Per Page : </span>
-                                <select wire:model="perPage" class="form-control w-25">per page
+                                <select wire:model="perPage" style="max-width:100px" class="form-control">per page
                                     <option>5</option>
                                     <option>10</option>
                                     <option>15</option>
@@ -58,6 +58,4 @@
             </div>
         </div>
     </div>
-</div>
-
 </div>

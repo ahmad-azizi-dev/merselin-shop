@@ -6,7 +6,7 @@
 @endsection
 
 @section('main-content')
-
+	
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
@@ -17,9 +17,11 @@
 			</div>
 		</div>
 	</div>
-
-	@livewire('admin.login-by-phone-token.login-by-phone-token-index')
-
+	<div class="col-md-12">
+		<div class="card">
+			@livewire('admin.login-by-phone-token.login-by-phone-token-index')
+		</div>
+	</div>
 @endsection
 
 @section('script')
