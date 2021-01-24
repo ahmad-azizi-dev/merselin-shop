@@ -50,14 +50,30 @@
                         </p>
                     </a>
                 </li>
-	            <li class="nav-item">
-		            <a href="{{(Request::routeIs('allUsers')?'#':route('allUsers'))}}"
-		               class="nav-link {{(Request::routeIs('allUsers')?'active':'')}}">
+	            <li class="nav-item has-treeview {{(Request::routeIs(['allUsers','roles'])?'menu-open':'')}}">
+		            <a href="#" class="nav-link">
 			            <i class="nav-icon fas fa-address-book"></i>
 			            <p>
 				            Users
+				            <i class="right fas fa-angle-left"></i>
 			            </p>
 		            </a>
+		            <ul class="nav nav-treeview">
+			            <li class="nav-item">
+				            <a href="{{(Request::routeIs('allUsers')?'#':route('allUsers'))}}"
+				               class="nav-link {{(Request::routeIs('allUsers')?'active':'')}}">
+					            <i class="far fa-list-alt nav-icon"></i>
+					            <p>Users index</p>
+				            </a>
+			            </li>
+			            <li class="nav-item">
+				            <a href="{{(Request::routeIs('roles')?'#':route('roles'))}}"
+				               class="nav-link {{(Request::routeIs('roles')?'active':'')}}">
+					            <i class="far fa-address-card nav-icon"></i>
+					            <p>Roles</p>
+				            </a>
+			            </li>
+		            </ul>
 	            </li>
                 <li class="nav-item has-treeview {{(Request::routeIs(['categories.index','categories.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">

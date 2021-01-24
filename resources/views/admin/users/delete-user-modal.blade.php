@@ -10,10 +10,14 @@
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-				are you sure that want to delete the user?
+				are you sure you want to delete the user?
 				<ul>
 					<li>phone number: <b class="text-info">{{$user->phone_number}} </b></li>
-					<li>phone number: <b class="text-info">{{$user->phone_number}} </b></li>
+					<li>email:
+						<b class="text-info">
+							{!! Str::startsWith($user->email,'not_set-')?"<b class='text-primary'>not set</b>":$user->email!!}
+						</b>
+					</li>
 				</ul>
 			</div>
 			<!-- Modal footer -->
