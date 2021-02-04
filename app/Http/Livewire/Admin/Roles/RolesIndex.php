@@ -12,16 +12,25 @@ class RolesIndex extends Component
 
     public $perPage = 10;
     protected $paginationTheme = 'bootstrap';
+    protected $listeners = [
+        'refreshRolesIndex' => '$refresh',
+    ];
 
     public function render()
     {
         return view('livewire.admin.roles.roles-index', [
-            'roles' => Role::orderBy('created_at', 'desc')->paginate($this->perPage),
+            'roles' => Role::with('permissions')->orderBy('created_at', 'desc')->paginate($this->perPage),
         ]);
     }
 
-    public function updatedperPage()
+    /**
+     * Remove the specified role from storage.
+     *
+     * @param $roleId
+     * @return void
+     */
+    public function deleteRole($roleId)
     {
-        $this->resetPage();
+        Role::find($roleId)->delete();
     }
 }
