@@ -26,8 +26,9 @@
 						add new role <i class="fa fa-edit"></i>
 					</button>
 				</div>
+				@include('admin.roles.add-new-role-modal')
 			</div>
-			@livewire('admin.users.users-index')
+			@livewire('admin.roles.roles-index')
 			<div class="card-footer clearfix">
 				<div class="col-sm-6"></div>
 			</div>
