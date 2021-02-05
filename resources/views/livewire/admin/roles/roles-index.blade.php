@@ -10,9 +10,9 @@
                                 <b></b>
                                 <th>Name</th>
                                 <th style="min-width: 200px">Permissions</th>
+                                <th style="min-width: 150px">Action</th>
                                 <th>Created at</th>
                                 <th style="min-width: 150px">Updated diff</th>
-                                <th style="min-width: 150px">Action</th>
                             </tr>
                             </thead>
                             <tbody class="position-relative">
@@ -26,8 +26,6 @@
                                             @endforeach
                                         </ul>
                                     </td>
-                                    <td> @if($role->created_at) {{$role->created_at->setTimezone('Asia/Tehran')}}  @endif </td>
-                                    <td> @if($role->updated_at) {{$role->updated_at->diffForHumans()}}  @endif </td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-warning m-2 px-3" data-toggle="modal"
                                                 data-target="#editRole{{$role->id}}">edit
@@ -38,6 +36,8 @@
                                         @include('admin.roles.delete-role-modal')
                                         @include('admin.roles.edit-role-modal')
                                     </td>
+                                    <td> @if($role->created_at) {{$role->created_at->setTimezone('Asia/Tehran')}}  @endif </td>
+                                    <td> @if($role->updated_at) {{$role->updated_at->diffForHumans()}}  @endif </td>
                                 </tr>
                             @endforeach
                             <div wire:target="destroy,perPage" wire:loading class="bg-dark position-absolute  rounded"
