@@ -11,11 +11,11 @@
 								<th>Phone Number</th>
 								<th>Name</th>
 								<th>Email</th>
+								<th style="min-width: 180px">Action</th>
 								<th>Password status</th>
 								<th>Created at</th>
 								<th>Updated at</th>
 								<th style="min-width: 150px">update diff</th>
-								<th>Action</th>
 							</tr>
 							</thead>
 							<tbody class="position-relative">
@@ -24,16 +24,20 @@
 									<td>0{{$user->phone_number }}</td>
 									<td>{!! $user->name==='not_set'?"<b class='text-primary'>not set</b>":$user->name !!}</td>
 									<td>{!! Str::startsWith($user->email,'not_set-')?"<b class='text-primary'>not set</b>":$user->email!!}</td>
-									<td>{!! $user->password==='not_set'?"<b class='text-primary'>not set</b>":'hashed' !!}</td>
-									<td> @if($user->created_at) {{$user->created_at->setTimezone('Asia/Tehran')}}  @endif </td>
-									<td> @if($user->updated_at) {{$user->updated_at->setTimezone('Asia/Tehran')}}  @endif </td>
-									<td> @if($user->updated_at) {{$user->updated_at->diffForHumans()}}  @endif </td>
 									<td>
+										<button type="button" class="btn btn-sm btn-warning m-2 px-3" data-toggle="modal"
+										        data-target="#editUser{{$user->id}}">edit
+										</button>
 										<button type="button" class="btn btn-sm btn-danger m-2" data-toggle="modal"
 										        data-target="#deleteUser{{$user->id}}">delete
 										</button>
 										@include('admin.users.delete-user-modal')
+										@include('admin.users.edit-user-modal')
 									</td>
+									<td>{!! $user->password==='not_set'?"<b class='text-primary'>not set</b>":'hashed' !!}</td>
+									<td> @if($user->created_at) {{$user->created_at->setTimezone('Asia/Tehran')}}  @endif </td>
+									<td> @if($user->updated_at) {{$user->updated_at->setTimezone('Asia/Tehran')}}  @endif </td>
+									<td> @if($user->updated_at) {{$user->updated_at->diffForHumans()}}  @endif </td>
 								</tr>
 							@endforeach
 							<div wire:target="destroy,perPage" wire:loading class="bg-dark position-absolute  rounded"

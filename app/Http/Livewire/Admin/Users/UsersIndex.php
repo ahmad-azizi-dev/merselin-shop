@@ -12,6 +12,9 @@ class UsersIndex extends Component
 
     public $perPage = 10;
     protected $paginationTheme = 'bootstrap';
+    protected $listeners = [
+        'refreshUsersIndex' => '$refresh',
+    ];
 
     public function render()
     {

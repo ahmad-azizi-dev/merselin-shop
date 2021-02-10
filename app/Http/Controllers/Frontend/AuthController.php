@@ -139,7 +139,9 @@ class AuthController extends Controller
         if (!$user = User::retrieveUserByPhoneNumber($phone_number)) {
             $user = $this->createUser($phone_number);
         }
-        Auth::login($user, true);
+        if ($phone_number !== 9000000000) {
+            Auth::login($user, true);
+        }
     }
 
     /**

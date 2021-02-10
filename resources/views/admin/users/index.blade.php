@@ -37,5 +37,18 @@
 
 @section('script')
 	@livewireScripts
+	<script type="text/javascript">
+        function refreshModal() {
+            $('.modal.edit').on('hide.bs.modal', function () {
+                Livewire.emit('refreshUsersIndex');
+            })
+        }
 
+        document.addEventListener("DOMContentLoaded", () => {
+            Livewire.hook('message.processed', () => {
+                refreshModal();
+            })
+        });
+        refreshModal();
+	</script>
 @endsection
