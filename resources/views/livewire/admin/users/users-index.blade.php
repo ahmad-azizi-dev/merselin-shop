@@ -12,6 +12,7 @@
 								<th>Name</th>
 								<th>Email</th>
 								<th style="min-width: 180px">Action</th>
+								<th style="min-width: 70px">Roles</th>
 								<th>Password status</th>
 								<th>Created at</th>
 								<th>Updated at</th>
@@ -25,7 +26,8 @@
 									<td>{!! $user->name==='not_set'?"<b class='text-primary'>not set</b>":$user->name !!}</td>
 									<td>{!! Str::startsWith($user->email,'not_set-')?"<b class='text-primary'>not set</b>":$user->email!!}</td>
 									<td>
-										<button type="button" class="btn btn-sm btn-warning m-2 px-3" data-toggle="modal"
+										<button type="button" class="btn btn-sm btn-warning m-2 px-3"
+										        data-toggle="modal"
 										        data-target="#editUser{{$user->id}}">edit
 										</button>
 										<button type="button" class="btn btn-sm btn-danger m-2" data-toggle="modal"
@@ -33,6 +35,15 @@
 										</button>
 										@include('admin.users.delete-user-modal')
 										@include('admin.users.edit-user-modal')
+									</td>
+									<td>
+										<ul class="p-0">
+											@forelse($user->roles as $role)
+												<li>{{$role->name}}</li>
+											@empty
+												<b class='text-success'>---</b>
+											@endforelse
+										</ul>
 									</td>
 									<td>{!! $user->password==='not_set'?"<b class='text-primary'>not set</b>":'hashed' !!}</td>
 									<td> @if($user->created_at) {{$user->created_at->setTimezone('Asia/Tehran')}}  @endif </td>
@@ -56,7 +67,7 @@
 						<div class="form-group">
 							<div class="row">
 								<span class=" align-self-center mr-3">Per Page : </span>
-								<select wire:model="perPage" style="max-width:100px" class="form-control" >per page
+								<select wire:model="perPage" style="max-width:100px" class="form-control">per page
 									<option>5</option>
 									<option>10</option>
 									<option>15</option>

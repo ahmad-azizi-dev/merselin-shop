@@ -17,6 +17,7 @@ class EditUser extends Component
     public $email;
     public $password;
     public $roles;
+    public $allRoles;
 
     public function render()
     {
@@ -38,7 +39,9 @@ class EditUser extends Component
      */
     protected function updateUser()
     {
-        User::find($this->userId)->update($this->allInputs());
+        $user = User::find($this->userId);
+        $user->update($this->allInputs());
+        $user->syncRoles($this->roles);
     }
 
     /**

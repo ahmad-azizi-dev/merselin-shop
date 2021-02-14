@@ -6,7 +6,8 @@
 				<!-- text input -->
 				<div class="form-group">
 					<label for="title">Phone Number</label>
-					<input wire:model.lazy="phone_number" class="form-control @error('phone_number') is-invalid @enderror "
+					<input wire:model.lazy="phone_number"
+					       class="form-control @error('phone_number') is-invalid @enderror "
 					       name="title" type="text">
 					@error('phone_number') <span class="error text-danger ml-1">{{ $message }}</span> @enderror
 				</div>
@@ -46,13 +47,15 @@
 				<div class="form-group">
 					<label for="roles">Roles</label>
 					<select wire:model.lazy="roles" class="form-control" multiple style="min-height:300px">
-						@include('admin.roles.permission-options')
+						@foreach($allRoles as $role)
+							<option>{{$role->name}}</option>
+						@endforeach
 					</select>
 					@error('roles') <span class="error text-danger ml-1">{{ $message }}</span> @enderror
 				</div>
 			</div>
 		</div>
-		
+	
 	</div>
 	<!-- Modal footer -->
 	<div class="modal-footer">
