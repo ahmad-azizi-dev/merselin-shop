@@ -61,7 +61,7 @@ Route::middleware(['web', 'Local'])->group(function () {
 });
 
 
-Route::prefix('administrator')->middleware(['web', 'auth', 'Local'])->group(function () {
+Route::prefix('administrator')->middleware(['web', 'auth', 'Local', 'role:super-admin|admin'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin');
     Route::resource('categories', CategoryController::class);
     Route::get('/categories/{id}/settings', [CategoryController::class, 'indexSetting'])->name('categories.indexSetting');

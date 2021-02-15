@@ -22,7 +22,7 @@
 							<tbody class="position-relative">
 							@foreach($users as $user)
 								<tr>
-									<td>0{{$user->phone_number }}</td>
+									<td>0{!! $user->phone_number>9999999999 ?"<b class='text-primary'> ---</b>":$user->phone_number!!}</td>
 									<td>{!! $user->name==='not_set'?"<b class='text-primary'>not set</b>":$user->name !!}</td>
 									<td>{!! Str::startsWith($user->email,'not_set-')?"<b class='text-primary'>not set</b>":$user->email!!}</td>
 									<td>

@@ -14,7 +14,7 @@ class CreateRole extends Component
 
     protected $rules = [
         'name'        => 'required|string|min:4|max:255|unique:roles,name,',
-        'permissions' => 'required|array',
+        'permissions' => 'nullable|array',
     ];
 
     public function render()
@@ -40,7 +40,7 @@ class CreateRole extends Component
     protected function createRole()
     {
         $role = Role::create(['name' => $this->name]);
-        foreach ($this->permissions as $permission) {
+        foreach ($this->permissions ?? [] as $permission) {
             Permission::findOrCreate($permission)->assignRole($role);
         }
     }

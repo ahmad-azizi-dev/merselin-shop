@@ -26,7 +26,7 @@ class UpdateRole extends Component
     {
         $this->validate([
             'name'        => ['required', 'string', 'min:4', 'max:255', Rule::unique('roles')->ignore($this->roleId)],
-            'permissions' => 'required|array',
+            'permissions' => 'nullable|array',
         ]);
         $this->updateRole();
         Session::flash('roleUpdated', 'The "' . $this->name . '" role updated.');
@@ -39,7 +39,9 @@ class UpdateRole extends Component
     {
         $role = Role::find($this->roleId);
         $role->permissions()->detach();
-        $role->update(['name' => $this->name]);
+        if ($role->name !== 'super-admin') {
+            $role->update(['name' => $this->name]);
+        }
         foreach ($this->permissions as $permission) {
             Permission::findOrCreate($permission)->assignRole($role);
         }

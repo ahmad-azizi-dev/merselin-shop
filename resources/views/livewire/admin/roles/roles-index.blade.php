@@ -21,9 +21,11 @@
                                     <td>{{$role->name}}</td>
                                     <td>
                                         <ul>
-                                            @foreach($role->permissions as $permission)
-                                                <li>{{$permission->name}}</li>
-                                            @endforeach
+	                                        @forelse($role->permissions as $permission)
+		                                        <li>{{$permission->name}}</li>
+	                                        @empty
+		                                        <b class='text-success'>---</b>
+	                                        @endforelse
                                         </ul>
                                     </td>
                                     <td>

@@ -52,7 +52,7 @@ class EditUser extends Component
     public function getRules(): array
     {
         return [
-            'phone_number' => ['required', 'numeric', 'min:9000000000', 'max:9999999999', Rule::unique('users')->ignore($this->userId)],
+            'phone_number' => ['nullable', 'numeric', 'min:9000000000', 'max:9999999999', Rule::unique('users')->ignore($this->userId)],
             'name'         => 'nullable|string|min:4|max:255',
             'email'        => ['nullable', 'string', 'email', 'min:4', 'max:255', Rule::unique('users')->ignore($this->userId)],
             'roles'        => 'nullable|array',
@@ -67,12 +67,12 @@ class EditUser extends Component
      */
     protected function allInputs(): array
     {
-        return [
-            'phone_number' => $this->phone_number,
-            'name'         => $this->name ?? 'not_set',
-            'email'        => $this->email ?? 'not_set-' . Str::random(20),
-            'password'     => $this->name === null ? 'not_set' : Hash::make($this->password),
-        ];
+        return array_merge([
+            'name'  => $this->name ?? 'not_set',
+            'email' => $this->email ?? 'not_set-' . Str::random(20),
+        ],
+            $this->phone_number ? ['phone_number' => $this->phone_number] : ['phone_number' => 9999999999 + mt_rand()],
+            $this->password === null ? [] : ['password' => Hash::make($this->password)]);
     }
 
 }

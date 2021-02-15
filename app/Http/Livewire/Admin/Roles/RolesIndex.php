@@ -31,6 +31,9 @@ class RolesIndex extends Component
      */
     public function deleteRole($roleId)
     {
-        Role::find($roleId)->delete();
+        $role = Role::find($roleId);
+        if ($role->name !== 'super-admin') {
+            $role->delete();
+        }
     }
 }
