@@ -28,10 +28,13 @@ class CreateRole extends Component
     public function store()
     {
         $this->validate();
-        $this->createRole();
-        Session::flash('roleAdded', 'The "' . $this->name . '" role added.');
-        $this->resetAllData();
-        $this->emit('refreshRolesIndex');
+        if (auth()->user()->can('create roles')) {
+            $this->createRole();
+            $this->resetAllData();
+            $this->emit('refreshRolesIndex');
+        } else {
+            Session::flash('accessDenied', 'no permission to create a role.');
+        }
     }
 
     /**
@@ -43,6 +46,7 @@ class CreateRole extends Component
         foreach ($this->permissions ?? [] as $permission) {
             Permission::findOrCreate($permission)->assignRole($role);
         }
+        Session::flash('roleAdded', 'The "' . $this->name . '" role added.');
     }
 
     /**

@@ -50,6 +50,7 @@
                         </p>
                     </a>
                 </li>
+                @can('view users')
 	            <li class="nav-item has-treeview {{(Request::routeIs(['allUsers','roles'])?'menu-open':'')}}">
 		            <a href="#" class="nav-link">
 			            <i class="nav-icon fas fa-address-book"></i>
@@ -66,6 +67,7 @@
 					            <p>Users index</p>
 				            </a>
 			            </li>
+                        @can('view roles')
 			            <li class="nav-item">
 				            <a href="{{(Request::routeIs('roles')?'#':route('roles'))}}"
 				               class="nav-link {{(Request::routeIs('roles')?'active':'')}}">
@@ -73,8 +75,11 @@
 					            <p>Roles</p>
 				            </a>
 			            </li>
+                        @endcan
 		            </ul>
 	            </li>
+                @endcan
+                @can('view categories')
                 <li class="nav-item has-treeview {{(Request::routeIs(['categories.index','categories.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-object-group"></i>
@@ -100,6 +105,8 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+                @can('view attributes')
                 <li class="nav-item has-treeview
                     {{(Request::routeIs(['attributes-group.index','attributes-value.index','attributes-group.create','attributes-value.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
@@ -141,6 +148,8 @@
                     </ul>
 
                 </li>
+                @endcan
+                @can('view brands')
                 <li class="nav-item has-treeview {{(Request::routeIs(['brands.index','brands.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
@@ -166,6 +175,8 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+                @can('view products')
                 <li class="nav-item has-treeview {{(Request::routeIs(['products.index','products.create'])?'menu-open':'')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-shopping-bag"></i>
@@ -191,6 +202,8 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+                @can('view slides')
                 <li class="nav-item">
                     <a href="{{(Request::routeIs('slides')?'#':route('slides'))}}"
                        class="nav-link {{(Request::routeIs('slides')?'active':'')}}">
@@ -201,6 +214,7 @@
                         </p>
                     </a>
                 </li>
+                @endcan
                 <li class="nav-item">
                     <a href="{{(Request::routeIs('loginByPhoneToken')?'#':route('loginByPhoneToken'))}}"
                        class="nav-link {{(Request::routeIs('loginByPhoneToken')?'active':'')}}">

@@ -30,10 +30,17 @@
         </button>
     </div>
 
-    @if(Session::has('roleAdded'))
+    @if(Session::has('roleUpdated'))
         <div class="alert alert-default-success alert-dismissible mx-4">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Success!</strong> {{Session('roleAdded')}}
+            <strong>Success!</strong> {{Session('roleUpdated')}}
+        </div>
+    @endif
+    
+    @if(Session::has('accessDenied'))
+        <div class="alert alert-default-danger alert-dismissible mx-4">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Access denied! </strong> {{Session('accessDenied')}}
         </div>
     @endif
 </div>

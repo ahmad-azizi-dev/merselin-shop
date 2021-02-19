@@ -36,4 +36,10 @@
             <strong>Success!</strong> {{Session('roleAdded')}}
         </div>
     @endif
+    @if(Session::has('accessDenied'))
+        <div class="alert alert-default-danger alert-dismissible mx-4">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Access denied! </strong> {{Session('accessDenied')}}
+        </div>
+    @endif
 </div>

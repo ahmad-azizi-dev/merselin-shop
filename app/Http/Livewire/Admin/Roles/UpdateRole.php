@@ -24,12 +24,13 @@ class UpdateRole extends Component
      */
     public function update()
     {
-        $this->validate([
-            'name'        => ['required', 'string', 'min:4', 'max:255', Rule::unique('roles')->ignore($this->roleId)],
-            'permissions' => 'nullable|array',
-        ]);
-        $this->updateRole();
-        Session::flash('roleUpdated', 'The "' . $this->name . '" role updated.');
+        $this->validate($this->getRules());
+        if (auth()->user()->can('update roles')) {
+            $this->updateRole();
+            Session::flash('roleUpdated', 'The "' . $this->name . '" role updated.');
+        } else {
+            Session::flash('accessDenied', 'no permission to edit role.');
+        }
     }
 
     /**
@@ -45,5 +46,16 @@ class UpdateRole extends Component
         foreach ($this->permissions as $permission) {
             Permission::findOrCreate($permission)->assignRole($role);
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRules(): array
+    {
+        return [
+            'name'        => ['required', 'string', 'min:4', 'max:255', Rule::unique('roles')->ignore($this->roleId)],
+            'permissions' => 'nullable|array',
+        ];
     }
 }
